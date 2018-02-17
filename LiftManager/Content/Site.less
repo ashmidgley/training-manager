@@ -1,0 +1,246 @@
+﻿CSS2LESS.NET
+Convert to LESS
+FAQ
+Bug report
+Contact
+CSS2LESS Making your CSS files more loveable.
+
+Paste your CSS below and get a LESS file in no time
+
+
+@color_1: red;
+@color_2: #fff;
+@color_3: white;
+@color_4: #333;
+@font_family_1: Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+@background_color_1: #ff4342;
+@background_color_2: rgba(205, 40, 39, 0.55);
+@border_color_1: #ff4342;
+@border_top_color_1: #fff;
+@border_bottom_color_1: #fff;
+
+/* Set padding to keep content from hitting the edges */
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+/* Set width on the form input elements since they're 100% wide by default */
+/* Bootstrap Overrides */
+/*
+    .btn-link {
+        display: block;
+    }*/
+/* Page-level styles */
+/*
+.popover-notifications .popover-content {
+  padding: 0;
+}
+.popover-notifications ul.notifications {
+  list-style: none;
+  padding-left: 0;
+}
+.popover-notifications ul.notifications > li {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+.popover-notifications ul.notifications > li:last-child {
+  border-bottom: none;
+}
+.popover-notifications ul.notifications .highlight {
+  font-weight: bold;
+}
+    */
+body {
+	padding-top: 90px;
+	padding-bottom: 20px;
+	font-size: 17px;
+	font-family: @font_family_1;
+}
+.body-content {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.dl-horizontal {
+	dt {
+		white-space: normal;
+	}
+}
+input {
+	max-width: 280px;
+}
+select {
+	max-width: 280px;
+}
+textarea {
+	max-width: 280px;
+}
+span.field-validation-error {
+	color: @color_1;
+	font-weight: bold;
+}
+.voffset {
+	margin-top: 2px;
+}
+.voffset1 {
+	margin-top: 5px;
+}
+.voffset2 {
+	margin-top: 10px;
+}
+.voffset3 {
+	margin-top: 20px;
+}
+.voffset4 {
+	margin-top: 40px;
+}
+.voffset5 {
+	margin-top: 80px;
+}
+.popover {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.navbar-inverse {
+	background-color: @background_color_1;
+	border-color: @border_color_1;
+	.navbar-nav {
+		>li {
+			>a {
+				color: @color_2;
+			}
+		}
+		>.open {
+			>a {
+				background-color: @background_color_2;
+				&:hover {
+					background-color: @background_color_2;
+				}
+				&:focus {
+					background-color: @background_color_2;
+				}
+			}
+		}
+		>.dropdown {
+			>a {
+				.caret {
+					border-top-color: @border_top_color_1;
+					border-bottom-color: @border_bottom_color_1;
+				}
+			}
+		}
+	}
+	.navbar-brand {
+		color: @color_2;
+	}
+}
+.dropdown-menu {
+	box-shadow: none;
+	-webkit-box-shadow: none;
+}
+.navbar-brand {
+	font-weight: 700;
+}
+h1 {
+	font-family: @font_family_1;
+}
+h2 {
+	font-family: @font_family_1;
+}
+h3 {
+	font-family: @font_family_1;
+}
+h4 {
+	font-family: @font_family_1;
+}
+h5 {
+	font-family: @font_family_1;
+}
+h6 {
+	font-family: @font_family_1;
+}
+.h1 {
+	font-family: @font_family_1;
+}
+.h2 {
+	font-family: @font_family_1;
+}
+.h3 {
+	font-family: @font_family_1;
+}
+.h4 {
+	font-family: @font_family_1;
+}
+.h5 {
+	font-family: @font_family_1;
+}
+.h6 {
+	font-family: @font_family_1;
+}
+.form-group {
+	margin-bottom: 20px;
+}
+.form-control {
+	&:focus {
+		font-size: 17px;
+		height: 44px;
+		-ms-border-radius: 9px;
+		border-radius: 9px;
+	}
+}
+.btn {
+	-ms-border-radius: 9px;
+	border-radius: 9px;
+}
+.plans {
+	list-style: none;
+	>li {
+		position: relative;
+		margin-bottom: 30px;
+		.date {
+			background: red;
+			color: @color_3;
+			text-align: center;
+			width: 60px;
+			-ms-border-radius: 8px;
+			border-radius: 8px;
+			.month {
+				text-transform: uppercase;
+				font-size: 14px;
+				font-weight: bold;
+				padding: 2px 6px;
+			}
+			.day {
+				background: #f7f7f7;
+				color: @color_4;
+				font-size: 20px;
+				padding: 6px 12px;
+			}
+		}
+		.details {
+			position: absolute;
+			top: 0;
+			left: 70px;
+			.lifter {
+				font-weight: bold;
+				display: block;
+			}
+			.genre {
+				font-size: 15px;
+			}
+		}
+		.actions {
+			font-size: 15px;
+			display: none;
+		}
+		&:hover {
+			.actions {
+				display: block;
+			}
+		}
+	}
+}
+#searchPlans {
+	width: 400px;
+	input {
+		max-width: none;
+	}
+}

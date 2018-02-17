@@ -1,0 +1,60 @@
+﻿@model LiftManager.ViewModels.PlansViewModel
+@{
+    ViewBag.Title = Model.Heading;
+}
+
+<h1 class="text-center">@Model.Heading</h1>
+<hr style="margin-bottom: -10px" />
+
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        @if (Model.PlansToDisplay.Count() > 0)
+        {
+            <ul id="plans" class="plans voffset4">
+                @foreach (var plan in Model.PlansToDisplay)
+                {
+                    <li class="plan">
+                        <div class="plan-rating col-md-2">
+                            <p class="rating-value">@plan.Rating/5</p>
+                        </div>
+                        <div class="details col-md-8">
+                            <span style="margin-top: 10px; margin-bottom: 5px;" class="lifter">
+                                @plan.Lifter.Name
+                            </span>
+                            <span class="name">
+                                @plan.Name
+                                @if (plan.IsRemoved)
+                                {
+                                    <span class="label label-default">Removed</span>
+                                }
+                            </span>
+                        </div>
+                        <div style="padding: 0px" class="details col-md-2">
+                            <button class="doubleBtn btn btn-success" onclick="location.href='@Url.Action("Summary", "Plans", new { id = plan.Id })'" disabled="@plan.IsRemoved">
+                                View
+                            </button>
+                            <button class="doubleBtn btn btn-danger js-remove-favourite" data-plan-id="@plan.Id">
+                                Remove
+                            </button>
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <div style="margin-top: 30px;">
+                <p class="alert alert-info text-center">You have no favourite plans.</p>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            FavouritesController.init("#plans");
+        })
+    </script>
+}

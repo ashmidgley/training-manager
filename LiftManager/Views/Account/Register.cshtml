@@ -1,0 +1,106 @@
+﻿@model LiftManager.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2 class="text-center">@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <h4 class="text-center">Create a new account.</h4>
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-6">
+            <hr />
+            <h3 class="text-center" style="margin-top: 0; padding-top:0;">Details</h3>
+            <hr />
+            <div class="form-group">
+                @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10 ">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Gender, "Gender", new { @class = "col-md-2 control-label" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(m => m.Gender, new SelectList(Model.Genders), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Gender)
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            @if (Model.LifterTypes.Count() == 7)
+            {
+                <div>
+                    <hr />
+                    <h3 class="text-center" style="margin-top: 0; padding-top:0;">Lifter type</h3>
+                    <hr />
+
+                    <div class="col-md-4 text-center">
+                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(1).Name)
+                        <img src="~/img/@Model.LifterTypes.ElementAt(1).FileName" width="160" height="90">
+                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(1).Id)
+                        <hr />
+                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(2).Name)
+                        <img src="~/img/@Model.LifterTypes.ElementAt(2).FileName" width="160" height="90">
+                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(2).Id)
+                    </div>
+                    <div class="col-md-4 text-center">
+                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(3).Name)
+                        <img src="~/img/@Model.LifterTypes.ElementAt(3).FileName" width="160" height="90">
+                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(3).Id)
+                        <hr />
+                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(4).Name)
+                        <img src="~/img/@Model.LifterTypes.ElementAt(4).FileName" width="160" height="90">
+                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(4).Id)
+                    </div>
+                    <div class="col-md-4 text-center">
+                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(5).Name)
+                        <img src="~/img/@Model.LifterTypes.ElementAt(5).FileName" width="160" height="90">
+                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(5).Id)
+                        <hr />
+                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(6).Name)
+                        <img src="~/img/@Model.LifterTypes.ElementAt(6).FileName" width="160" height="90">
+                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(6).Id)
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>ERROR! LifterTypes table has been adjusted</p>
+            }
+        </div>
+
+    </div>
+    <hr />
+    <div class="form-group text-center">
+        <div>
+            <input type="submit" class="btn btn-lg btn-success" value="Register" />
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
