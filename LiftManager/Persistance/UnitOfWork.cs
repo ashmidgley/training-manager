@@ -24,6 +24,7 @@ namespace LiftManager.Persistance
             Workouts = new WorkoutRepository(context);
             Exercises = new ExerciseRepository(context);
             Favourites = new FavouriteRepository(context);
+            Genres = new GenreRepository(context);
             Ratings = new RatingRepository(context);
             LifterTypes = new LifterTypeRepository(context);
             Users = new UserRepository(context);
