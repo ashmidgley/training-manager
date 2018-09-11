@@ -5,8 +5,8 @@
 
     var init = function (container) {
         $(container).on("click", ".js-toggle-favourite", toggleFavourite);
-        $('.js-star-rating').on('rating.change', createRating);
-        $('.js-star-rating').on('rating.clear', clearRating);
+        $('.js-star-rating').on('rating:change', createRating);
+        $('.js-star-rating').on('rating:clear', clearRating);
     };
 
     //A plan favourite is toggled by user
