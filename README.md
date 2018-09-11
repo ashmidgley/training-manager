@@ -18,6 +18,17 @@ Update-Database
 ```
 9. You should see a full list of migrations running against your newly created Database
 
+## Running Application
+
 Once setup complete, run the application using IISExpress in Visual Studio.
+
+## Additional
+
+Application uses kartik-v-bootstrap-star-rating JS library for UI star rating displays.
+Find details at:
+```
+Github: https://github.com/kartik-v/bootstrap-star-rating
+Documentation: http://plugins.krajee.com/star-rating
+```
 
 Happy lifting meatheads :+1:
