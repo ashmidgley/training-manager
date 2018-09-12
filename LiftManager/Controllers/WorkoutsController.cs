@@ -19,15 +19,13 @@ namespace LiftManager.Controllers
         {
             var userId = User.Identity.GetUserId();
 
-            var planName = _unitOfWork.Plans.GetPlan(planId).Name;
-
             var viewModel = new WorkoutFormViewModel
             {
                 Genres = _unitOfWork.Genres.GetGenres(),
                 Plans = _unitOfWork.Plans.GetUserPlans(userId),
                 Heading = "Create a Workout",
                 PlanId = planId,
-                PlanName = planName,
+                PlanName = _unitOfWork.Plans.GetPlan(planId).Name,
                 Week = week,
                 Day = day
             };
