@@ -6,7 +6,7 @@
     angular.module("app-plans")
         .controller("plansController", plansController);
 
-    function plansController($scope, $http) {
+    function plansController($scope, $http, $window) {
         var vm = this;
         vm.isBusy = false;
         vm.generalMessage = "";
@@ -129,33 +129,14 @@
         };
 
         $scope.removeExercise = function (exerciseId) {
-            $scope.model.exerciseId = exerciseId;
-            bootbox.dialog({
-                message: "Are you sure you want to remove this exercise?",
-                title: "Confirm",
-                buttons: {
-                    no: {
-                        label: "No",
-                        className: "btn-default",
-                        callback: function () {
-                            console.log("Cancelled removal of exercise " + exerciseId);
-                            bootbox.hideAll();
-                        }
-                    },
-                    yes: {
-                        label: "Yes",
-                        className: "btn-danger",
-                        callback: function () {
-                            $.ajax({
-                                url: "/api/exercises/" + exerciseId,
-                                method: "DELETE"
-                            })
-                            .done(exerciseRemoveDone)
-                            .fail(exerciseRemoveFail);
-                        }
-                    }
-                }
-            });
+            $.ajax({
+                url: "/api/exercises/" + exerciseId,
+                method: "DELETE"
+            })
+            .done(exerciseRemoveDone)
+                .fail(exerciseRemoveFail);
+
+            $window.location.reload();
         };
 
         var exerciseRemoveDone = function () {
@@ -169,7 +150,6 @@
 
         $scope.shiftWeekLeft = function () {
             //If not first element in workout array, decrement displayed workout by 1
-            console.log("Shift left clicked");
             if ($scope.model.currWeek > 0) {
                 $scope.model.currWeek -= 1;
             }
@@ -178,7 +158,6 @@
 
         $scope.shiftWeekRight = function () {
             //If not last element in workout array, increment displayed workout by 1
-            console.log("Shift right clicked");
             if ($scope.model.currWeek < $scope.model.weeksLength) {
                 $scope.model.currWeek += 1;
             }
@@ -205,161 +184,57 @@
         $scope.exerciseImageSelected = function (exerciseId) {
             $scope.model.exerciseId = exerciseId;
             var exercise = {};
-            var canEdit;
             var imageSrc;
 
             $http.get("/api/exercises/" + exerciseId)
-                 .then(function (response) {
-                     //success
-                     angular.copy(response.data.Exercise, exercise);
-                     canEdit = response.data.CanEdit;
-                 }, function (error) {
-                     //error
-                     vm.errorMessage = "Failed to get exercise image for exercise " + exerciseId;
-                 })
-                 .finally(function () {
-                     vm.isBusy = false;
-                     $scope.model.workoutModalHeader = "Image for " + exercise.Name;
-
-                     if (canEdit) {
-                         $scope.model.imageCanEdit = true;
-                         if (exercise.Image !== null) {
-                             $scope.model.imageHasSrc = true;
-                             imageSrc = "data:image/png;base64," + exercise.Image;
-                             $scope.model.imageCanEdit = true;
-                             $scope.model.modalImageSrc = imageSrc;
-                         } else {
-                             $scope.model.imageHasSrc = false;
-                         }
-                     } else {
-                         $scope.model.imageCanEdit = false;
-                         if (exercise.Image !== null) {
-                             $scope.model.imageHasSrc = true;
-                             imageSrc = "data:image/png;base64," + exercise.Image;
-                             $scope.model.modalImageSrc = imageSrc;
-                         } else {
-                             $scope.model.imageHasSrc = false;
-                         }
-                     }
-                     $scope.model.showWorkoutContent = false;
-                     $scope.model.showImageContent = true;
-                 });
-        };
-
-        $scope.updateExerciseImage = function () {
-            var imageInput = document.getElementById("imageUpload");
-
-            if (imageInput.files.length === 1) {
-                var blobFile = imageInput.files[0];
-                var formData = new FormData();
-                formData.append("imageUpload", blobFile);
-
-                $.ajax({
-                    url: "../../api/exercises/" + $scope.model.exerciseId,
-                    type: "POST",
-                    data: formData,
-                    processData: false,
-                    contentType: false,
-                    success: function (response) {
-                        console.log('Image upload complete for exercise ' + $scope.model.exerciseId + '.');
-                        $scope.resetModalVariables();
-                        imageInput.value = null;
-                    },
-                    error: function (jqXHR, textStatus, errorMessage) {
-                        console.log(errorMessage);
+                .then(function (response) {
+                    //success
+                    angular.copy(response.data.Exercise, exercise);
+                }, function (error) {
+                    //error
+                    vm.errorMessage = "Failed to get exercise image for exercise " + exerciseId;
+                })
+                .finally(function () {
+                    vm.isBusy = false;
+                    $scope.model.workoutModalHeader = "Image for " + exercise.Name;
+                    
+                    if (exercise.Image !== null) {
+                        $scope.model.imageHasSrc = true;
+                        imageSrc = "data:image/png;base64," + exercise.Image;
+                        $scope.model.modalImageSrc = imageSrc;
+                    } else {
+                        $scope.model.imageHasSrc = false;
                     }
-                });
 
-                //Update img element
-                var exercise = {};
-                $http.get("/api/exercises/" + $scope.model.exerciseId)
-                 .then(function (response) {
-                     //success
-                     angular.copy(response.data.Exercise, exercise);
-                 }, function (error) {
-                     //error
-                     vm.errorMessage = "Failed to get exercise image for exercise " + $scope.model.exerciseId;
-                 })
-                 .finally(function () {
-                     var imageSrc = "data:image/png;base64," + exercise.Image;
-                     $scope.model.modalImageSrc = imageSrc;
-                 });
-            } else {
-                console.log('ERROR: Image update selected but single file not selected to upload');
-            }
-        }
+                    $scope.model.showWorkoutContent = false;
+                    $scope.model.showImageContent = true;
+                });
+        };
 
         $scope.exerciseCommentSelected = function (exerciseId) {
             $scope.model.exerciseId = exerciseId;
             var exercise = {};
-            var canEdit;
 
             $http.get("/api/exercises/" + exerciseId)
-                 .then(function (response) {
-                     //success
-                     angular.copy(response.data.Exercise, exercise);
-                     canEdit = response.data.CanEdit;
-                 }, function (error) {
-                     //error
-                     vm.errorMessage = "Failed to get exercise comment for exercise " + exerciseId;
-                 })
-                 .finally(function () {
-                     vm.isBusy = false;
-
-                     if (canEdit) {
-                         $scope.model.commentCanEdit = true;
-                         var defaultStr = '';
-                         var title = ' Comment';
-                         if (exercise.Comment !== null) {
-                             defaultStr = exercise.Comment;
-                             title = 'Edit' + title;
-                         } else {
-                             title = 'Enter' + title;
-                         }
-                         $scope.model.workoutModalHeader = title;
-                         $scope.model.commentText = defaultStr;
-                     } else {
-                         $scope.model.commentCanEdit = false;
-                         if (exercise.Comment !== null) {
-                             $scope.model.commentText = exercise.Comment;
-                         } else {
-                             $scope.model.commentText = "No comment for exercise.";
-                         }
-                     }
-                     $scope.model.showWorkoutContent = false;
-                     $scope.model.showCommentContent = true;
-                 });
-        };
-
-        $scope.updateExerciseComment = function () {
-            //var comment = $('textarea#comment').val();
-            var exercise = {};
-            $http.get("/api/exercises/" + $scope.model.exerciseId)
-                 .then(function (response) {
-                     //success
-                     angular.copy(response.data.Exercise, exercise);
-                     canEdit = response.data.CanEdit;
-                 }, function (error) {
-                     //error
-                     vm.errorMessage = "Failed to get exercise comment for exercise " + exerciseId;
-                 })
+                .then(function (response) {
+                    //success
+                    angular.copy(response.data.Exercise, exercise);
+                }, function (error) {
+                    //error
+                    vm.errorMessage = "Failed to get exercise comment for exercise " + exerciseId;
+                })
                 .finally(function () {
                     vm.isBusy = false;
-                    exercise.Comment = $scope.model.commentText;
-                    console.log(exercise);
-                });
+                    $scope.model.workoutModalHeader = "Comment for " + exercise.Name;
 
-            //$http.put("/api/exercises/" + $scope.model.exerciseId, {}, { params: { comment: comment }})
-            $http.put("/api/exercises", exercise)
-                    .then(function (response) {
-                        //success   
-                        console.log("Comment updated for exercise " + $scope.model.exerciseId);
-                    }, function (error) {
-                        //error
-                        vm.errorMessage = "Failed to get exercise comment for exercise " + $scope.model.exerciseId;
-                    })
-                .finally(function () {
-                    vm.isBusy = false;
+                    $scope.model.commentCanEdit = false;
+                    if (exercise.Comment !== null) {
+                        $scope.model.commentText = exercise.Comment;
+                    } else {
+                        $scope.model.commentText = "No comment for exercise.";
+                    }
+                    $scope.model.showWorkoutContent = false;
+                    $scope.model.showCommentContent = true;
                 });
         };
 

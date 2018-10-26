@@ -165,16 +165,7 @@
                                 <div ng-show="model.imageHasSrc" class="text-center">
                                     <img style="max-width:400px;" src="{{model.modalImageSrc}}" />
                                 </div>
-                                <p ng-show="!model.imageCanEdit && !model.imageHasSrc">No Image has been uploaded for this exercise.</p>
-
-                                <div ng-show="model.imageCanEdit" class="form-group">
-                                    <br ng-show="model.imageHasSrc" />
-                                    <input id="imageUpload" type="file" value="Add new image" accept="image/*">
-                                    <br />
-                                    <button class="btn btn-success" ng-click="updateExerciseImage();">Update</button>
-                                </div>
-
-
+                                <p ng-show="!model.imageHasSrc">No Image has been uploaded for this exercise.</p>
                             </div>
                         </div>
                     </div>
@@ -185,10 +176,7 @@
                             </div>
                             <div class="col-md-11" style="padding-right: 0px;">
                                 <div style="margin-left: 10px; text-align: center">
-                                    <textarea @*id="comment"*@ ng-show="model.commentCanEdit" class="form-control input-lg" style="max-width: 500px;">{{ model.commentText }}</textarea>
-                                    <p ng-show="!model.commentCanEdit">{{ model.commentText }}</p>
-                                    <br />
-                                    <button class="btn btn-success" ng-click="updateExerciseComment()">Update</button>
+                                    <p>{{ model.commentText }}</p>
                                 </div>
                             </div>
                         </div>

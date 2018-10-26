@@ -3,7 +3,6 @@
     var planId;
 
     var init = function (container) {
-        console.log('Rating Controller initialised');
         $('.js-remove-rating').on('click', clearRating);
     };
 
