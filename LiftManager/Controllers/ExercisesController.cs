@@ -67,8 +67,9 @@ namespace LiftManager.Controllers
                 WorkoutId = viewModel.WorkoutId,
                 LifterId = userId,
                 Name = viewModel.Name,
-                Reps = viewModel.Reps,
-                Sets = viewModel.Sets,
+                Duration = viewModel.Duration,
+                Reps = viewModel.Reps == null ? "" : viewModel.Reps,
+                Sets = viewModel.Sets == null ? "" : viewModel.Sets,
                 Image = image,
                 Comment = viewModel.Comment
             };

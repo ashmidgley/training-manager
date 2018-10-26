@@ -12,6 +12,8 @@
 
         public string Name { get; set; }
 
+        public string Duration { get; set; }
+
         public string Reps { get; set; }
 
         public string Sets { get; set; }

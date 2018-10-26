@@ -123,8 +123,9 @@
                         <table class="table table-striped">
                             <tr>
                                 <th class="text-center">Name</th>
+                                <th class="text-center">Duration</th>
                                 <th class="text-center">Sets</th>
-                                <th class="text-center">Rep range</th>
+                                <th class="text-center">Reps</th>
                                 <th class="text-center">Image</th>
                                 <th class="text-center">Comments</th>
                                 @if (Model.CanEdit)
@@ -134,6 +135,7 @@
                             </tr>
                             <tr ng-repeat="exercise in model.selectedWorkout.Exercises">
                                 <td>{{ exercise.Name }}</td>
+                                <th>{{ exercise.Duration }}</th>
                                 <td class="text-center">{{ exercise.Sets }}</td>
                                 <td class="text-center">{{ exercise.Reps }}</td>
                                 <td class="text-center"><button ng-click="exerciseImageSelected(exercise.Id)" class="btn glyphicon glyphicon-camera"></button></td>
