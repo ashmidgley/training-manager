@@ -363,3 +363,8 @@ h6,
 .summaryShiftArrow:active{
     background-color: #dddddd;
 }
+
+#homeImage {
+   width: 60%;
+   height: 60%;
+}
