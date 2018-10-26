@@ -480,6 +480,10 @@
     <Compile Include="Migrations\201810260914198_SetNewGenres.Designer.cs">
       <DependentUpon>201810260914198_SetNewGenres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810262140192_SetNewLifterTypes.cs" />
+    <Compile Include="Migrations\201810262140192_SetNewLifterTypes.Designer.cs">
+      <DependentUpon>201810262140192_SetNewLifterTypes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -535,19 +539,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="img\arnold_grey.jpg" />
-    <Content Include="img\brett_gibbs.jpg" />
-    <Content Include="img\dmitry_klokov.jpeg" />
+    <Content Include="img\balance-flexibility.png" />
+    <Content Include="img\cardio.png" />
     <Content Include="img\Dumbell-Logo.png" />
     <Content Include="img\home.png" />
-    <Content Include="img\honey_badger.jpg" />
+    <Content Include="img\lifter.png" />
     <Content Include="img\LM-Logo-Black.jpg" />
     <Content Include="img\LM-Logo-Black.png" />
     <Content Include="img\LM-Logo-White.png" />
     <Content Include="img\loading.gif" />
-    <Content Include="img\rich_froning.jpg" />
-    <Content Include="img\the_rock.jpg" />
-    <Content Include="img\usain_bolt.jpg" />
+    <Content Include="img\undefined.png" />
     <Content Include="js\app-plans.js" />
     <Content Include="js\app\controllers\ratingsController.js" />
     <Content Include="js\plansController.js" />
@@ -1583,6 +1584,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810260914198_SetNewGenres.resx">
       <DependentUpon>201810260914198_SetNewGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810262140192_SetNewLifterTypes.resx">
+      <DependentUpon>201810262140192_SetNewLifterTypes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
