@@ -50,48 +50,47 @@
         </div>
 
         <div class="col-md-6">
-            @if (Model.LifterTypes.Count() == 7)
-            {
-                <div>
-                    <hr />
-                    <h3 class="text-center" style="margin-top: 0; padding-top:0;">Lifter type</h3>
-                    <hr />
-
-                    <div class="col-md-4 text-center">
-                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(1).Name)
-                        <img src="~/img/@Model.LifterTypes.ElementAt(1).FileName" width="160" height="90">
-                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(1).Id)
-                        <hr />
-                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(2).Name)
-                        <img src="~/img/@Model.LifterTypes.ElementAt(2).FileName" width="160" height="90">
-                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(2).Id)
-                    </div>
-                    <div class="col-md-4 text-center">
-                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(3).Name)
-                        <img src="~/img/@Model.LifterTypes.ElementAt(3).FileName" width="160" height="90">
-                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(3).Id)
-                        <hr />
-                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(4).Name)
-                        <img src="~/img/@Model.LifterTypes.ElementAt(4).FileName" width="160" height="90">
-                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(4).Id)
-                    </div>
-                    <div class="col-md-4 text-center">
-                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(5).Name)
-                        <img src="~/img/@Model.LifterTypes.ElementAt(5).FileName" width="160" height="90">
-                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(5).Id)
-                        <hr />
-                        @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(6).Name)
-                        <img src="~/img/@Model.LifterTypes.ElementAt(6).FileName" width="160" height="90">
-                        @Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(6).Id)
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card text-center" style="width: 22rem; margin: 20px;">
+                        <img class="card-img-top" src="~/img/@Model.LifterTypes.ElementAt(0).FileName" height="120" style="width: 100%; border-radius: 10px;" alt="Card image cap">
+                        <div class="card-body">
+                            @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(0).Name, new { @style = "margin-top: 15px;" })
+                            <br />@Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(0).Id, new { @checked = "checked" })
+                        </div>
                     </div>
                 </div>
-            }
-            else
-            {
-                <p>ERROR! LifterTypes table has been adjusted</p>
-            }
+                <div class="col-md-6">
+                    <div class="card text-center" style="width: 22rem; margin: 20px;">
+                        <img class="card-img-top" src="~/img/@Model.LifterTypes.ElementAt(1).FileName" height="120" style="width: 100%; border-radius: 10px;" alt="Card image cap">
+                        <div class="card-body">
+                            @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(1).Name, new { @style = "margin-top: 15px;" })
+                            <br />@Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(1).Id)
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card text-center" style="width: 22rem; margin: 20px;">
+                        <img class="card-img-top" src="~/img/@Model.LifterTypes.ElementAt(2).FileName" height="120" style="width: 100%; border-radius: 10px;" alt="Card image cap">
+                        <div class="card-body">
+                            @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(2).Name, new { @style = "margin-top: 15px;" })
+                            <br />@Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(2).Id)
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card text-center" style="width: 22rem; margin: 20px;">
+                        <img class="card-img-top" src="~/img/@Model.LifterTypes.ElementAt(3).FileName" height="120" style="width: 100%; border-radius: 10px;" alt="Card image cap">
+                        <div class="card-body">
+                            @Html.LabelFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(3).Name, new { @style = "margin-top: 15px;" })
+                            <br />@Html.RadioButtonFor(m => m.LifterTypeId, @Model.LifterTypes.ElementAt(3).Id)
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
     <hr />
     <div class="form-group text-center">
