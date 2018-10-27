@@ -1,0 +1,53 @@
+﻿@model TrainingManager.ViewModels.ExerciseFormViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top: 30px;">Add an Exercise</h2>
+@using (Html.BeginForm("Create", "Exercises", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <p class="alert alert-info">All fields are <strong>required</strong>.</p>
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.WorkoutId)
+    @Html.HiddenFor(x => x.PlanId)
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", autofocus = "autofocus" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Duration)
+        @Html.TextBoxFor(m => m.Duration, new { @class = "form-control", autofocus = "autofocus" })
+        @Html.ValidationMessageFor(m => m.Duration)
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.Sets)</div>
+        <span class="label label-default">Optional</span>
+        @Html.TextBoxFor(m => m.Sets, new { @class = "form-control", autofocus = "autofocus" })
+        @Html.ValidationMessageFor(m => m.Sets)
+    </div>
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.Reps)</div>
+        <span class="label label-default">Optional</span>
+        @Html.TextBoxFor(m => m.Reps, new { @class = "form-control", autofocus = "autofocus" })
+        @Html.ValidationMessageFor(m => m.Reps)
+    </div>
+    @*<div class="form-group">
+        <div>@Html.LabelFor(m => m.ImageUpload, "Image")</div>
+        <span class="label label-default">Optional</span>
+        @Html.TextBoxFor(m => m.ImageUpload, new { type = "file", @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.ImageUpload)
+    </div>*@
+    <div class="form-group">
+        <div>@Html.LabelFor(m => m.Comment)</div>
+        <span class="label label-default">Optional</span>
+        @Html.TextBoxFor(m => m.Comment, new { @class = "form-control", autofocus = "autofocus" })
+        @Html.ValidationMessageFor(m => m.Comment)
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
