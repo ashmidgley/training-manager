@@ -1,6 +1,6 @@
 ﻿namespace TrainingManager.Models
 {
-    public class LifterType
+    public class TrainingType
     {
         public byte Id { get; set; }
         public string Name { get; set; }

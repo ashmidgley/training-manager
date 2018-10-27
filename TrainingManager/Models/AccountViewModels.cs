@@ -85,9 +85,9 @@ namespace TrainingManager.Models
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        public IEnumerable<LifterType> LifterTypes { get; set; }
-        public byte LifterTypeId { get; set; }
-        public string LifterTypeName { get; set; }
+        public IEnumerable<TrainingType> TrainingTypes { get; set; }
+        public byte TrainingTypeId { get; set; }
+        public string TrainingTypeName { get; set; }
         [Required]
         public string Gender { get; set; }
         public string[] Genders { get; set; }

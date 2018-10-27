@@ -10,7 +10,7 @@ namespace TrainingManager
         IFavouriteRepository Favourites { get; }
         IGenreRepository Genres { get; }
         IRatingRepository Ratings { get; }
-        ILifterTypeRepository LifterTypes { get; }
+        ITrainingTypeRepository TrainingTypes { get; }
         IUserRepository Users { get; }
         IViewRepository Views { get; }
         void Complete();

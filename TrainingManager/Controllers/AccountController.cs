@@ -139,11 +139,11 @@ namespace TrainingManager.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var lifterTypes = _unitOfWork.LifterTypes.GetLifterTypes();
+            var trainingTypes = _unitOfWork.TrainingTypes.GetTrainingTypes();
             var genders = new string[] { "Male", "Female", "Other" };
             RegisterViewModel model = new RegisterViewModel
             {
-                LifterTypes = lifterTypes,
+                TrainingTypes = trainingTypes,
                 Genders = genders
             };
 
@@ -164,8 +164,8 @@ namespace TrainingManager.Controllers
                     UserName = model.Email,
                     Email = model.Email,
                     Name = model.Name,
-                    LifterTypeId = model.LifterTypeId,
-                    LifterTypeName = _unitOfWork.LifterTypes.GetType(model.LifterTypeId),
+                    TrainingTypeId = model.TrainingTypeId,
+                    TrainingTypeName = _unitOfWork.TrainingTypes.GetType(model.TrainingTypeId),
                     Gender = model.Gender,
                     DateJoined = DateTime.Now
                 };

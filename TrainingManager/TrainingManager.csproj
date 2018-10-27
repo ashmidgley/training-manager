@@ -268,7 +268,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="IGenreRepository.cs" />
-    <Compile Include="ILifterTypeRepository.cs" />
+    <Compile Include="ITrainingTypeRepository.cs" />
     <Compile Include="IUnitOfWork.cs" />
     <Compile Include="IUserRepository.cs" />
     <Compile Include="IViewRepository.cs" />
@@ -484,6 +484,18 @@
     <Compile Include="Migrations\201810262140192_SetNewLifterTypes.Designer.cs">
       <DependentUpon>201810262140192_SetNewLifterTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810270424377_RenameOfLifterTypesTable.cs" />
+    <Compile Include="Migrations\201810270424377_RenameOfLifterTypesTable.Designer.cs">
+      <DependentUpon>201810270424377_RenameOfLifterTypesTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810270434588_RenameLifterTypeColumnsInUserTable.cs" />
+    <Compile Include="Migrations\201810270434588_RenameLifterTypeColumnsInUserTable.Designer.cs">
+      <DependentUpon>201810270434588_RenameLifterTypeColumnsInUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810270442435_UserModelChanges.cs" />
+    <Compile Include="Migrations\201810270442435_UserModelChanges.Designer.cs">
+      <DependentUpon>201810270442435_UserModelChanges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -491,7 +503,7 @@
     <Compile Include="Models\Exercise.cs" />
     <Compile Include="Models\Favourite.cs" />
     <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\LifterType.cs" />
+    <Compile Include="Models\TrainingType.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Plan.cs" />
     <Compile Include="Models\Rating.cs" />
@@ -514,7 +526,7 @@
     <Compile Include="IRatingRepository.cs" />
     <Compile Include="IWorkoutRepository.cs" />
     <Compile Include="Repositories\GenreRepository.cs" />
-    <Compile Include="Repositories\LifterTypeRepository.cs" />
+    <Compile Include="Repositories\TrainingTypeRepository.cs" />
     <Compile Include="Repositories\PlanRepository.cs" />
     <Compile Include="Repositories\RatingRepository.cs" />
     <Compile Include="Repositories\UserRepository.cs" />
@@ -1589,6 +1601,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810262140192_SetNewLifterTypes.resx">
       <DependentUpon>201810262140192_SetNewLifterTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810270424377_RenameOfLifterTypesTable.resx">
+      <DependentUpon>201810270424377_RenameOfLifterTypesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810270434588_RenameLifterTypeColumnsInUserTable.resx">
+      <DependentUpon>201810270434588_RenameLifterTypeColumnsInUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810270442435_UserModelChanges.resx">
+      <DependentUpon>201810270442435_UserModelChanges.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

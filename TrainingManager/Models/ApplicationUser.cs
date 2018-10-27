@@ -14,8 +14,8 @@ namespace TrainingManager.Models
         [StringLength(100)]
         public string Name { get; set; }
         public string Gender { get; set; }
-        public byte LifterTypeId { get; set; }
-        public string LifterTypeName { get; set; }
+        public byte TrainingTypeId { get; set; }
+        public string TrainingTypeName { get; set; }
         public DateTime DateJoined { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

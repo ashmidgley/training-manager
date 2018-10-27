@@ -12,7 +12,7 @@ namespace TrainingManager.Models
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Favourite> Favourites { get; set; }
         public DbSet<Rating> Ratings { get; set; }
-        public DbSet<LifterType> LifterTypes { get; set; }
+        public DbSet<TrainingType> TrainingTypes { get; set; }
         public DbSet<View> Views { get; set; }
 
         public ApplicationDbContext()

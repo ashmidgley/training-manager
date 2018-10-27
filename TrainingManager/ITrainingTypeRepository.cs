@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace TrainingManager
 {
-    public interface ILifterTypeRepository
+    public interface ITrainingTypeRepository
     {
         string GetType(byte id);
         string GetFileName(byte id);
-        IEnumerable<LifterType> GetLifterTypes();
+        IEnumerable<TrainingType> GetTrainingTypes();
     }
 }

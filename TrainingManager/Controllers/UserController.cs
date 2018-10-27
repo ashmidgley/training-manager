@@ -22,7 +22,7 @@ namespace TrainingManager.Controllers
             }
 
             var user = _unitOfWork.Users.GetUser(id);
-            var imageSrc = _unitOfWork.LifterTypes.GetFileName(user.LifterTypeId);
+            var imageSrc = _unitOfWork.TrainingTypes.GetFileName(user.TrainingTypeId);
             var plans = _unitOfWork.Plans.GetUserPlans(id);
             var ratings = _unitOfWork.Ratings.GetUserRatings(id);
             var favourites = _unitOfWork.Favourites.GetUserFavourites(id);
@@ -44,7 +44,7 @@ namespace TrainingManager.Controllers
             {
                 Header = user.Name,
                 User = user,
-                LifterTypeFileName = imageSrc,
+                TrainingTypeFileName = imageSrc,
                 Plans = plans,
                 PlanCount = plans.Count(),
                 Ratings = ratings,

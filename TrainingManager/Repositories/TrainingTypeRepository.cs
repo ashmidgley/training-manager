@@ -4,31 +4,31 @@ using System.Linq;
 
 namespace TrainingManager.Repositories
 {
-    public class LifterTypeRepository : ILifterTypeRepository
+    public class TrainingTypeRepository : ITrainingTypeRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public LifterTypeRepository(ApplicationDbContext context)
+        public TrainingTypeRepository(ApplicationDbContext context)
         {
             _context = context;
         }
 
         public string GetFileName(byte id)
         {
-            return _context.LifterTypes
+            return _context.TrainingTypes
                 .SingleOrDefault(l => l.Id == id)
                 .FileName;
         }
 
-        public IEnumerable<LifterType> GetLifterTypes()
+        public IEnumerable<TrainingType> GetTrainingTypes()
         {
-            return _context.LifterTypes
+            return _context.TrainingTypes
                 .ToList();
         }
 
         public string GetType(byte id)
         {
-            LifterType type = _context.LifterTypes
+            TrainingType type = _context.TrainingTypes
                 .SingleOrDefault(l => l.Id == id);
             return type.Name;
         }

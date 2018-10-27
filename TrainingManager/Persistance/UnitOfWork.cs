@@ -13,7 +13,7 @@ namespace TrainingManager.Persistance
         public IFavouriteRepository Favourites { get; private set; }
         public IGenreRepository Genres { get; private set; }
         public IRatingRepository Ratings { get; private set; }
-        public ILifterTypeRepository LifterTypes { get; set; }
+        public ITrainingTypeRepository TrainingTypes { get; set; }
         public IUserRepository Users { get; set; }
         public IViewRepository Views { get; set; }
 
@@ -26,7 +26,7 @@ namespace TrainingManager.Persistance
             Favourites = new FavouriteRepository(context);
             Genres = new GenreRepository(context);
             Ratings = new RatingRepository(context);
-            LifterTypes = new LifterTypeRepository(context);
+            TrainingTypes = new TrainingTypeRepository(context);
             Users = new UserRepository(context);
             Views = new ViewRepository(context);
         }
