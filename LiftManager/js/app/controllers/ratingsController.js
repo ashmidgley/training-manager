@@ -1,14 +1,16 @@
 ﻿var RatingsController = function (ratingService) {
     var operation;
     var planId;
+    var link;
 
     var init = function (container) {
         $('.js-remove-rating').on('click', clearRating);
     };
 
     //Remove rating (DELETE)
-    var clearRating = function (event, value, caption) {
+    var clearRating = function (event) {
         var input = $(event.target);
+        link = $(event.target);
         planId = input.attr("data-plan-id");
         operation = "Removing rating";
 
@@ -36,6 +38,9 @@
     };
 
     var done = function () {
+        link.parents("tr").find("td").fadeOut(1000, function () {
+            $(this).parent().remove();
+        });
         console.log(operation + " for plan ID " + planId + " was successful!");
     };
 
