@@ -126,7 +126,7 @@
                                 <th class="text-center">Duration</th>
                                 <th class="text-center">Sets</th>
                                 <th class="text-center">Reps</th>
-                                <th class="text-center">Image</th>
+                                @*<th class="text-center">Image</th>*@
                                 <th class="text-center">Comments</th>
                                 @if (Model.CanEdit)
                                 {
@@ -138,7 +138,7 @@
                                 <th>{{ exercise.Duration }}</th>
                                 <td class="text-center">{{ exercise.Sets }}</td>
                                 <td class="text-center">{{ exercise.Reps }}</td>
-                                <td class="text-center"><button ng-click="exerciseImageSelected(exercise.Id)" class="btn glyphicon glyphicon-camera"></button></td>
+                                @*<td class="text-center"><button ng-click="exerciseImageSelected(exercise.Id)" class="btn glyphicon glyphicon-camera"></button></td>*@
                                 <td class="text-center"><button ng-click="exerciseCommentSelected(exercise.Id)" class="btn glyphicon glyphicon-book"></button></td>
                                 @if (Model.CanEdit)
                                 {
@@ -158,7 +158,7 @@
                             }
                         </div>
                     </div>
-                    <div class="container" ng-show="model.showImageContent" ng-hide="!model.showImageContent">
+                    @*<div class="container" ng-show="model.showImageContent" ng-hide="!model.showImageContent">
                         <div class="row">
                             <div class="col-md-1">
                                 <i ng-click="resetModalVariables();" class="glyphicon glyphicon-chevron-left" style="padding-top:20px; padding-bottom:20px; padding-right:20px; border-right: solid 1px #dddddd;"></i>
@@ -170,7 +170,7 @@
                                 <p ng-show="!model.imageHasSrc">No Image has been uploaded for this exercise.</p>
                             </div>
                         </div>
-                    </div>
+                    </div>*@
                     <div class="container" ng-show="model.showCommentContent" ng-hide="!model.showCommentContent">
                         <div class="row">
                             <div class="col-md-1">

@@ -33,17 +33,17 @@ namespace LiftManager.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(ExerciseFormViewModel viewModel)
         {
-            var imageTypes = new string[]{
-                    "image/gif",
-                    "image/jpeg",
-                    "image/pjpeg",
-                    "image/png"
-            };
+            //var imageTypes = new string[]{
+            //        "image/gif",
+            //        "image/jpeg",
+            //        "image/pjpeg",
+            //        "image/png"
+            //};
 
-            if (viewModel.ImageUpload != null && !imageTypes.Contains(viewModel.ImageUpload.ContentType))
-            {
-                ModelState.AddModelError("ImageUpload", "Please choose either a GIF, JPG or PNG image.");
-            }
+            //if (viewModel.ImageUpload != null && !imageTypes.Contains(viewModel.ImageUpload.ContentType))
+            //{
+            //    ModelState.AddModelError("ImageUpload", "Please choose either a GIF, JPG or PNG image.");
+            //}
 
             if (!ModelState.IsValid)
             {
@@ -52,15 +52,15 @@ namespace LiftManager.Controllers
 
             var userId = User.Identity.GetUserId();
 
-            byte[] image = null;
-            if (viewModel.ImageUpload != null)
-            {
-                using (var ms = new MemoryStream())
-                {
-                    viewModel.ImageUpload.InputStream.CopyTo(ms);
-                    image = ms.ToArray();
-                }
-            }
+            //byte[] image = null;
+            //if (viewModel.ImageUpload != null)
+            //{
+            //    using (var ms = new MemoryStream())
+            //    {
+            //        viewModel.ImageUpload.InputStream.CopyTo(ms);
+            //        image = ms.ToArray();
+            //    }
+            //}
 
             var exercise = new Exercise
             {
@@ -70,7 +70,7 @@ namespace LiftManager.Controllers
                 Duration = viewModel.Duration,
                 Reps = viewModel.Reps == null ? "" : viewModel.Reps,
                 Sets = viewModel.Sets == null ? "" : viewModel.Sets,
-                Image = image,
+                Image = null,
                 Comment = viewModel.Comment
             };
 

@@ -33,12 +33,12 @@
         @Html.TextBoxFor(m => m.Reps, new { @class = "form-control", autofocus = "autofocus" })
         @Html.ValidationMessageFor(m => m.Reps)
     </div>
-    <div class="form-group">
+    @*<div class="form-group">
         <div>@Html.LabelFor(m => m.ImageUpload, "Image")</div>
         <span class="label label-default">Optional</span>
         @Html.TextBoxFor(m => m.ImageUpload, new { type = "file", @class = "form-control" })
         @Html.ValidationMessageFor(m => m.ImageUpload)
-    </div>
+    </div>*@
     <div class="form-group">
         <div>@Html.LabelFor(m => m.Comment)</div>
         <span class="label label-default">Optional</span>
