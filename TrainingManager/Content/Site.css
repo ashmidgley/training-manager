@@ -368,3 +368,21 @@ h6,
    max-width: 30vh;
    margin-top: 18vh;
 }
+
+.parent {
+    display: table;
+}
+
+.child {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.tile-img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.fit-screen {
+    height: 100vh;
+}
