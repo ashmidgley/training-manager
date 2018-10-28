@@ -139,14 +139,11 @@ namespace TrainingManager.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var trainingTypes = _unitOfWork.TrainingTypes.GetTrainingTypes();
-            var genders = new string[] { "Male", "Female", "Other" };
             RegisterViewModel model = new RegisterViewModel
             {
-                TrainingTypes = trainingTypes,
-                Genders = genders
+                TrainingTypes = _unitOfWork.TrainingTypes.GetTrainingTypes(),
+                Genders = new string[] { "Male", "Female", "Other" }
             };
-
             return View("Register", model);
         }
 
@@ -187,6 +184,11 @@ namespace TrainingManager.Controllers
             }
 
             // If we got this far, something failed, redisplay form
+            model = new RegisterViewModel
+            {
+                TrainingTypes = _unitOfWork.TrainingTypes.GetTrainingTypes(),
+                Genders = new string[] { "Male", "Female", "Other" }
+            };
             return View(model);
         }
 

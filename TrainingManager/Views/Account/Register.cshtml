@@ -56,7 +56,7 @@
                         <img class="card-img-top" src="~/img/@Model.TrainingTypes.ElementAt(0).FileName" height="120" style="width: 100%; border-radius: 10px;" alt="Card image cap">
                         <div class="card-body">
                             @Html.LabelFor(m => m.TrainingTypeId, @Model.TrainingTypes.ElementAt(0).Name, new { @style = "margin-top: 15px;" })
-                            <br />@Html.RadioButtonFor(m => m.TrainingTypes, @Model.TrainingTypes.ElementAt(0).Id, new { @checked = "checked" })
+                            <br />@Html.RadioButtonFor(m => m.TrainingTypes, @Model.TrainingTypes.ElementAt(0).Id)
                         </div>
                     </div>
                 </div>
