@@ -365,6 +365,6 @@ h6,
 }
 
 #homeImage {
-   width: 60%;
-   height: 60%;
+   max-width: 30vh;
+   margin-top: 18vh;
 }
