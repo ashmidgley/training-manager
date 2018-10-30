@@ -29,7 +29,14 @@
         </div>
 
         <input class="js-star-rating rating-loading" value="@Model.Rating" data-size="xs" />
-        <p class="text-muted" style="font-size: 12px;">Based on @Model.RatingCount user ratings</p>
+        @if (Model.RatingCount > 0 && Model.RatingCount != 1)
+        {
+            <p class="text-muted" style="font-size: 12px;">Based on @Model.RatingCount user ratings</p>
+        }
+        @if (Model.RatingCount == 1)
+        {
+            <p class="text-muted" style="font-size: 12px;">Based on @Model.RatingCount user rating</p>
+        }
         <p>Created on: @Model.CreatedOn</p>
         @if (Model.Favourites == 1)
         {
