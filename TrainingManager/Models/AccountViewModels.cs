@@ -84,12 +84,17 @@ namespace TrainingManager.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        
+        [Required(ErrorMessage = "The Training Type field is required")]
+        public byte TrainingTypeId { get; set; }
+
+        public string TrainingTypeName { get; set; }
 
         public IEnumerable<TrainingType> TrainingTypes { get; set; }
-        public byte TrainingTypeId { get; set; }
-        public string TrainingTypeName { get; set; }
+
         [Required]
         public string Gender { get; set; }
+
         public string[] Genders { get; set; }
     }
 

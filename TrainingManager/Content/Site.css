@@ -386,3 +386,7 @@ h6,
 .fit-screen {
     height: 100vh;
 }
+
+.field-validation-error span {
+    font-size: medium;
+}
