@@ -56,7 +56,8 @@ namespace TrainingManager.Controllers
                 Heading = "User Plans",
                 Favourites = favourites,
                 Ratings = ratings,
-                SearchTerm = query
+                SearchTerm = query,
+                UserId = userId
             };
 
             return View("Index", viewModel);

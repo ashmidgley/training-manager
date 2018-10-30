@@ -52,7 +52,7 @@
                                 @plan.Name
                             </span>
                             <div class="stars">
-                                @if (Model.ShowActions)
+                                @if (Model.ShowActions && plan.UserId != Model.UserId)
                                 {
                                     <input data-plan-id="@plan.Id" class="js-star-rating rating rating-loading"
                                            value="@(Model.Ratings.Contains(plan.Id) ?
@@ -79,11 +79,18 @@
                                 <button class="doubleBtn btn btn-sm btn-success" onclick="location.href='@Url.Action("Summary", "Plans", new { id = plan.Id })'">
                                     View
                                 </button>
-                                <button data-plan-id="@plan.Id"
-                                        class="doubleBtn btn btn-sm pull-right @(Model.Favourites.Contains(plan.Id) ? "btn-info" : "btn-inverse")
-                                                   js-toggle-favourite">
-                                    @(Model.Favourites.Contains(plan.Id) ? "Favourite" : "Favourite?")
-                                </button>
+                                if (plan.UserId == Model.UserId)
+                                {
+                                    <button class="doubleBtn btn btn-sm pull-right" disabled>Favourite?</button>
+                                }
+                                else
+                                {
+                                    <button data-plan-id="@plan.Id"
+                                            class="doubleBtn btn btn-sm pull-right @(Model.Favourites.Contains(plan.Id) ? "btn-info" : "btn-inverse")
+                                                       js-toggle-favourite">
+                                        @(Model.Favourites.Contains(plan.Id) ? "Favourite" : "Favourite?")
+                                    </button>
+                                }
                             }
                             else
                             {
