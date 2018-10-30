@@ -22,7 +22,7 @@ namespace TrainingManager.Controllers.Api
             if (plan == null || plan.IsRemoved)
                 return NotFound();
 
-            if (plan.LifterId != userId)
+            if (plan.UserId != userId)
                 return Unauthorized();
 
             plan.Remove();

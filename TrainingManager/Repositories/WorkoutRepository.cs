@@ -22,7 +22,7 @@ namespace TrainingManager.Repositories
         public Workout GetUserWorkout(string userId, int id)
         {
             return _context.Workouts
-                .SingleOrDefault(w => w.Id == id && w.LifterId == userId);
+                .SingleOrDefault(w => w.Id == id && w.UserId == userId);
         }
 
         public IEnumerable<Workout> GetWorkouts(int planId)

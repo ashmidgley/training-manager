@@ -37,7 +37,8 @@ namespace TrainingManager.Controllers
             foreach (Plan plan in plansToDisplay)
             {
                 plan.Rating = _unitOfWork.Ratings.GetRatingAverage(plan.Id);
-                plan.Rating = Math.Round(plan.Rating, 0);
+                plan.Rating = Math.Round(plan.Rating.Value, 0);
+                plan.RatingCount = _unitOfWork.Ratings.GetRatingCount(plan.Id);
             }
 
             var userId = User.Identity.GetUserId();
@@ -49,7 +50,10 @@ namespace TrainingManager.Controllers
 
             var viewModel = new PlansViewModel
             {
-                PlansToDisplay = plansToDisplay,
+                PlansToDisplay = plansToDisplay
+                .OrderByDescending(p => p.Rating.Value)
+                .ThenByDescending(p => p.RatingCount.Value)
+                .ThenByDescending(p => p.DateCreated),
                 ShowActions = User.Identity.IsAuthenticated,
                 Heading = "User Plans",
                 Favourites = favourites,
@@ -82,7 +86,7 @@ namespace TrainingManager.Controllers
 
             var plan = new Plan
             {
-                LifterId = User.Identity.GetUserId(),
+                UserId = User.Identity.GetUserId(),
                 Name = viewModel.Name,
                 LengthInWeeks = viewModel.LengthInWeeks,
                 DateCreated = DateTime.UtcNow,
@@ -143,7 +147,7 @@ namespace TrainingManager.Controllers
             foreach (Plan plan in plansToDisplay)
             {
                 plan.Rating = _unitOfWork.Ratings.GetRatingAverage(plan.Id);
-                plan.Rating = Math.Round(plan.Rating, 0);
+                plan.Rating = Math.Round(plan.Rating.Value, 0);
             }
 
             var viewModel = new PlansViewModel
@@ -168,7 +172,7 @@ namespace TrainingManager.Controllers
             foreach (Plan plan in plans)
             {
                 plan.Rating = _unitOfWork.Ratings.GetRatingAverage(plan.Id);
-                plan.Rating = Math.Round(plan.Rating, 0);
+                plan.Rating = Math.Round(plan.Rating.Value, 0);
             }
 
             var viewModel = new PlansViewModel
@@ -228,7 +232,7 @@ namespace TrainingManager.Controllers
                 Favourites = _unitOfWork.Favourites.GetNumberOfFavourites(id.Value),
                 Views = plan.Views,
                 Workouts = workouts,
-                CanEdit = (User.Identity.GetUserId() == plan.LifterId)
+                CanEdit = (User.Identity.GetUserId() == plan.UserId)
             };
 
             return View("Summary", viewModel);

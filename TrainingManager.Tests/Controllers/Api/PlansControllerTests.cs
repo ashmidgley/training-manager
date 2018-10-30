@@ -39,7 +39,7 @@ namespace TrainingManager.Tests.Controllers.Api
         [TestMethod]
         public void Remove_PlanIsRemoved_ShouldReturnNotFound()
         {
-            var plan = new Plan { LifterId = _userId };
+            var plan = new Plan { UserId = _userId };
             plan.Remove();
 
             _mockRepository.Setup(r => r.GetPlan(1)).Returns(plan);
@@ -52,7 +52,7 @@ namespace TrainingManager.Tests.Controllers.Api
         public void Remove_UserRemovingAnotherUsersPlan_ShouldReturnUnauthorized()
         {
             var userId = _userId + "-";
-            var plan = new Plan { LifterId = userId };
+            var plan = new Plan { UserId = userId };
 
             _mockRepository.Setup(r => r.GetPlan(1)).Returns(plan);
 
@@ -63,7 +63,7 @@ namespace TrainingManager.Tests.Controllers.Api
         [TestMethod]
         public void Remove_ValidRequest_ShouldReturnOk()
         {
-            var plan = new Plan { LifterId = _userId };
+            var plan = new Plan { UserId = _userId };
 
             _mockRepository.Setup(r => r.GetPlan(1)).Returns(plan);
 

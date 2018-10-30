@@ -11,7 +11,7 @@ namespace TrainingManager.Persistance.EntityConfigurations
                .IsRequired()
                .HasMaxLength(255);
 
-            Property(p => p.LifterId)
+            Property(p => p.UserId)
                 .IsRequired();
         }
     }

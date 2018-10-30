@@ -10,9 +10,9 @@ namespace TrainingManager.Models
 
         public int PlanId { get; set; }
 
-        public ApplicationUser Lifter { get; set; }
+        public ApplicationUser User { get; set; }
 
-        public string LifterId { get; set; }
+        public string UserId { get; set; }
 
         public Genre Genre { get; set; }
 

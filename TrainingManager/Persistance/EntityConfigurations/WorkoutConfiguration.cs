@@ -10,7 +10,7 @@ namespace TrainingManager.Persistance.EntityConfigurations
             Property(w => w.PlanId)
                 .IsRequired();
 
-            Property(w => w.LifterId)
+            Property(w => w.UserId)
                 .IsRequired();
 
             Property(w => w.GenreId)

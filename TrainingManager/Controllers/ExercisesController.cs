@@ -65,7 +65,7 @@ namespace TrainingManager.Controllers
             var exercise = new Exercise
             {
                 WorkoutId = viewModel.WorkoutId,
-                LifterId = userId,
+                UserId = userId,
                 Name = viewModel.Name,
                 Duration = viewModel.Duration,
                 Reps = viewModel.Reps == null ? "" : viewModel.Reps,

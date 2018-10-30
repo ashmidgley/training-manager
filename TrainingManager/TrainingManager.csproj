@@ -496,6 +496,14 @@
     <Compile Include="Migrations\201810270442435_UserModelChanges.Designer.cs">
       <DependentUpon>201810270442435_UserModelChanges.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810300415304_UpdatePlanModel4.cs" />
+    <Compile Include="Migrations\201810300415304_UpdatePlanModel4.Designer.cs">
+      <DependentUpon>201810300415304_UpdatePlanModel4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810300422572_UpdateExerciseAndWorkoutModel.cs" />
+    <Compile Include="Migrations\201810300422572_UpdateExerciseAndWorkoutModel.Designer.cs">
+      <DependentUpon>201810300422572_UpdateExerciseAndWorkoutModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -1614,6 +1622,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810270442435_UserModelChanges.resx">
       <DependentUpon>201810270442435_UserModelChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810300415304_UpdatePlanModel4.resx">
+      <DependentUpon>201810300415304_UpdatePlanModel4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810300422572_UpdateExerciseAndWorkoutModel.resx">
+      <DependentUpon>201810300422572_UpdateExerciseAndWorkoutModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

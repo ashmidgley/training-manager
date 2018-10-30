@@ -23,7 +23,7 @@ namespace TrainingManager.Repositories
         {
             return _context.Plans
                 .Where(p => !p.IsRemoved)
-                .Include(p => p.Lifter)
+                .Include(p => p.User)
                 .ToList();
         }
 
@@ -32,7 +32,7 @@ namespace TrainingManager.Repositories
             return _context.Favourites
                 .Where(a => a.FavouriterId == userId)
                 .Select(a => a.Plan)
-                .Include(g => g.Lifter)
+                .Include(g => g.User)
                 .ToList();
         }
 
@@ -40,7 +40,7 @@ namespace TrainingManager.Repositories
         {
             return _context.Plans
                     .Where(p => (p.Name.Contains(query) ||
-                    p.Lifter.Name.Contains(query)) && !p.IsRemoved)
+                    p.User.Name.Contains(query)) && !p.IsRemoved)
                     .ToList();
         }
 
@@ -54,13 +54,13 @@ namespace TrainingManager.Repositories
         public Plan GetUserPlan(int id, string userId)
         {
             return _context.Plans
-                .SingleOrDefault(p => p.Id == id && p.LifterId == userId);
+                .SingleOrDefault(p => p.Id == id && p.UserId == userId);
         }
 
         public IEnumerable<Plan> GetUserPlans(string userId)
         {
             return _context.Plans
-                .Where(g => g.Lifter.Id == userId && !g.IsRemoved)
+                .Where(g => g.User.Id == userId && !g.IsRemoved)
                 .ToList();
         }
 

@@ -50,7 +50,7 @@ namespace TrainingManager.Controllers
             var workout = new Workout
             {
                 PlanId = viewModel.PlanId,
-                LifterId = userId,
+                UserId = userId,
                 GenreId = viewModel.Genre,
                 Name = viewModel.Name,
                 Week = viewModel.Week,

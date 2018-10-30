@@ -46,7 +46,7 @@
                         </div>
                         <div class="details col-md-8">
                             <span class="lifter">
-                                <a href="@Url.Action("Index", "User", new { Id = plan.LifterId })">@plan.Lifter.Name</a>
+                                <a href="@Url.Action("Index", "User", new { Id = plan.UserId })">@plan.User.Name</a>
                             </span>
                             <span class="name">
                                 @plan.Name
@@ -58,12 +58,14 @@
                                            value="@(Model.Ratings.Contains(plan.Id) ?
                                                   (Model.Ratings.Where(r => r.Key == plan.Id).SingleOrDefault()).FirstOrDefault().Value.ToString() : "0")"
                                            data-min="0" data-max="5" data-step="1" data-size="xxs" data-show-caption="false" />
+                                    @*<span class="label label-default">@Model.Ratings.Where(r => r.Key == plan.Id).Count()</span>*@
                                 }
                                 else
                                 {
                                     <input class="rating rating-loading" data-min="0" data-max="5" data-size="xxs" data-show-caption="false" disabled />
-                                }
-                            </div>
+                                    @*<span class="label label-default">@Model.Ratings.Where(r => r.Key == plan.Id).Count()</span>*@
+                               }
+</div>
                         </div>
                         <div class="actions col-md-2">
                             @if (Model.ShowActions)
