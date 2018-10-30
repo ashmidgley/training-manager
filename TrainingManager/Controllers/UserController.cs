@@ -66,7 +66,7 @@ namespace TrainingManager.Controllers
             var chartLabels = new string[7];
             for (int i = 0; i < 7; i++)
             {
-                chartLabels[i] = curr.AddDays(i - 7).DayOfWeek.ToString();
+                chartLabels[i] = curr.AddDays((i+1) - 7).DayOfWeek.ToString();
             }
 
             var model = new UsersViewModel
