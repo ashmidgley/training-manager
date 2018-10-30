@@ -70,5 +70,28 @@ namespace TrainingManager.Repositories
                 .SingleOrDefault(p => p.Id == planId);
             plan.Views += 1;
         }
+
+        public void AddNewRating(int planId, double currentRating)
+        {
+            var plan = _context.Plans
+                .SingleOrDefault(p => p.Id == planId);
+            plan.Rating = currentRating;
+            plan.RatingCount += 1;
+        }
+
+        public void UpdateRating(int planId, double currentRating)
+        {
+            var plan = _context.Plans
+                .SingleOrDefault(p => p.Id == planId);
+            plan.Rating = currentRating;
+        }
+
+        public void DeleteRating(int planId, double currentRating)
+        {
+            var plan = _context.Plans
+                .SingleOrDefault(p => p.Id == planId);
+            plan.Rating = currentRating;
+            plan.RatingCount -= 1;
+        }
     }
 }

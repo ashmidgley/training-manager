@@ -13,8 +13,8 @@ namespace TrainingManager.Models
         public int LengthInWeeks { get; set; }
         public IEnumerable<Workout> Workouts { get; set; }
         public DateTime DateCreated { get; set; }
-        public Double? Rating { get; set; }
-        public int? RatingCount { get; set; }
+        public Double Rating { get; set; }
+        public int RatingCount { get; set; }
         public int Views { get; set; }
 
         public void Remove()

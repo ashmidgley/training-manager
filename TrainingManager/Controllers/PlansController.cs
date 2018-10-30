@@ -32,13 +32,11 @@ namespace TrainingManager.Controllers
             {
                 plansToDisplay = _unitOfWork.Plans.GetFilteredPlans(query);
             }
-
-            //Set rating values for plans
+            
+            // In UI we display ratings as integers
             foreach (Plan plan in plansToDisplay)
             {
-                plan.Rating = _unitOfWork.Ratings.GetRatingAverage(plan.Id);
-                plan.Rating = Math.Round(plan.Rating.Value, 0);
-                plan.RatingCount = _unitOfWork.Ratings.GetRatingCount(plan.Id);
+                plan.Rating = Math.Round(plan.Rating, 0);
             }
 
             var userId = User.Identity.GetUserId();
@@ -51,8 +49,8 @@ namespace TrainingManager.Controllers
             var viewModel = new PlansViewModel
             {
                 PlansToDisplay = plansToDisplay
-                .OrderByDescending(p => p.Rating.Value)
-                .ThenByDescending(p => p.RatingCount.Value)
+                .OrderByDescending(p => p.Rating)
+                .ThenByDescending(p => p.RatingCount)
                 .ThenByDescending(p => p.DateCreated),
                 ShowActions = User.Identity.IsAuthenticated,
                 Heading = "User Plans",
@@ -91,7 +89,8 @@ namespace TrainingManager.Controllers
                 LengthInWeeks = viewModel.LengthInWeeks,
                 DateCreated = DateTime.UtcNow,
                 Workouts = viewModel.Workouts,
-                Rating = 0
+                Rating = 0,
+                RatingCount = 0
             };
 
             _unitOfWork.Plans.Add(plan);
@@ -143,11 +142,10 @@ namespace TrainingManager.Controllers
             var userId = User.Identity.GetUserId();
             var plansToDisplay = _unitOfWork.Plans.GetUserPlans(userId);
 
-            //Set rating values for plans
+            //In UI we display rating as integer
             foreach (Plan plan in plansToDisplay)
             {
-                plan.Rating = _unitOfWork.Ratings.GetRatingAverage(plan.Id);
-                plan.Rating = Math.Round(plan.Rating.Value, 0);
+                plan.Rating = Math.Round(plan.Rating, 0);
             }
 
             var viewModel = new PlansViewModel
@@ -168,11 +166,10 @@ namespace TrainingManager.Controllers
             var userId = User.Identity.GetUserId();
             var plans = _unitOfWork.Plans.GetFavouritePlans(userId);
 
-            //Set rating values for plans
+            //In UI we display rating as integer
             foreach (Plan plan in plans)
             {
-                plan.Rating = _unitOfWork.Ratings.GetRatingAverage(plan.Id);
-                plan.Rating = Math.Round(plan.Rating.Value, 0);
+                plan.Rating = Math.Round(plan.Rating, 0);
             }
 
             var viewModel = new PlansViewModel

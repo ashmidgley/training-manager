@@ -2,6 +2,7 @@
 using TrainingManager.Models;
 using Microsoft.AspNet.Identity;
 using System.Web.Http;
+using System;
 
 namespace TrainingManager.Controllers.Api
 {
@@ -25,14 +26,15 @@ namespace TrainingManager.Controllers.Api
                 //PUT - Update value
                 var currentRating = _unitOfWork.Ratings.GetUserRating(userId, dto.PlanId);
                 currentRating.Value = dto.Value;
+                _unitOfWork.Complete();
 
+                _unitOfWork.Plans.UpdateRating(dto.PlanId, _unitOfWork.Ratings.GetRatingAverage(dto.PlanId));
                 _unitOfWork.Complete();
 
                 return Ok();
             }
 
             var rater = User.Identity.GetUserName();
-
             var rating = new Rating
             {
                 Plan = _unitOfWork.Plans.GetUserPlan(dto.PlanId, userId),
@@ -42,6 +44,8 @@ namespace TrainingManager.Controllers.Api
             };
 
             _unitOfWork.Ratings.Add(rating);
+            _unitOfWork.Complete();
+            _unitOfWork.Plans.AddNewRating(dto.PlanId, _unitOfWork.Ratings.GetRatingAverage(dto.PlanId));
             _unitOfWork.Complete();
 
             return Ok();
@@ -60,6 +64,10 @@ namespace TrainingManager.Controllers.Api
             }
 
             _unitOfWork.Ratings.Remove(rating);
+            _unitOfWork.Complete();
+
+            var currentRating = _unitOfWork.Ratings.GetRatingAverage(planId);
+            _unitOfWork.Plans.DeleteRating(planId, currentRating);
             _unitOfWork.Complete();
 
             return Ok(planId);

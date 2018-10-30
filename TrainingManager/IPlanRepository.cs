@@ -13,7 +13,8 @@ namespace TrainingManager.Repositories
         IEnumerable<Plan> GetUserPlans(string userId);
         IEnumerable<Plan> GetFilteredPlans(string query);
         IEnumerable<Plan> GetFavouritePlans(string userId);
-
-
+        void AddNewRating(int planId, double rating);
+        void UpdateRating(int planId, double currentRating);
+        void DeleteRating(int planId, double currentRating);
     }
 }

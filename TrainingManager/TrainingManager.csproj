@@ -504,6 +504,10 @@
     <Compile Include="Migrations\201810300422572_UpdateExerciseAndWorkoutModel.Designer.cs">
       <DependentUpon>201810300422572_UpdateExerciseAndWorkoutModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810302027333_PlanModelUpdate.cs" />
+    <Compile Include="Migrations\201810302027333_PlanModelUpdate.Designer.cs">
+      <DependentUpon>201810302027333_PlanModelUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -1628,6 +1632,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810300422572_UpdateExerciseAndWorkoutModel.resx">
       <DependentUpon>201810300422572_UpdateExerciseAndWorkoutModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810302027333_PlanModelUpdate.resx">
+      <DependentUpon>201810302027333_PlanModelUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
