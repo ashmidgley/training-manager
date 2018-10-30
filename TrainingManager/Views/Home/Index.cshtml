@@ -12,7 +12,14 @@
     <div style="margin-top: 20px;">
         A free online tool to help you organise and share training programs
         <div style="margin-top: 15px;">
-            <a class="btn" href="/Account/Register" style="margin-right: 10px; background-color: #dddddd; border-color: #dddddd; color: black;">Get started</a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a class="btn" href="/Plans/Create" style="margin-right: 10px; background-color: #dddddd; border-color: #dddddd; color: black;">Add Plan</a>
+            }
+            else
+            {
+                <a class="btn" href="/Account/Register" style="margin-right: 10px; background-color: #dddddd; border-color: #dddddd; color: black;">Get started</a>
+            }
             <a class="btn" href="/Plans" style="background-color: #dddddd; border-color: #dddddd; color: black;">Existing plans</a>
         </div>
     </div>
@@ -50,9 +57,9 @@
     </div>
     <div class="col-md-6 parent" style="height: 257px;">
         <div class="child">
-            TrainingManager was created as a bit of fun while I was learning how to piece together sites using the .NET framework.
-            If you don't mind looking at spagetti code, feel free to check it out on
-            <a href="https://github.com/ash-midgley/training-manager">GitHub</a>.
+            TrainingManager was created as a bit of fun while I was learning how to piece together sites using the .NET framework. 
+            Report any issues or fire through suggestions to <a href="#">trainingmanagernz@gmail.com</a>. 
+            If you don't mind looking at spagetti code, feel free to check it out on <a href="https://github.com/ash-midgley/training-manager">GitHub</a>.
         </div>
     </div>
 </div>
