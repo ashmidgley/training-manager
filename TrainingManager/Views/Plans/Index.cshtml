@@ -1,0 +1,111 @@
+﻿@model TrainingManager.ViewModels.PlansViewModel
+@{
+    ViewBag.Title = Model.Heading;
+}
+
+@section styles {
+    <link href="~/Content/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+}
+
+@section scripts
+{
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
+    <script src="~/Scripts/star-rating.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            IndexController.init("#plans");
+        });
+    </script>
+}
+
+<h1 class="text-center">@Model.Heading</h1>
+<hr />
+
+<div id="plansRow" class="row">
+    <div id="plansCol" class="col-md-6 col-md-offset-3">
+        @if (Model.PlansToDisplay.Count() > 0)
+        {
+            using (Html.BeginForm("Search", "Plans"))
+            {
+                <div id="searchPlans" class="form-group text-center">
+                    <div id="searchPlans" class="input-group">
+                        @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by User, Plan or Rating..." })
+                        <span class="input-group-addon">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </span>
+                    </div>
+                </div>
+            }
+
+            <ul id="plans" class="plans voffset4 row">
+                @foreach (var plan in Model.PlansToDisplay)
+                {
+                    <li class="plan">
+                        <div class="plan-rating col-md-2">
+                            <p class="rating-value">@plan.Rating/5</p>
+                        </div>
+                        <div class="details col-md-8">
+                            <span class="lifter">
+                                <a href="@Url.Action("Index", "User", new { Id = plan.UserId })">@plan.User.Name</a>
+                            </span>
+                            <span class="name">
+                                @plan.Name
+                            </span>
+                            <div class="stars">
+                                @if (Model.ShowActions && plan.UserId != Model.UserId)
+                                {
+                                    <input data-plan-id="@plan.Id" class="js-star-rating rating rating-loading"
+                                           value="@(Model.Ratings.Contains(plan.Id) ?
+                                                  (Model.Ratings.Where(r => r.Key == plan.Id).SingleOrDefault()).FirstOrDefault().Value.ToString() : "0")"
+                                           data-min="0" data-max="5" data-step="1" data-size="xxs" data-show-caption="false" />
+                                }
+                                else
+                                {
+                                    <input class="rating rating-loading" data-min="0" data-max="5" data-size="xxs" data-show-caption="false" disabled />
+                                }
+                            </div>
+                            @if (plan.RatingCount > 0 && plan.RatingCount != 1)
+                            {
+                                <span class="label label-danger plan-rating-label">@plan.RatingCount ratings</span>
+                            }
+                            @if (plan.RatingCount == 1)
+                            {
+                                <span class="label label-danger plan-rating-label">@plan.RatingCount rating</span>
+                            }
+                        </div>
+                        <div class="actions col-md-2">
+                            @if (Model.ShowActions)
+                            {
+                                <button class="doubleBtn btn btn-sm btn-success" onclick="location.href='@Url.Action("Summary", "Plans", new { id = plan.Id })'">
+                                    View
+                                </button>
+                                if (plan.UserId == Model.UserId)
+                                {
+                                    <button class="doubleBtn btn btn-sm pull-right" disabled>Favourite?</button>
+                                }
+                                else
+                                {
+                                    <button data-plan-id="@plan.Id"
+                                            class="doubleBtn btn btn-sm pull-right @(Model.Favourites.Contains(plan.Id) ? "btn-info" : "btn-inverse")
+                                                       js-toggle-favourite">
+                                        @(Model.Favourites.Contains(plan.Id) ? "Favourite" : "Favourite?")
+                                    </button>
+                                }
+                            }
+                            else
+                            {
+                                <button id="viewBtn" class="btn btn-success" onclick="location.href='@Url.Action("Summary", "Plans", new { id = plan.Id })'">
+                                    View
+                                </button>
+                            }
+                        </div>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p class="alert alert-info text-center">No user plans have been created.</p>
+        }
+    </div>
+</div>
