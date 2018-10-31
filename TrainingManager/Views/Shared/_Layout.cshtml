@@ -21,7 +21,6 @@
                 </button>
                 @*@Html.ActionLink("TrainingManager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
                 <a href="/" style="margin-right: 20px;">
-                    @*<img src="~/img/LM-Logo-White.png" height="30" width="180" style="margin-top: 10px; margin-right:20px;" />*@
                     <img src="~/img/running.svg" height="50" />
                 </a>
             </div>
@@ -44,14 +43,29 @@
             }
             else
             {
-                <p class="text-center" style="font-size:12px;">&copy; @DateTime.Now.Year | Version 1.0 | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;"/></a></p>
+                <p class="text-center" style="font-size:12px;">&copy; @DateTime.Now.Year | Version 1.0 | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;" /></a></p>
             }
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/app")
     @RenderSection("scripts", required: false)
+
+    <script>
+        $(document).ready(function () {
+            var url = window.location;
+            $('ul.nav li a').each(function () {
+                if (this.href == url) {
+                    $("ul.nav li").each(function () {
+                        if ($(this).hasClass("active")) {
+                            $(this).removeClass("active");
+                        }
+                    });
+                    $(this).parent().addClass('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
