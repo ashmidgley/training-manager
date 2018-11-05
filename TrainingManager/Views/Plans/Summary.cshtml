@@ -53,21 +53,30 @@
     <h3 class="text-center" style="margin-bottom:20px;">Week {{model.currWeek}}</h3>
 
     <div class="row">
-        <div class="col-md-1 text-center" style="padding: 0">
+        <div class="col-xs-1 text-center" style="padding: 0">
             <div style="background-color:white; margin:0px; border: solid 1px #dddddd; border-right:none; height: 211.5px;">
                 <i ng-show="model.showWeekLeft" class="glyphicon glyphicon-chevron-left summaryShiftArrow" ng-click="shiftWeekLeft();" style="font-size: 2em; padding-top: 88px; padding-bottom: 88px; width:100%;"></i>
             </div>
         </div>
-        <div class="col-md-10" style="padding:0">
+        <div class="col-xs-10" style="padding:0">
             <table class="table table-bordered" style="table-layout: fixed;">
-                <tr style="color:white; background-color:black;">
-                    <th style="border: solid 1px #dddddd;" class="text-center">Monday</th>
-                    <th style="border: solid 1px #dddddd;" class="text-center">Tuesday</th>
-                    <th style="border: solid 1px #dddddd;" class="text-center">Wednesday</th>
-                    <th style="border: solid 1px #dddddd;" class="text-center">Thursday</th>
-                    <th style="border: solid 1px #dddddd;" class="text-center">Friday</th>
-                    <th style="border: solid 1px #dddddd;" class="text-center">Saturday</th>
-                    <th style="border: solid 1px #dddddd;" class="text-center">Sunday</th>
+                <tr class="plan-table-row" ng-hide="model.windowWidth < 600">
+                    <th class="text-center plan-table-col">{{  model.dayNames[0] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNames[1] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNames[2] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNames[3] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNames[4] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNames[5] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNames[6] }}</th>
+                </tr>
+                <tr class="plan-table-row" ng-hide="model.windowWidth > 600">
+                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[0] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[1] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[2] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[3] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[4] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[5] }}</th>
+                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[6] }}</th>
                 </tr>
                 <tr>
                     <td style="padding:0px; border: solid 1px #dddddd;" ng-repeat="i in model.days">
@@ -101,7 +110,7 @@
                 </tr>
             </table>
         </div>
-        <div class="col-md-1 text-center" style="padding: 0">
+        <div class="col-xs-1 text-center" style="padding: 0">
             <div style="background-color:white; margin:0px; border: solid 1px #dddddd; border-left:none; height: 211.5px;">
                 <i ng-show="model.showWeekRight" class="glyphicon glyphicon-chevron-right summaryShiftArrow" ng-click="shiftWeekRight();" style="font-size: 2em; padding-top: 88px; padding-bottom: 88px; border-radius: 0px; width:100%;"></i>
             </div>

@@ -366,6 +366,15 @@ h6,
     margin-bottom: 30px;
 }
 
+.plan-table-col {
+    border: solid 1px #dddddd;
+}
+
+.plan-table-row {
+    color: white;
+    background-color: black;
+}
+
 /* MOBILE */
 @media only screen and (max-device-width: 600px) {
     #searchPlans div {
