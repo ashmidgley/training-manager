@@ -4,7 +4,7 @@
     var planId;
 
     var init = function (container) {
-        $(container).on("click", ".js-toggle-favourite", toggleFavourite);
+        $('.js-toggle-favourite').click(toggleFavourite);
         $('.js-star-rating').on('rating:change', createRating);
         $('.js-star-rating').on('rating:clear', clearRating);
     };
