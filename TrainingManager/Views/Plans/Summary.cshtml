@@ -74,9 +74,9 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <div ng-show="model.workoutsDict[((model.currWeek-1)*7)+i]">
-                                <button class="btn" ng-click="showSelectedWorkoutModal(((model.currWeek-1)*7)+i);" style="border-radius: 0px; padding-top: 50px; padding-bottom: 50px; font-size: 12px; width:100%; background-color: #f2f2f2;">
+                                <a class="btn" type="button" href="#" ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}"style="border-radius: 0px; padding-top: 50px; padding-bottom: 50px; font-size: 12px; width:100%; background-color: #f2f2f2; color: black">
                                     {{ model.workoutsDict[((model.currWeek-1)*7)+i].Name }}
-                                </button>
+                                </a>
                                 <div>
                                     <a type="button" href="#" ng-href="@Url.Action("Edit", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" class="btn btn-info" style="width: 100%; float:left; height:26px; border-radius:0px; font-size: 10px;">Edit</a>
                                     <button ng-click="removeWorkout(model.workoutsDict[((model.currWeek-1)*7)+i].Id)" class="btn btn-danger" style="width: 100%; float:left; height: 26px; border-radius:0px; font-size: 10px;">Remove</button>
@@ -104,93 +104,6 @@
         <div class="col-md-1 text-center" style="padding: 0">
             <div style="background-color:white; margin:0px; border: solid 1px #dddddd; border-left:none; height: 211.5px;">
                 <i ng-show="model.showWeekRight" class="glyphicon glyphicon-chevron-right summaryShiftArrow" ng-click="shiftWeekRight();" style="font-size: 2em; padding-top: 88px; padding-bottom: 88px; border-radius: 0px; width:100%;"></i>
-            </div>
-        </div>
-    </div>
-
-
-    <!-- Modal to display selected workout -->
-    <div id="selectedWorkoutModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button ng-click="resetModalVariables();" type="button" class="close pull-right" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title text-center">{{ model.workoutModalHeader }}</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="container" ng-show="model.showWorkoutContent" ng-hide="!model.showWorkoutContent">
-                        <div>
-                            <div class="row">
-                                <div class="text-center">
-                                    <p>Genre: {{ model.selectedWorkout.Genre.Name }}</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <table class="table table-striped">
-                            <tr>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Duration</th>
-                                <th class="text-center">Sets</th>
-                                <th class="text-center">Reps</th>
-                                @*<th class="text-center">Image</th>*@
-                                <th class="text-center">Comments</th>
-                                @if (Model.CanEdit)
-                                {
-                                    <th class="text-center">Action</th>
-                                }
-                            </tr>
-                            <tr ng-repeat="exercise in model.selectedWorkout.Exercises">
-                                <td>{{ exercise.Name }}</td>
-                                <th>{{ exercise.Duration }}</th>
-                                <td class="text-center">{{ exercise.Sets }}</td>
-                                <td class="text-center">{{ exercise.Reps }}</td>
-                                @*<td class="text-center"><button ng-click="exerciseImageSelected(exercise.Id)" class="btn glyphicon glyphicon-camera"></button></td>*@
-                                <td class="text-center"><button ng-click="exerciseCommentSelected(exercise.Id)" class="btn glyphicon glyphicon-book"></button></td>
-                                @if (Model.CanEdit)
-                                {
-                                    <td class="text-center">
-                                        <button ng-click="removeExercise(exercise.Id)" class="btn btn-danger">
-                                            Remove
-                                        </button>
-                                    </td>
-                                }
-                            </tr>
-                        </table>
-
-                        <div class="text-center">
-                            @if (Model.CanEdit)
-                            {
-                                <a type="button" class="btn btn-success" href="@Url.Action("Create", "Exercises")?workoutId={{model.selectedWorkout.Id}}&planId=@Model.PlanId">Add Exercise</a>
-                            }
-                        </div>
-                    </div>
-                    @*<div class="container" ng-show="model.showImageContent" ng-hide="!model.showImageContent">
-                        <div class="row">
-                            <div class="col-md-1">
-                                <i ng-click="resetModalVariables();" class="glyphicon glyphicon-chevron-left" style="padding-top:20px; padding-bottom:20px; padding-right:20px; border-right: solid 1px #dddddd;"></i>
-                            </div>
-                            <div class="col-md-10 col-md-offset-1">
-                                <div ng-show="model.imageHasSrc" class="text-center">
-                                    <img style="max-width:400px;" src="{{model.modalImageSrc}}" />
-                                </div>
-                                <p ng-show="!model.imageHasSrc">No Image has been uploaded for this exercise.</p>
-                            </div>
-                        </div>
-                    </div>*@
-                    <div class="container" ng-show="model.showCommentContent" ng-hide="!model.showCommentContent">
-                        <div class="row">
-                            <div class="col-md-1">
-                                <i ng-click="resetModalVariables();" class="glyphicon glyphicon-chevron-left" style="padding-top:20px; padding-bottom:20px; padding-right:20px; border-right: solid 1px #dddddd;"></i>
-                            </div>
-                            <div class="col-md-11" style="padding-right: 0px;">
-                                <div style="margin-left: 10px; text-align: center">
-                                    <p>{{ model.commentText }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>

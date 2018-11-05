@@ -552,6 +552,7 @@
     <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\WorkoutFormViewModel.cs" />
+    <Compile Include="ViewModels\WorkoutSummaryViewModel.cs" />
     <Compile Include="ViewModels\WorkoutsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -579,6 +580,7 @@
     <Content Include="img\user-plans.jpg" />
     <Content Include="js\app-plans.js" />
     <Content Include="js\app\controllers\ratingsController.js" />
+    <Content Include="js\app\controllers\workoutController.js" />
     <Content Include="js\plansController.js" />
     <Content Include="Scripts\angular-animate.js" />
     <Content Include="Scripts\angular-animate.min.js" />
@@ -1441,6 +1443,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\All.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Workouts\Summary.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
