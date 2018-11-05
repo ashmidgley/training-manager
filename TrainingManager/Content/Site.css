@@ -342,11 +342,49 @@ h6,
     padding: 0;
 }
 
+.user-block {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #user-table .left-col {
+        padding-left: 50px;
+    }
+
+#user-image {
+    max-height: 200px;
+}
+
+#myBarChart {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+#myPieChart {
+    margin-bottom: 30px;
+}
+
 /* MOBILE */
-
 @media only screen and (max-device-width: 600px) {
-
     #searchPlans div {
         width: 300px;
+    }
+
+    .user-block {
+        width: 100%;
+    }
+
+    #user-image {
+        max-height: 170px;
+    }
+
+    #user-table .left-col {
+        padding-left: 20px;
+    }
+
+    #myBarChart {
+        max-width: 350px;
     }
 }
