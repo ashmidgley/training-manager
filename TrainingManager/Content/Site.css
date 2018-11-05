@@ -338,6 +338,10 @@ h6,
         background-color: #f4f8ff;
     }
 
+.my-actions {
+    padding: 0;
+}
+
 /* MOBILE */
 
 @media only screen and (max-device-width: 600px) {

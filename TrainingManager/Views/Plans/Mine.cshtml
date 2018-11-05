@@ -4,50 +4,34 @@
 }
 
 <h1 class="text-center">@Model.Heading</h1>
-<hr style="margin-bottom: -10px" />
+<hr />
 
-<div class="row">
-    <div class="col-md-6 col-md-offset-3">
-        @if (Model.PlansToDisplay.Count() > 0)
+@if (Model.PlansToDisplay.Count() > 0)
+{
+        foreach (var plan in Model.PlansToDisplay)
         {
-            <ul id="plans" class="plans voffset4">
-                @foreach (var plan in Model.PlansToDisplay)
-                {
-                    <li class="plan">
-                        <div class="plan-rating col-md-2">
-                            <p class="rating-value">@plan.Rating/5</p>
-                        </div>
-                        <div class="details col-md-8">
-                            <span style="margin-top: 10px; margin-bottom: 5px;" class="lifter">
-                                @plan.Name
-                            </span>
-                            <span class="name">
-                                Created: @plan.DateCreated.ToString("d")
-                            </span>
-                        </div>
-                        <div style="padding: 0px;" class="my-actions col-md-2">
-                            <button class="tripleBtn btn btn-info" onclick="location.href='@Url.Action("Edit", "Plans", new { id = plan.Id })'">
-                                Edit
-                            </button>
-                            <button class="tripleBtn btn btn-success" onclick="location.href='@Url.Action("Summary", "Plans", new { id = plan.Id })'">
-                                View
-                            </button>
-                            <button data-plan-id="@plan.Id" class="tripleBtn btn btn-danger js-remove-plan">
-                                Remove
-                            </button>
-                        </div>
-                    </li>
-                }
-            </ul>
-        }
-        else
-        {
-            <div style="margin-top: 30px;">
-                <p class="alert alert-info text-center">You have not created any plans.</p>
+            <div class="row plan-block">
+                <div class="col-xs-2 plan-rating">
+                    <p class="rating-value">@plan.Rating/5</p>
+                </div>
+                <div class="col-xs-8 text-center middle-content">
+                    <span>@plan.Name</span>
+                    <div>Created: @plan.DateCreated.ToString("d")</div>
+                </div>
+                <div class="col-xs-2 my-actions">
+                    <button class="tripleBtn btn btn-info" onclick="location.href='@Url.Action("Edit", "Plans", new { id = plan.Id })'">Edit</button>
+                    <button class="tripleBtn btn btn-success" onclick="location.href='@Url.Action("Summary", "Plans", new { id = plan.Id })'">View</button>
+                    <button data-plan-id="@plan.Id" class="tripleBtn btn btn-danger js-remove-plan">Remove</button>
+                </div>
             </div>
-        }
+         }
+}
+else
+{
+    <div style="margin-top: 30px;">
+        <p class="alert alert-info text-center">You have not created any plans.</p>
     </div>
-</div>
+}
 
 @section scripts
 {

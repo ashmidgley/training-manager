@@ -4,7 +4,7 @@
     var link;
 
     var init = function (container) {
-        $('.js-remove-rating').on('click', clearRating);
+        $('.js-remove-rating').click(clearRating);
     };
 
     //Remove rating (DELETE)
