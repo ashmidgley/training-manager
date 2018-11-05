@@ -77,7 +77,7 @@ namespace TrainingManager.Controllers
             _unitOfWork.Exercises.Add(exercise);
             _unitOfWork.Complete();
 
-            return RedirectToAction("Summary", "Plans", new { Id = viewModel.PlanId });
+            return RedirectToAction("Summary", "Workouts", new { planId = viewModel.PlanId, workoutId = viewModel.WorkoutId });
         }
     }
 }

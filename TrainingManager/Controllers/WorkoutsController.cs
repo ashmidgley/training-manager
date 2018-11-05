@@ -110,7 +110,6 @@ namespace TrainingManager.Controllers
             return RedirectToAction("Summary", "Plans", new { Id = workout.PlanId });
         }
 
-        [Authorize]
         public ActionResult Summary(int planId, int workoutId)
         {
             var workout = _unitOfWork.Workouts.GetWorkout(planId, workoutId);

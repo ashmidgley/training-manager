@@ -74,7 +74,7 @@
                         @if (User.Identity.IsAuthenticated)
                         {
                             <div ng-show="model.workoutsDict[((model.currWeek-1)*7)+i]">
-                                <a class="btn" type="button" href="#" ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}"style="border-radius: 0px; padding-top: 50px; padding-bottom: 50px; font-size: 12px; width:100%; background-color: #f2f2f2; color: black">
+                                <a class="btn" type="button" href="#" ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" style="border-radius: 0px; padding-top: 50px; padding-bottom: 50px; font-size: 12px; width:100%; background-color: #f2f2f2; color: black">
                                     {{ model.workoutsDict[((model.currWeek-1)*7)+i].Name }}
                                 </a>
                                 <div>
@@ -91,9 +91,9 @@
                         else
                         {
                             <div ng-show="model.workoutsDict[((model.currWeek-1)*7)+i]">
-                                <button class="btn" ng-click="showSelectedWorkoutModal(((model.currWeek-1)*7)+i);" style="border-radius: 0px; padding-top: 76px; padding-bottom: 76px; font-size: 12px; width:100%; background-color: #f2f2f2;">
+                                <a class="btn" type="button" href="#" ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" style="border-radius: 0px; padding-top: 76px; padding-bottom: 76px; font-size: 12px; width:100%; background-color: #f2f2f2; color: black;">
                                     {{ model.workoutsDict[((model.currWeek-1)*7)+i].Name }}
-                                </button>
+                                </a>
                             </div>
                             <div ng-show="!model.workoutsDict[((model.currWeek-1)*7)+i]" style="height:169px;"></div>
                         }
