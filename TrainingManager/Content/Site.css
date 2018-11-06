@@ -312,6 +312,10 @@ h6,
     font-weight: bold;
 }
 
+#workout-display-table{
+    margin-top: 20px;
+}
+
 /* Clip text element - CURRENTLY UNUSED */
 /*.clip-text {
     font-size: 6em;
@@ -441,5 +445,9 @@ h6,
     .training-type-card {
         padding: 0;
         margin: auto;
+    }
+
+    #plan-summary-link {
+        font-size: 12px;
     }
 }

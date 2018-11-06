@@ -570,9 +570,6 @@
     <Content Include="img\github-32px.png" />
     <Content Include="img\home.png" />
     <Content Include="img\lifter.png" />
-    <Content Include="img\LM-Logo-Black.jpg" />
-    <Content Include="img\LM-Logo-Black.png" />
-    <Content Include="img\LM-Logo-White.png" />
     <Content Include="img\loading.gif" />
     <Content Include="img\running.svg" />
     <Content Include="img\unspecified.png" />
