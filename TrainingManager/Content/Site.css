@@ -439,6 +439,11 @@ h6,
     font-size: 10px;
 }
 
+.training-type-card {
+    width: 22rem;
+    margin: 20px;
+}
+
 /* MOBILE */
 @media only screen and (max-device-width: 600px) {
     #searchPlans div {
@@ -499,5 +504,10 @@ h6,
 
     #line-chart-container {
         display: none;
+    }
+
+    .training-type-card {
+        padding: 0;
+        margin: auto;
     }
 }
