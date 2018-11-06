@@ -328,6 +328,11 @@ h6,
     clear: both
 }
 
+.no-metrics {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
 /* Clip text element - CURRENTLY UNUSED */
 /*.clip-text {
     font-size: 6em;
