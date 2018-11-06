@@ -7,6 +7,8 @@ namespace TrainingManager.Repositories
     {
         void Add(Workout workout);
         Workout GetUserWorkout(string userId, int workoutId);
+        Workout GetWorkout(int planId, int workoutId);
+
         IEnumerable<Workout> GetWorkouts(int planId);
     }
 }

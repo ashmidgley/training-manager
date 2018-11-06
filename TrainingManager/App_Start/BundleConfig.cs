@@ -17,6 +17,7 @@ namespace TrainingManager
                 "~/js/app/controllers/indexController.js",
                 "~/js/app/controllers/mineController.js",
                 "~/js/app/controllers/ratingsController.js",
+                "~/js/app/controllers/workoutController.js",
                 "~/js/app/app.js"
                 ));
 

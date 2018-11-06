@@ -4,7 +4,7 @@ var FavouritesController = function (favouriteService) {
     var link;
 
     var init = function (container) {
-        $(container).on("click", ".js-remove-favourite", removeFavourite);
+        $(".js-remove-favourite").click(removeFavourite);
     };
 
     var removeFavourite = function (e) {

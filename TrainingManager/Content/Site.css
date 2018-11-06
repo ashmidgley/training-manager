@@ -1,11 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding: 0px;
+    font-size: 17px;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -39,57 +35,6 @@ span.field-validation-error {
 .popover {
   box-shadow: none;
   -webkit-box-shadow: none;
-}
-
-.navbar-inverse {
-    background-color: #343a40;
-    border-color: #343a40;
-}
-
-.navbar-inverse .navbar-nav > li > a {
-    color: #fff;
-}
-
-.navbar-inverse .navbar-brand {
-    color: #fff;
-}
-
-    .navbar-inverse .navbar-nav > .open > a,
-    .navbar-inverse .navbar-nav > .open > a:hover,
-    .navbar-inverse .navbar-nav > .open > a:focus {
-        background-color: #2c2e30;
-    }
-
-.dropdown-menu {
-    box-shadow: none;
-    -webkit-box-shadow: none;
-    background-color: #fff;
-    color: #000;
-}
-
-.navbar-inverse .navbar-nav > .dropdown > a .caret {
-    border-top-color: #fff;
-    border-bottom-color: #fff;
-}
-
-.navbar-collapse ul li:hover {
-    background-color: #383a3d;
-}
-
-.navbar-brand {
-    font-weight: 700;    
-}
-
-.dropdown-menu > li > a:hover {
-    background-color: #F0F0F0;
-    color: #000;
-}
-
-.dropdown-menu .divider:hover {
-    background-color: #e5e5e5;
-}
-body {
-    font-size: 17px;
 }
 
 body,
@@ -144,84 +89,22 @@ h6,
 
 /* ***** */
 
-.plans {
-    list-style: none;
-    padding-left: 0px;
-}
-
-.plans .plan {
-    position: relative;
-    margin-bottom: 30px;
-    background-color: #F5F5F5;
+.doubleBtn {
+    margin: 0px;
+    padding: 0px;
+    border-radius: 0px;
     width: 100%;
-    height: 100px;
+    height: 50px;
 }
-
-    .plans .plan .plan-rating {
-        position: relative;
-        background: #aaaaaa;
-        border-color: #aaaaaa;
-        color: #fff;
-        font-size: 20px;
-        height: 100%;
-        margin: 0px;
-    }
-
-        .plans .plan .plan-rating .rating-value {
-            position:absolute;
-            transform: translateY(120%) translateX(55%);
-        }
-
-    .plans .plan .details {
-        text-align: center;
-        padding-top: 10px;
-    }
-
-        .plans .plan .details .lifter {
-            font-weight: bold;
-            display: block;
-            padding-bottom: 5px;
-        }
-
-        .plans .plan .details .genre {
-            font-size: 15px;
-        }
-
-        .plans .plan .details .stars {
-            font-size: 15px;
-            padding-top: 5px;
-        }
-
-    .plans .plan .actions {
-        margin: 0 auto;
-        padding: 0px;
-        text-align: center;
-    }
-
-    .doubleBtn {
-        margin: 0px;
-        padding: 0px;
-        border-radius: 0px;
-        width: 100%;
-        height: 50px;
-    }
-
-    .plans .plan .actions #viewBtn {
-        margin: 0px;
-        padding: 0px;
-        border-radius: 0px;
-        width: 100%;
-        height: 100px;
-    }
 
     
-    .tripleBtn{
-        padding: 0px;
-        margin: 0px;
-        width: 100%;
-        border-radius: 0px;
-        height: 33px;
-    }
+.tripleBtn{
+    padding: 0px;
+    margin: 0px;
+    width: 100%;
+    border-radius: 0px;
+    height: 33px;
+}
     
 #searchPlans {
     margin-top: 20px;
@@ -235,14 +118,6 @@ h6,
   max-width: none;
 }
 
-#plansRow{
-    background-color: white;
-}
-
-#plansCol{
-    background: white;
-}
-
 /* 
   Allow angular.js to be loaded in body, hiding cloaked elements until 
   templates compile.  The !important is important given that there may be 
@@ -254,83 +129,14 @@ h6,
     display: none !important;
 }
 
-/*
-.popover-notifications .popover-content {
-  padding: 0;
-}
-.popover-notifications ul.notifications {
-  list-style: none;
-  padding-left: 0;
-}
-.popover-notifications ul.notifications > li {
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
-}
-.popover-notifications ul.notifications > li:last-child {
-  border-bottom: none;
-}
-.popover-notifications ul.notifications .highlight {
-  font-weight: bold;
-}
-    */
-
-/* Clip text element */
-.clip-text {
-    font-size: 6em;
-    font-weight: bold;
-    line-height: 1;
-    position: relative;
-    display: inline-block;
-    margin: .25em;
-    padding: .5em .75em;
-    text-align: center;
-    /* Color fallback */
-    color: #fff;
-    -webkit-background-clip: text;
-
-    -webkit-text-fill-color: transparent;
+.summary-shift-arrow {
+    font-size: 2em;
+    padding-top: 88px;
+    padding-bottom: 88px;
+    width: 100%;
 }
 
-.clip-text:before,
-.clip-text:after {
-    position: absolute;
-    content: '';
-}
-
-/* Background */
-.clip-text:before {
-    z-index: -2;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-image: inherit;
-}
-
-/* Text Background (black zone) */
-.clip-text:after {
-    position: absolute;
-    z-index: -1;
-    top: .125em;
-    right: .125em;
-    bottom: .125em;
-    left: .125em;
-    background-color: #000;
-}
-
-.clip-text--cover,
-.clip-text--cover:before {
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-            background-size: cover;
-  background-position: 50% 50%;
-}
-
-.clip-text_fourteen {
-    background-image: url(https://4kwallpapers.co/wp-content/uploads/2015/09/abstract-colorful-vectors-design-4k-wallpapers.png);
-}
-
-.summaryShiftArrow:active{
+.summary-shift-arrow:active {
     background-color: #dddddd;
 }
 
@@ -346,6 +152,7 @@ h6,
 .child {
     display: table-cell;
     vertical-align: middle;
+    padding-left: 10px;
 }
 
 .tile-img {
@@ -364,13 +171,273 @@ h6,
 .plan-rating-label {
     font-size: 50%;
     float: left;
-    margin-top: -80px;
+    margin-top: -60px;
 }
 
-.navbar-inverse .navbar-nav > .active > a,
-.navbar-inverse .navbar-nav > .active > a:hover,
-.navbar-inverse .navbar-nav > li:hover,
-.navbar-inverse .navbar-nav > .active > a:focus {
-    background-color: #2c2e30;
+.actions {
+    margin: 0 auto;
+    padding: 0px;
+    text-align: center;
 }
 
+.actions #viewBtn {
+    margin: 0px;
+    padding: 0px;
+    border-radius: 0px;
+    width: 100%;
+    height: 100px;
+}
+
+.plan-rating {
+    background: #aaaaaa;
+    border-color: #aaaaaa;
+    color: #fff;
+    height: 100px;
+    font-size: 20px;
+}
+
+.plan-block {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+}
+
+    .plan-block .middle-content {
+        height: 100px;
+        background-color: #f4f8ff;
+    }
+
+.my-actions {
+    padding: 0;
+}
+
+.user-block {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    #user-table .left-col {
+        padding-left: 50px;
+    }
+
+#user-image {
+    max-height: 200px;
+}
+
+#myBarChart {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+#myPieChart {
+    margin-bottom: 30px;
+}
+
+.plan-table-col {
+    border: solid 1px #dddddd;
+}
+
+.plan-table-row {
+    color: white;
+    background-color: black;
+}
+
+#plan-summary-button-actions {
+    border-radius: 0px;
+    font-size: 12px;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: black;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#plan-summary-button-no-actions {
+    border-radius: 0px;
+    font-size: 12px;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: black;
+    padding-top: 76px;
+    padding-bottom: 76px;
+}
+
+.plan-summary-arrow-block {
+    background-color: white;
+    margin: 0px;
+    border: solid 1px #dddddd;
+    height: 211.5px;
+}
+
+#plan-summary-workouts-display > td {
+    padding: 0px;
+    border: solid 1px #dddddd;
+}
+
+#plan-summary-workouts-display #createBtn {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-size: 26px;
+    color: #5cb85c;
+    border-radius: 0px;
+    width: 100%;
+}
+
+#plan-summary-workouts-display #removeBtn {
+    width: 100%;
+    float: left;
+    height: 26px;
+    border-radius: 0px;
+    font-size: 10px;
+}
+
+#plan-summary-workouts-display #editBtn {
+    width: 100%;
+    float: left;
+    height: 26px;
+    border-radius: 0px;
+    font-size: 10px;
+}
+
+.training-type-card {
+    width: 22rem;
+    margin: 20px;
+}
+
+/* Clip text element - CURRENTLY UNUSED */
+
+/*.clip-text {
+    font-size: 6em;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    display: inline-block;
+    margin: .25em;
+    padding: .5em .75em;
+    text-align: center;
+
+    /* Color fallback */ /*
+    color: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+    .clip-text:before,
+    .clip-text:after {
+        position: absolute;
+        content: '';
+    }
+
+    /* Background */ /*
+    .clip-text:before {
+        z-index: -2;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: inherit;
+    }
+
+    /* Text Background (black zone) */ /*
+    .clip-text:after {
+        position: absolute;
+        z-index: -1;
+        top: .125em;
+        right: .125em;
+        bottom: .125em;
+        left: .125em;
+        background-color: #000;
+    }
+
+.clip-text--cover,
+.clip-text--cover:before {
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.clip-text_fourteen {
+    background-image: url(https://4kwallpapers.co/wp-content/uploads/2015/09/abstract-colorful-vectors-design-4k-wallpapers.png);
+}*/
+
+/*      MOBILE       */
+@media only screen and (max-device-width: 600px) {
+    #searchPlans div {
+        width: 300px;
+    }
+
+    .user-block {
+        width: 100%;
+    }
+
+    #user-image {
+        max-height: 170px;
+    }
+
+    #user-table .left-col {
+        padding-left: 20px;
+    }
+
+    #myBarChart {
+        max-width: 350px;
+    }
+
+    #plan-summary-workouts-display > td {
+        text-align: left;
+    }
+
+        #plan-summary-workouts-display > td > div > a {
+            font-size: 8px;
+            padding-left: 5px;
+        }
+
+        #plan-summary-workouts-display .btn-danger { 
+            padding-left: 3px;
+        }
+
+    .summary-shift-arrow {
+        font-size: 1em;
+        padding-top: 95px;
+    }
+
+    #plan-summary-button-actions {
+        padding-top: 52.5px;
+        padding-bottom: 52.5px;
+    }
+    
+    #plan-summary-button-no-actions {
+        padding-top: 78.5px;
+        padding-bottom: 78.5px;
+    }
+
+    #rating-display-table {
+        font-size: 12px;
+    }
+
+        #rating-display-table button {
+            font-size: 10px;
+        }
+
+    #workout-display-table {
+        font-size: 12px;
+    }
+
+        #workout-display-table button {
+            font-size: 8px;
+        }
+
+    #line-chart-container {
+        display: none;
+    }
+
+    .training-type-card {
+        padding: 0;
+        margin: auto;
+    }
+}

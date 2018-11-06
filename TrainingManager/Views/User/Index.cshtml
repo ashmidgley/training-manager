@@ -2,56 +2,63 @@
 @{
     ViewBag.Title = Model.Header;
 }
-<div class="row" style="margin-top: 20px;">
-    <div class="col-md-offset-3 col-md-6 panel panel-default">
-        <h3 class="text-center">Details</h3>
-        <hr />
-        <div class="row">
-            <div class="col-md-3 col-md-offset-2" style="font-size:16px;">
-                <p>Name: </p>
-                <p>Gender:</p>
-                <p>Date Joined:</p>
-                <p># of Plans:</p>
-                <p># of Favourites:</p>
-                <p style="padding-bottom:10px;"># of Ratings:</p>
+        <div class="row user-block" style="margin-top: 20px;">
+            <div class="panel panel-default">
+                <h3 class="text-center" style="margin-bottom: 20px;">Details</h3>
+                <table class="table" id="user-table">
+                    <tr>
+                        <td class="left-col">Name:</td>
+                        <td class="text-center">@Model.User.Name</td>
+                    </tr>
+                    <tr>
+                        <td class="left-col">Gender:</td>
+                        <td class="text-center">@Model.User.Gender</td>
+                    </tr>
+                    <tr>
+                        <td class="left-col">Date Joined:</td>
+                        <td class="text-center">@Model.User.DateJoined.ToShortDateString()</td>
+                    </tr>
+                    <tr>
+                        <td class="left-col"># of Plans:</td>
+                        <td class="text-center">@Model.PlanCount</td>
+                    </tr>
+                    <tr>
+                        <td class="left-col"># of Favourites:</td>
+                        <td class="text-center">@Model.Favourites.Count()</td>
+                    </tr>
+                    <tr>
+                        <td class="left-col"># of Ratings:</td>
+                        <td class="text-center">@Model.Ratings.Count()</td>
+                    </tr>
+                </table>
             </div>
-            <div class="col-md-6" style="font-size:16px;">
-                <p class="text-center">@Model.User.Name</p>
-                <p class="text-center">@Model.User.Gender</p>
-                <p class="text-center">@Model.User.DateJoined.ToShortDateString()</p>
-                <p class="text-center">@Model.PlanCount</p>
-                <p class="text-center">@Model.Favourites.Count()</p>
-                <p class="text-center">@Model.Ratings.Count()</p>
+        </div>
+        <div class="row user-block">
+            <div class="panel panel-default">
+                <h3 class="text-center">Type</h3>
+                <hr />
+                <div style="margin: 20px;">
+                    <h4 class="text-center"><i>@Model.User.TrainingTypeName</i></h4>
+                </div>
+                <div class="text-center" style="margin-bottom:20px;">
+                    <img src="~/img/@Model.TrainingTypeFileName" id="user-image" />
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-offset-3 col-md-6 panel panel-default">
-        <h3 class="text-center">Type</h3>
-        <hr />
-        <div style="margin: 20px;">
-            <h4 class="text-center"><i>@Model.User.TrainingTypeName</i></h4>
+        <div class="row user-block">
+            <div class="panel panel-default">
+                <h3 class="text-center">Favourites</h3>
+                <hr />
+                <canvas id="myBarChart"></canvas>
+            </div>
         </div>
-        <div class="text-center" style="margin-bottom:20px;">
-            <img src="~/img/@Model.TrainingTypeFileName" style="border-radius: 5px; max-height: 200px;" />
+        <div class="row user-block">
+            <div class="panel panel-default">
+                <h3 class="text-center">Views</h3>
+                <hr />
+                <canvas id="myPieChart" height="120"></canvas>
+            </div>
         </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-offset-3 col-md-6 panel panel-default">
-        <h3 class="text-center">Favourites</h3>
-        <hr />
-        <canvas id="myBarChart" height="120" style="margin-bottom: 20px;"></canvas>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-offset-3 col-md-6 panel panel-default">
-        <h3 class="text-center">Views</h3>
-        <hr />
-        <canvas id="myPieChart" height="120" style="margin-bottom: 20px;"></canvas>
-    </div>
-</div>
 
 @section Scripts{
     <script src="~/Scripts/Chart.min.js"></script>

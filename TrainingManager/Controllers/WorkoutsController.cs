@@ -109,5 +109,18 @@ namespace TrainingManager.Controllers
 
             return RedirectToAction("Summary", "Plans", new { Id = workout.PlanId });
         }
+
+        public ActionResult Summary(int planId, int workoutId)
+        {
+            var workout = _unitOfWork.Workouts.GetWorkout(planId, workoutId);
+            var viewModel = new WorkoutSummaryViewModel
+            {
+                PlanId = planId,
+                Workout = workout,
+                Exercises = _unitOfWork.Exercises.GetExercises(workoutId),
+                CanEdit = User.Identity.GetUserId() == workout.UserId
+            };
+            return View("Summary", viewModel);
+        }
     }
 }
