@@ -161,12 +161,6 @@ h6,
     font-size: medium;
 }
 
-.plan-rating-label {
-    font-size: 50%;
-    float: left;
-    margin-top: -60px;
-}
-
 .actions {
     margin: 0 auto;
     padding: 0px;
@@ -186,8 +180,21 @@ h6,
     border-color: #aaaaaa;
     color: #fff;
     height: 100px;
-    font-size: 20px;
+    padding: 0;
 }
+
+    .plan-rating .rating-value {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .plan-rating .plan-rating-label {
+        font-size: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 28px;
+    }
 
 .plan-block {
     margin-top: 20px;
@@ -200,6 +207,11 @@ h6,
     .plan-block .middle-content {
         height: 100px;
         background-color: #f4f8ff;
+        padding-top: 5px;
+    }
+
+    .plan-block .middle-content .plan-name {
+        margin: 7px 0;
     }
 
 .my-actions {
@@ -481,5 +493,14 @@ h6,
 
     .form-horizontal .control-label {
         padding-top: 0;
+    }
+
+    .plan-block .middle-content .plan-name {
+        font-size: 12px;
+        margin: 12px 0;
+    }
+
+    .actions > button {
+        font-size: 10px;
     }
 }
