@@ -488,4 +488,12 @@ h6,
         padding-top: 78.5px;
         padding-bottom: 78.5px;
     }
+
+    #workout-display-table {
+        font-size: 12px;
+    }
+
+        #workout-display-table button {
+            font-size: 8px;
+        }
 }
