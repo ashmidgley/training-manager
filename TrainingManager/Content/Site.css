@@ -494,6 +494,14 @@ h6,
         padding-bottom: 78.5px;
     }
 
+    #rating-display-table {
+        font-size: 12px;
+    }
+
+        #rating-display-table button {
+            font-size: 10px;
+        }
+
     #workout-display-table {
         font-size: 12px;
     }

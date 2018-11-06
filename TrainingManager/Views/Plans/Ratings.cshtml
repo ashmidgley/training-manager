@@ -14,7 +14,7 @@
 <div>
     <h1 class="text-center">@Model.Heading</h1>
     <p class="text-center" style="padding-bottom: 20px;">You have rated @Model.RatingsToDisplay.Count() user plans.</p>
-    <table class="table table-striped">
+    <table class="table table-striped" id="rating-display-table">
         <tr>
             <th>Plan Name</th>
             <th class="text-center">Rating</th>
@@ -37,7 +37,9 @@
 
                 </td>
                 <td class="text-center">@rating.Value/5</td>
-                <td class="text-center"><button style="border-radius:0px;" data-plan-id="@rating.PlanId" class="js-remove-rating btn btn-danger">Remove</button></td>
+                <td class="text-center">
+                    <button style="border-radius:0px;" data-plan-id="@rating.PlanId" class="js-remove-rating btn btn-danger">Remove</button>
+                </td>
             </tr>
         }   
     </table>
