@@ -478,4 +478,14 @@ h6,
         font-size: 1em;
         padding-top: 95px;
     }
+
+    #plan-summary-button-actions {
+        padding-top: 52.5px;
+        padding-bottom: 52.5px;
+    }
+    
+    #plan-summary-button-no-actions {
+        padding-top: 78.5px;
+        padding-bottom: 78.5px;
+    }
 }
