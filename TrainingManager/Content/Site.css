@@ -261,6 +261,13 @@ h6,
     background-image: url(https://4kwallpapers.co/wp-content/uploads/2015/09/abstract-colorful-vectors-design-4k-wallpapers.png);
 }
 
+.summary-shift-arrow {
+    font-size: 2em;
+    padding-top: 88px;
+    padding-bottom: 88px;
+    width: 100%;
+}
+
 .summaryShiftArrow:active{
     background-color: #dddddd;
 }
@@ -375,6 +382,63 @@ h6,
     background-color: black;
 }
 
+#plan-summary-button-actions {
+    border-radius: 0px;
+    font-size: 12px;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: black;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#plan-summary-button-no-actions {
+    border-radius: 0px;
+    font-size: 12px;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: black;
+    padding-top: 76px;
+    padding-bottom: 76px;
+}
+
+.plan-summary-arrow-block {
+    background-color: white;
+    margin: 0px;
+    border: solid 1px #dddddd;
+    height: 211.5px;
+}
+
+#plan-summary-workouts-display > td {
+    padding: 0px;
+    border: solid 1px #dddddd;
+}
+
+#plan-summary-workouts-display #createBtn {
+    margin-top: 60px;
+    margin-bottom: 60px;
+    font-size: 26px;
+    color: #5cb85c;
+    border-radius: 0px;
+    width: 100%;
+}
+
+#plan-summary-workouts-display #removeBtn {
+    width: 100%;
+    float: left;
+    height: 26px;
+    border-radius: 0px;
+    font-size: 10px;
+}
+
+#plan-summary-workouts-display #editBtn {
+    width: 100%;
+    float: left;
+    height: 26px;
+    border-radius: 0px;
+    font-size: 10px;
+}
+
 /* MOBILE */
 @media only screen and (max-device-width: 600px) {
     #searchPlans div {
@@ -395,5 +459,23 @@ h6,
 
     #myBarChart {
         max-width: 350px;
+    }
+
+    #plan-summary-workouts-display > td {
+        text-align: left;
+    }
+
+        #plan-summary-workouts-display > td > div > a {
+            font-size: 8px;
+            padding-left: 5px;
+        }
+
+        #plan-summary-workouts-display .btn-danger { 
+            padding-left: 3px;
+        }
+
+    .summary-shift-arrow {
+        font-size: 1em;
+        padding-top: 95px;
     }
 }

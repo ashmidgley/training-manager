@@ -54,8 +54,8 @@
 
     <div class="row">
         <div class="col-xs-1 text-center" style="padding: 0">
-            <div style="background-color:white; margin:0px; border: solid 1px #dddddd; border-right:none; height: 211.5px;">
-                <i ng-show="model.showWeekLeft" class="glyphicon glyphicon-chevron-left summaryShiftArrow" ng-click="shiftWeekLeft();" style="font-size: 2em; padding-top: 88px; padding-bottom: 88px; width:100%;"></i>
+            <div class="plan-summary-arrow-block" style="border-right: none;">
+                <i ng-show="model.showWeekLeft" class="glyphicon glyphicon-chevron-left summary-shift-arrow" ng-click="shiftWeekLeft();"></i>
             </div>
         </div>
         <div class="col-xs-10" style="padding:0">
@@ -78,21 +78,29 @@
                     <th class="text-center plan-table-col">{{ model.dayNamesMobile[5] }}</th>
                     <th class="text-center plan-table-col">{{ model.dayNamesMobile[6] }}</th>
                 </tr>
-                <tr>
-                    <td style="padding:0px; border: solid 1px #dddddd;" ng-repeat="i in model.days">
+                <tr id="plan-summary-workouts-display">
+                    <td ng-repeat="i in model.days">
                         @if (User.Identity.IsAuthenticated)
                         {
                             <div ng-show="model.workoutsDict[((model.currWeek-1)*7)+i]">
-                                <a class="btn" type="button" href="#" ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" style="border-radius: 0px; padding-top: 50px; padding-bottom: 50px; font-size: 12px; width:100%; background-color: #f2f2f2; color: black">
-                                    {{ model.workoutsDict[((model.currWeek-1)*7)+i].Name }}
+                                <a class="btn" id="plan-summary-button-actions" type="button" href="#"
+                                   ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" >
+                                    {{ model.workoutsDict[((model.currWeek-1)*7)+i].Name.split(' ')[0] }}...
                                 </a>
                                 <div>
-                                    <a type="button" href="#" ng-href="@Url.Action("Edit", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" class="btn btn-info" style="width: 100%; float:left; height:26px; border-radius:0px; font-size: 10px;">Edit</a>
-                                    <button ng-click="removeWorkout(model.workoutsDict[((model.currWeek-1)*7)+i].Id)" class="btn btn-danger" style="width: 100%; float:left; height: 26px; border-radius:0px; font-size: 10px;">Remove</button>
+                                    <a type="button" href="#" class="btn btn-info" id="editBtn"
+                                       ng-href="@Url.Action("Edit", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" >
+                                        Edit
+                                    </a>
+                                    <button class="btn btn-danger" id="removeBtn" 
+                                            ng-click="removeWorkout(model.workoutsDict[((model.currWeek-1)*7)+i].Id)"> 
+                                        Remove
+                                    </button>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <a ng-show="!model.workoutsDict[((model.currWeek-1)*7)+i]" type="button" class="btn" href="@Url.Action("Create", "Workouts")?planId=@Model.PlanId&week={{model.currWeek-1}}&day={{i}}" style="margin-top: 60px; margin-bottom: 60px; font-size:26px; color:#5cb85c; border-radius: 0px; width: 100%;">
+                                <a ng-show="!model.workoutsDict[((model.currWeek-1)*7)+i]" type="button" class="btn" id="createBtn"
+                                   href="@Url.Action("Create", "Workouts")?planId=@Model.PlanId&week={{model.currWeek-1}}&day={{i}}">
                                     +
                                 </a>
                             </div>
@@ -100,8 +108,9 @@
                         else
                         {
                             <div ng-show="model.workoutsDict[((model.currWeek-1)*7)+i]">
-                                <a class="btn" type="button" href="#" ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" style="border-radius: 0px; padding-top: 76px; padding-bottom: 76px; font-size: 12px; width:100%; background-color: #f2f2f2; color: black;">
-                                    {{ model.workoutsDict[((model.currWeek-1)*7)+i].Name }}
+                                <a class="btn" id="plan-summary-button-no-actions" type="button" href="#"
+                                   ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}">
+                                    {{ model.workoutsDict[((model.currWeek-1)*7)+i].Name.split(' ')[0] }}...
                                 </a>
                             </div>
                             <div ng-show="!model.workoutsDict[((model.currWeek-1)*7)+i]" style="height:169px;"></div>
@@ -111,8 +120,8 @@
             </table>
         </div>
         <div class="col-xs-1 text-center" style="padding: 0">
-            <div style="background-color:white; margin:0px; border: solid 1px #dddddd; border-left:none; height: 211.5px;">
-                <i ng-show="model.showWeekRight" class="glyphicon glyphicon-chevron-right summaryShiftArrow" ng-click="shiftWeekRight();" style="font-size: 2em; padding-top: 88px; padding-bottom: 88px; border-radius: 0px; width:100%;"></i>
+            <div class="plan-summary-arrow-block" style="border-left: none;">
+                <i ng-show="model.showWeekRight" class="glyphicon glyphicon-chevron-right summary-shift-arrow" ng-click="shiftWeekRight();"></i>
             </div>
         </div>
     </div>
