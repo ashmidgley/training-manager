@@ -80,7 +80,7 @@
                 </tr>
                 <tr id="plan-summary-workouts-display">
                     <td ng-repeat="i in model.days">
-                        @if (User.Identity.IsAuthenticated)
+                        @if (Model.CanEdit)
                         {
                             <div ng-show="model.workoutsDict[((model.currWeek-1)*7)+i]">
                                 <a class="btn" id="plan-summary-button-actions" type="button" href="#"
