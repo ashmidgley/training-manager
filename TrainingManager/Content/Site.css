@@ -409,7 +409,8 @@ h6,
 
     .summary-shift-arrow {
         font-size: 1em;
-        padding-top: 95px;
+        padding-top: 95.5px;
+        padding-bottom: 95.5px;
     }
 
     #plan-summary-button-actions {
