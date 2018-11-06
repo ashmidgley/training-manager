@@ -12,13 +12,6 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
 span.field-validation-error {
     color: red;
 }
@@ -306,7 +299,15 @@ h6,
 .training-type-card {
     width: 22rem;
     margin: 20px;
+    border: solid 1px #cccccc;
+    border-radius: 10px;
+    float: left;
 }
+
+    .training-type-card > .card-img-top {
+        width: 100%;
+        margin-top: 20px
+    }
 
 .navbar-brand {
     font-weight: bold;
@@ -314,6 +315,17 @@ h6,
 
 #workout-display-table{
     margin-top: 20px;
+}
+
+#register-input-row {
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#training-type-validation {
+    margin-top: 20px;
+    clear: both
 }
 
 /* Clip text element - CURRENTLY UNUSED */
@@ -446,9 +458,23 @@ h6,
     .training-type-card {
         padding: 0;
         margin: auto;
+        float: none;
+        margin-top: 15px;
     }
 
     #plan-summary-link {
         font-size: 12px;
+    }
+
+    #homeImage {
+        margin-top: 17vh;
+    }
+
+    #register-input-row {
+        max-width: 290px;
+    }
+
+    .form-horizontal .control-label {
+        padding-top: 0;
     }
 }
