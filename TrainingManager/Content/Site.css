@@ -308,8 +308,11 @@ h6,
     margin: 20px;
 }
 
-/* Clip text element - CURRENTLY UNUSED */
+.navbar-brand {
+    font-weight: bold;
+}
 
+/* Clip text element - CURRENTLY UNUSED */
 /*.clip-text {
     font-size: 6em;
     font-weight: bold;
@@ -365,7 +368,6 @@ h6,
 .clip-text_fourteen {
     background-image: url(https://4kwallpapers.co/wp-content/uploads/2015/09/abstract-colorful-vectors-design-4k-wallpapers.png);
 }*/
-
 /*      MOBILE       */
 @media only screen and (max-device-width: 600px) {
     #searchPlans div {

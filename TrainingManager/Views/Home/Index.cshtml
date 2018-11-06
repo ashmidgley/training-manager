@@ -14,13 +14,13 @@
         <div style="margin-top: 15px;">
             @if (User.Identity.IsAuthenticated)
             {
-                <a class="btn" href="/Plans/Create" style="margin-right: 10px; background-color: #dddddd; border-color: #dddddd; color: black;">Add Plan</a>
+                <a type="button" class="btn btn-warning" href="/Plans/Create">Add Plan</a>
             }
             else
             {
-                <a class="btn" href="/Account/Register" style="margin-right: 10px; background-color: #dddddd; border-color: #dddddd; color: black;">Get started</a>
+                <a type="button" class="btn btn-warning" href="/Account/Register">Get started</a>
             }
-            <a class="btn" href="/Plans" style="background-color: #dddddd; border-color: #dddddd; color: black;">Existing plans</a>
+            <a type="button" class="btn btn-success" href="/Plans">Existing plans</a>
         </div>
     </div>
 </div>
