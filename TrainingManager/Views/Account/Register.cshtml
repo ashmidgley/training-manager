@@ -9,8 +9,8 @@
 {
     @Html.AntiForgeryToken()
     <h4 class="text-center">Create a new account.</h4>
-    
     <div class="row" id="register-input-row">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(m => m.Name, new { @class = "control-label" })
             <div>
