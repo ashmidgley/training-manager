@@ -273,12 +273,16 @@ h6,
     font-size: 10px;
 }
 
+#training-types-container {
+    text-align: center;
+}
+
 .training-type-card {
     width: 22rem;
     margin: 20px;
     border: solid 1px #cccccc;
     border-radius: 10px;
-    float: left;
+    display: inline-block;
 }
 
     .training-type-card > .card-img-top {
@@ -420,7 +424,6 @@ select {
     .training-type-card {
         padding: 0;
         margin: auto;
-        float: none;
         margin-top: 15px;
     }
 
