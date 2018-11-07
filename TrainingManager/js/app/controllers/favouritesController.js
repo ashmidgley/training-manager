@@ -35,7 +35,7 @@ var FavouritesController = function (favouriteService) {
     };
 
     var done = function () {
-        link.parents("li").fadeOut(1000, function () {
+        $(".plan-block").fadeOut(500, function () {
             $(this).remove();
         });
         console.log("Removing plan " + planId + " was successful");

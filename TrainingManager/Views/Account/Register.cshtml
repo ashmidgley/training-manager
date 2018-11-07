@@ -48,11 +48,11 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="training-types-container">
         @foreach (var type in Model.TrainingTypes)
         {
             <div class="card text-center training-type-card">
-                <img class="card-img-top" src="~/img/@type.FileName" height="120" alt="Card image cap">
+                <img class="card-img-top" src="~/img/@type.FileName" height="120" alt="@type.Name">
                 <div class="card-body">
                     @Html.LabelFor(m => m.TrainingTypeId, type.Name, new { @style = "margin-top: 15px;" })
                     <br />@Html.RadioButtonFor(m => m.TrainingTypeId, type.Id, new { @style = "margin-bottom: 25px;" })
