@@ -2,6 +2,8 @@
 
 TrainingManager was created as a bit of fun while I was learning how to build web app's using the .NET framework.
 
+Check it out at http://trainingmanageruat.azurewebsites.net/.
+
 ## Extras
 
 Application uses kartik-v-bootstrap-star-rating JS library for UI star rating displays.
