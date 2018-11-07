@@ -2,8 +2,7 @@
 
 TrainingManager was created as a bit of fun while I was learning how to build web app's using the .NET framework.
 
-Check it out at: 
-http://trainingmanageruat.azurewebsites.net/
+Check it out at http://trainingmanageruat.azurewebsites.net/.
 
 ## Extras
 
