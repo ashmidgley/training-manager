@@ -358,6 +358,10 @@ h6,
     max-width: 350px;
 }
 
+#user-plans-link {
+    font-size: 12px;
+}
+
 /* Clip text element - CURRENTLY UNUSED */
 /*.clip-text {
     font-size: 6em;
@@ -428,9 +432,13 @@ h6,
         max-height: 170px;
     }
 
-    #user-table .left-col {
-        padding-left: 20px;
+    #user-table {
+        font-size: 12px;
     }
+
+        #user-table .left-col {
+            padding-left: 40px;
+        }
 
     #myBarChart {
         max-width: 350px;
@@ -532,5 +540,9 @@ h6,
 
     .tile-img {
         max-height: 100%;
+    }
+
+    #all-users-table {
+        font-size: 12px;
     }
 }
