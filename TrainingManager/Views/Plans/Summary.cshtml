@@ -61,7 +61,7 @@
         </div>
         <div class="col-xs-10" style="padding:0">
             <table class="table table-bordered" style="table-layout: fixed;">
-                <tr class="plan-table-row" ng-hide="model.windowWidth < 600">
+                <tr class="plan-table-row" id="non-mobile-headers">
                     <th class="text-center plan-table-col">{{  model.dayNames[0] }}</th>
                     <th class="text-center plan-table-col">{{ model.dayNames[1] }}</th>
                     <th class="text-center plan-table-col">{{ model.dayNames[2] }}</th>
@@ -70,7 +70,7 @@
                     <th class="text-center plan-table-col">{{ model.dayNames[5] }}</th>
                     <th class="text-center plan-table-col">{{ model.dayNames[6] }}</th>
                 </tr>
-                <tr class="plan-table-row" ng-hide="model.windowWidth > 600">
+                <tr class="plan-table-row" id="mobile-headers">
                     <th class="text-center plan-table-col">{{ model.dayNamesMobile[0] }}</th>
                     <th class="text-center plan-table-col">{{ model.dayNamesMobile[1] }}</th>
                     <th class="text-center plan-table-col">{{ model.dayNamesMobile[2] }}</th>

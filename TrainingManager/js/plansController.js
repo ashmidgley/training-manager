@@ -24,9 +24,7 @@
             showLeft: false,
             showRight: true,
             dayNames: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-            dayNamesMobile: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
-            windowWidth: 0,
-            windowHeight: 0
+            dayNamesMobile: ['M', 'T', 'W', 'T', 'F', 'S', 'S']
             //showImageContent: false,
             //imageCanEdit: null,
             //imageHasSrc: null,
@@ -41,27 +39,8 @@
             }
             $('.js-star-rating').rating({ displayOnly: true });
             $scope.getWorkouts();
-            $scope.watchWindowResize();
         };
-
-        $scope.watchWindowResize = function () {
-            var w = angular.element($window);
-            $scope.getWindowDimensions = function () {
-                return {
-                    'h': w.height(),
-                    'w': w.width()
-                };
-            };
-            $scope.$watch($scope.getWindowDimensions, function (newValue, oldValue) {
-                $scope.model.windowHeight = newValue.h;
-                $scope.model.windowWidth = newValue.w;
-            }, true);
-
-            w.bind('resize', function () {
-                $scope.$apply();
-            });
-        };
-
+        
         $scope.getWorkouts = function () {
             $http.get("/api/workouts/" + $scope.model.planId)
                 .then(function (response) {
