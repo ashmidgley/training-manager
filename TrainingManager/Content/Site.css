@@ -7,7 +7,6 @@
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
-
 .dl-horizontal dt {
     white-space: normal;
 }
@@ -16,19 +15,7 @@ span.field-validation-error {
     color: red;
 }
 
-.voffset { margin-top: 2px; }
-.voffset1 { margin-top: 5px; }
-.voffset2 { margin-top: 10px; }
-.voffset3 { margin-top: 20px; }
-.voffset4 { margin-top: 40px; }
-.voffset5 { margin-top: 80px; }
-
 /* Bootstrap Overrides */
-
-.popover {
-  box-shadow: none;
-  -webkit-box-shadow: none;
-}
 
 body,
 h1,
@@ -57,30 +44,7 @@ h6,
     border-radius: 9px;
 }
 
-.btn {
-    -ms-border-radius: 9px;
-    border-radius: 9px;
-    border: none;
-}
-
-.btn-info{
-    background-color: #f39c12;
-    border-color: #f39c12;
-}
-
-.btn-info:hover,
-.btn-info:focus,
-.btn-info:active,
-.btn-info.active {
-    background-color: #da8b0b;
-    border-color: #da8b0b;
-}
-
-/* ***** /
-
 /* Page-level styles */
-
-/* ***** */
 
 .doubleBtn {
     margin: 0px;
@@ -89,8 +53,7 @@ h6,
     width: 100%;
     height: 50px;
 }
-
-    
+   
 .tripleBtn{
     padding: 0px;
     margin: 0px;
@@ -107,6 +70,7 @@ h6,
   margin: auto;
   width: 400px;
 }
+
 #searchPlans div input { 
   max-width: none;
 }
@@ -225,9 +189,9 @@ h6,
     margin-right: auto;
 }
 
-    #user-table .left-col {
-        padding-left: 50px;
-    }
+#user-table .left-col {
+    padding-left: 50px;
+}
 
 #user-image {
     max-height: 200px;
@@ -326,7 +290,7 @@ h6,
     font-weight: bold;
 }
 
-#workout-display-table{
+#workout-display-table {
     margin-top: 20px;
 }
 
@@ -368,63 +332,7 @@ select {
     font-size: 12px;
 }
 
-/* Clip text element - CURRENTLY UNUSED */
-/*.clip-text {
-    font-size: 6em;
-    font-weight: bold;
-    line-height: 1;
-    position: relative;
-    display: inline-block;
-    display: inline-block;
-    margin: .25em;
-    padding: .5em .75em;
-    text-align: center;
-
-    /* Color fallback */ /*
-    color: #fff;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-    .clip-text:before,
-    .clip-text:after {
-        position: absolute;
-        content: '';
-    }
-
-    /* Background */ /*
-    .clip-text:before {
-        z-index: -2;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-image: inherit;
-    }
-
-    /* Text Background (black zone) */ /*
-    .clip-text:after {
-        position: absolute;
-        z-index: -1;
-        top: .125em;
-        right: .125em;
-        bottom: .125em;
-        left: .125em;
-        background-color: #000;
-    }
-
-.clip-text--cover,
-.clip-text--cover:before {
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: 50% 50%;
-}
-
-.clip-text_fourteen {
-    background-image: url(https://4kwallpapers.co/wp-content/uploads/2015/09/abstract-colorful-vectors-design-4k-wallpapers.png);
-}*/
-/*      MOBILE       */
+/* Mobile */
 @media only screen and (max-device-width: 600px) {
     #searchPlans div {
         width: 300px;
@@ -553,3 +461,62 @@ select {
         margin-right: 5px;
     }
 }
+
+/* UNUSED */
+
+/* Clip text element */
+/*.clip-text {
+    font-size: 6em;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    display: inline-block;
+    margin: .25em;
+    padding: .5em .75em;
+    text-align: center;
+
+    /* Color fallback */ /*
+    color: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+    .clip-text:before,
+    .clip-text:after {
+        position: absolute;
+        content: '';
+    }
+
+    /* Background */ /*
+    .clip-text:before {
+        z-index: -2;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: inherit;
+    }
+
+    /* Text Background (black zone) */ /*
+    .clip-text:after {
+        position: absolute;
+        z-index: -1;
+        top: .125em;
+        right: .125em;
+        bottom: .125em;
+        left: .125em;
+        background-color: #000;
+    }
+
+.clip-text--cover,
+.clip-text--cover:before {
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.clip-text_fourteen {
+    background-image: url(https://4kwallpapers.co/wp-content/uploads/2015/09/abstract-colorful-vectors-design-4k-wallpapers.png);
+}*/
