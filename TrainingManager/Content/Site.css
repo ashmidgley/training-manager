@@ -510,7 +510,9 @@ select {
     }
 
     #register-input-row {
-        max-width: 290px;
+        max-width: 500px;
+        margin-left: 15px;
+        margin-right: 15px;
     }
 
     .form-horizontal .control-label {
