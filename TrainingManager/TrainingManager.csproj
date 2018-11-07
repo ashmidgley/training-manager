@@ -573,8 +573,10 @@
     <Content Include="img\loading.gif" />
     <Content Include="img\running.svg" />
     <Content Include="img\unspecified.png" />
-    <Content Include="img\user-actions.jpg" />
-    <Content Include="img\user-plans.jpg" />
+    <Content Include="img\user-actions-desktop.png" />
+    <Content Include="img\user-actions-mobile.png" />
+    <Content Include="img\user-plans-desktop.png" />
+    <Content Include="img\user-plans-mobile.png" />
     <Content Include="js\app-plans.js" />
     <Content Include="js\app\controllers\ratingsController.js" />
     <Content Include="js\app\controllers\workoutController.js" />
