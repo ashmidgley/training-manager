@@ -54,9 +54,11 @@
 }
 else
 {
-    <p class="alert alert-info text-center">No exercises have been created for workout @Model.Workout.Name.</p>
+    <p class="alert alert-info text-center" style="margin-top: 20px;">No exercises have been created for workout @Model.Workout.Name.</p>
     if (Model.CanEdit)
     {
-        <a type="button" class="btn btn-success text-center" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
+        <div class="text-center">
+            <a type="button" class="btn btn-success text-center" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
+        </div>
     }
 }
