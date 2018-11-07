@@ -214,10 +214,6 @@ h6,
         margin: 7px 0;
     }
 
-.my-actions {
-    padding: 0;
-}
-
 .user-block {
     width: 50%;
     margin-left: auto;
@@ -503,4 +499,10 @@ h6,
     .actions > button {
         font-size: 10px;
     }
+
+    #plan-created-date {
+        font-size: 12px;
+        margin-top: 33px;
+    }
+
 }
