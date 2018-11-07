@@ -1,5 +1,5 @@
 ﻿@model TrainingManager.ViewModels.RatingsViewModel
-@{ 
+@{
     ViewBag.Title = Model.Heading;
 }
 
@@ -11,8 +11,9 @@
     </script>
 }
 
-<div>
-    <h1 class="text-center">@Model.Heading</h1>
+<h1 class="text-center">@Model.Heading</h1>
+@if (Model.RatingsToDisplay.Count() > 0)
+{
     <p class="text-center" style="padding-bottom: 20px;">You have rated @Model.RatingsToDisplay.Count() user plans.</p>
     <table class="table table-striped" id="rating-display-table">
         <tr>
@@ -41,6 +42,11 @@
                     <button style="border-radius:0px;" data-plan-id="@rating.PlanId" class="js-remove-rating btn btn-danger">Remove</button>
                 </td>
             </tr>
-        }   
+        }
     </table>
-</div>
+}
+else
+{
+    <hr />
+    <p class="alert alert-info text-center">No ratings to display.</p>
+}

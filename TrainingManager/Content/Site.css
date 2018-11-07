@@ -12,13 +12,6 @@
     white-space: normal;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
 span.field-validation-error {
     color: red;
 }
@@ -147,6 +140,7 @@ h6,
 
 .parent {
     display: table;
+    height: 300px;
 }
 
 .child {
@@ -156,8 +150,12 @@ h6,
 }
 
 .tile-img {
-    max-width: 100%;
+    max-width: 90%;
+    max-height: 300px;
     border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .fit-screen {
@@ -166,12 +164,6 @@ h6,
 
 .field-validation-error span {
     font-size: medium;
-}
-
-.plan-rating-label {
-    font-size: 50%;
-    float: left;
-    margin-top: -60px;
 }
 
 .actions {
@@ -193,8 +185,21 @@ h6,
     border-color: #aaaaaa;
     color: #fff;
     height: 100px;
-    font-size: 20px;
+    padding: 0;
 }
+
+    .plan-rating .rating-value {
+        text-align: center;
+        font-size: 20px;
+    }
+
+    .plan-rating .plan-rating-label {
+        font-size: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 28px;
+    }
 
 .plan-block {
     margin-top: 20px;
@@ -207,11 +212,12 @@ h6,
     .plan-block .middle-content {
         height: 100px;
         background-color: #f4f8ff;
+        padding-top: 5px;
     }
 
-.my-actions {
-    padding: 0;
-}
+    .plan-block .middle-content .plan-name {
+        margin: 7px 0;
+    }
 
 .user-block {
     width: 50%;
@@ -306,10 +312,57 @@ h6,
 .training-type-card {
     width: 22rem;
     margin: 20px;
+    border: solid 1px #cccccc;
+    border-radius: 10px;
+    float: left;
+}
+
+    .training-type-card > .card-img-top {
+        width: 100%;
+        margin-top: 20px
+    }
+
+.navbar-brand {
+    font-weight: bold;
+}
+
+#workout-display-table{
+    margin-top: 20px;
+}
+
+#register-input-row {
+    max-width: 500px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#training-type-validation {
+    margin-top: 20px;
+    clear: both
+}
+
+.no-metrics {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.mobile {
+    display: none;
+}
+
+.not-mobile {
+    display: unset;
+}
+
+#loginForm input {
+    max-width: 350px;
+}
+
+#user-plans-link {
+    font-size: 12px;
 }
 
 /* Clip text element - CURRENTLY UNUSED */
-
 /*.clip-text {
     font-size: 6em;
     font-weight: bold;
@@ -365,7 +418,6 @@ h6,
 .clip-text_fourteen {
     background-image: url(https://4kwallpapers.co/wp-content/uploads/2015/09/abstract-colorful-vectors-design-4k-wallpapers.png);
 }*/
-
 /*      MOBILE       */
 @media only screen and (max-device-width: 600px) {
     #searchPlans div {
@@ -380,9 +432,13 @@ h6,
         max-height: 170px;
     }
 
-    #user-table .left-col {
-        padding-left: 20px;
+    #user-table {
+        font-size: 12px;
     }
+
+        #user-table .left-col {
+            padding-left: 40px;
+        }
 
     #myBarChart {
         max-width: 350px;
@@ -397,20 +453,21 @@ h6,
             padding-left: 5px;
         }
 
-        #plan-summary-workouts-display .btn-danger { 
-            padding-left: 3px;
-        }
+    #plan-summary-workouts-display .btn-danger {
+        padding-left: 3px;
+    }
 
     .summary-shift-arrow {
         font-size: 1em;
-        padding-top: 95px;
+        padding-top: 95.5px;
+        padding-bottom: 95.5px;
     }
 
     #plan-summary-button-actions {
         padding-top: 52.5px;
         padding-bottom: 52.5px;
     }
-    
+
     #plan-summary-button-no-actions {
         padding-top: 78.5px;
         padding-bottom: 78.5px;
@@ -439,5 +496,53 @@ h6,
     .training-type-card {
         padding: 0;
         margin: auto;
+        float: none;
+        margin-top: 15px;
+    }
+
+    #plan-summary-link {
+        font-size: 12px;
+    }
+
+    #homeImage {
+        margin-top: 17vh;
+    }
+
+    #register-input-row {
+        max-width: 290px;
+    }
+
+    .form-horizontal .control-label {
+        padding-top: 0;
+    }
+
+    .plan-block .middle-content .plan-name {
+        font-size: 12px;
+        margin: 12px 0;
+    }
+
+    .actions > button {
+        font-size: 10px;
+    }
+
+    #plan-created-date {
+        font-size: 12px;
+        margin-top: 33px;
+    }
+
+    .mobile {
+        display: unset;
+    }
+
+    .not-mobile {
+        display: none;
+    }
+
+    .tile-img {
+        max-height: 100%;
+    }
+
+    #all-users-table {
+        font-size: 12px;
     }
 }

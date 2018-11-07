@@ -47,6 +47,7 @@
             <p>Favourited by @Model.Favourites users</p>
         }
         <p>Views: @Model.Views</p>
+        <a href="/Plans" id="user-plans-link">Back to user plans</a>
     </div>
     <hr />
 
@@ -80,20 +81,20 @@
                 </tr>
                 <tr id="plan-summary-workouts-display">
                     <td ng-repeat="i in model.days">
-                        @if (User.Identity.IsAuthenticated)
+                        @if (Model.CanEdit)
                         {
                             <div ng-show="model.workoutsDict[((model.currWeek-1)*7)+i]">
                                 <a class="btn" id="plan-summary-button-actions" type="button" href="#"
-                                   ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" >
+                                   ng-href="@Url.Action("Summary", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}">
                                     {{ model.workoutsDict[((model.currWeek-1)*7)+i].Name.split(' ')[0] }}...
                                 </a>
                                 <div>
                                     <a type="button" href="#" class="btn btn-info" id="editBtn"
-                                       ng-href="@Url.Action("Edit", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}" >
+                                       ng-href="@Url.Action("Edit", "Workouts")?planId=@Model.PlanId&workoutId={{model.workoutsDict[((model.currWeek-1)*7)+i].Id}}">
                                         Edit
                                     </a>
-                                    <button class="btn btn-danger" id="removeBtn" 
-                                            ng-click="removeWorkout(model.workoutsDict[((model.currWeek-1)*7)+i].Id)"> 
+                                    <button class="btn btn-danger" id="removeBtn"
+                                            ng-click="removeWorkout(model.workoutsDict[((model.currWeek-1)*7)+i].Id)">
                                         Remove
                                     </button>
                                 </div>

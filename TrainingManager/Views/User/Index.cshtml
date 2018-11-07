@@ -49,14 +49,28 @@
             <div class="panel panel-default">
                 <h3 class="text-center">Favourites</h3>
                 <hr />
-                <canvas id="myBarChart"></canvas>
+                @if (Model.BarChartData.Length == 0)
+                {
+                    <p class="alert alert-info text-center no-metrics">No favourites metrics to display.</p>
+                }
+                else
+                {
+                    <canvas id="myBarChart"></canvas>
+                }
             </div>
         </div>
         <div class="row user-block">
             <div class="panel panel-default">
                 <h3 class="text-center">Views</h3>
                 <hr />
-                <canvas id="myPieChart" height="120"></canvas>
+                @if (Model.PieChartData.Length == 0)
+                {
+                    <p class="alert alert-info text-center no-metrics">No views metrics to display.</p>
+                }
+                else
+                {
+                    <canvas id="myPieChart" height="120"></canvas>
+                }
             </div>
         </div>
 

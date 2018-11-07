@@ -9,95 +9,61 @@
 {
     @Html.AntiForgeryToken()
     <h4 class="text-center">Create a new account.</h4>
-
-    <div class="row">
-        <div class="col-md-6">
-            <hr />
-            <h3 class="text-center" style="margin-top: 0; padding-top:0;">Details</h3>
-            <hr />
-            <div class="form-group">
-                @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Name)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10 ">
-                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Email)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Password)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.LabelFor(m => m.Gender, "Gender", new { @class = "col-md-2 control-label" })
-                <div class="col-md-10">
-                    @Html.DropDownListFor(m => m.Gender, new SelectList(Model.Genders), "", new { @class = "form-control" })
-                    @Html.ValidationMessageFor(m => m.Gender)
-                </div>
+    <div class="row" id="register-input-row">
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "control-label" })
+            <div>
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Name)
             </div>
         </div>
-
-        <div class="col-md-6">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card text-center training-type-card">
-                        <img class="card-img-top" src="~/img/@Model.TrainingTypes.ElementAt(0).FileName" height="120" style="width: 100%; border-radius: 10px;" alt="Card image cap">
-                        <div class="card-body">
-                            @Html.LabelFor(m => m.TrainingTypeId, @Model.TrainingTypes.ElementAt(0).Name, new { @style = "margin-top: 15px;" })
-                            <br />@Html.RadioButtonFor(m => m.TrainingTypes, @Model.TrainingTypes.ElementAt(0).Id)
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card text-center training-type-card">
-                        <img class="card-img-top" src="~/img/@Model.TrainingTypes.ElementAt(1).FileName" height="120" style="width: 100%; border-radius: 10px;" alt="Card image cap">
-                        <div class="card-body">
-                            @Html.LabelFor(m => m.TrainingTypeId, @Model.TrainingTypes.ElementAt(1).Name, new { @style = "margin-top: 15px;" })
-                            <br />@Html.RadioButtonFor(m => m.TrainingTypeId, @Model.TrainingTypes.ElementAt(1).Id)
-                        </div>
-                    </div>
-                </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+            <div>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card text-center training-type-card">
-                        <img class="card-img-top" src="~/img/@Model.TrainingTypes.ElementAt(2).FileName" height="120" style="width: 100%; border-radius: 10px;" alt="Card image cap">
-                        <div class="card-body">
-                            @Html.LabelFor(m => m.TrainingTypeId, @Model.TrainingTypes.ElementAt(2).Name, new { @style = "margin-top: 15px;" })
-                            <br />@Html.RadioButtonFor(m => m.TrainingTypeId, @Model.TrainingTypes.ElementAt(2).Id)
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card text-center training-type-card">
-                        <img class="card-img-top" src="~/img/@Model.TrainingTypes.ElementAt(3).FileName" height="120" style="width: 100%; border-radius: 10px;" alt="Card image cap">
-                        <div class="card-body">
-                            @Html.LabelFor(m => m.TrainingTypeId, @Model.TrainingTypes.ElementAt(3).Name, new { @style = "margin-top: 15px;" })
-                            <br />@Html.RadioButtonFor(m => m.TrainingTypeId, @Model.TrainingTypes.ElementAt(3).Id)
-                        </div>
-                    </div>
-                </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Gender, "Gender", new { @class = "control-label" })
+            <div>
+                @Html.DropDownListFor(m => m.Gender, new SelectList(Model.Genders), "", new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Gender)
             </div>
-            <div class="text-center">
-                @Html.ValidationMessageFor(m => m.TrainingTypeId)
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+            <div>
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+            <div>
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
             </div>
         </div>
     </div>
+
+    <div class="row">
+        @foreach (var type in Model.TrainingTypes)
+        {
+            <div class="card text-center training-type-card">
+                <img class="card-img-top" src="~/img/@type.FileName" height="120" alt="Card image cap">
+                <div class="card-body">
+                    @Html.LabelFor(m => m.TrainingTypeId, type.Name, new { @style = "margin-top: 15px;" })
+                    <br />@Html.RadioButtonFor(m => m.TrainingTypeId, type.Id, new { @style = "margin-bottom: 25px;" })
+                </div>
+            </div>
+        }
+        <div class="text-center" id="training-type-validation">
+            @Html.ValidationMessageFor(m => m.TrainingTypeId)
+        </div>
+    </div>
+
     <hr />
     <div class="form-group text-center">
         <div>
