@@ -38,7 +38,7 @@
     };
 
     var done = function () {
-        link.parents("tr").find("td").fadeOut(1000, function () {
+        link.parents("tr").find("td").fadeOut(500, function () {
             $(this).parent().remove();
         });
         console.log(operation + " for plan ID " + planId + " was successful!");

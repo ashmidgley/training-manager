@@ -35,7 +35,7 @@ var MineController = function (planService) {
     }
 
     var done = function () {
-        link.parents("li").fadeOut(function () {
+        $(".plan-block").fadeOut(500, function () {
             $(this).remove();
         });
         console.log("Removing plan " + planId + " was successful");
