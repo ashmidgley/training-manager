@@ -489,6 +489,8 @@
     <Compile Include="ViewModels\WorkoutsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\star-rating.css" />
@@ -554,6 +556,14 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\trainingmanageruat - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\trainingmanageruat - Web Deploy.pubxml" />
     <Content Include="Scripts\errors.json" />
@@ -1310,6 +1320,7 @@
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -1376,7 +1387,6 @@
     <Content Include="Views\Plans\Summary.cshtml" />
     <Content Include="Views\Exercises\Create.cshtml" />
     <Content Include="Views\Plans\Favourites.cshtml" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Views\Plans\Ratings.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\All.cshtml" />
@@ -1391,9 +1401,6 @@
     <Folder Include="Scripts\App_LocalResources\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
