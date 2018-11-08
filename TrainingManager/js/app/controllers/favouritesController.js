@@ -3,7 +3,7 @@ var FavouritesController = function (favouriteService) {
     var planId;
     var link;
 
-    var init = function (container) {
+    var init = function () {
         $(".js-remove-favourite").click(removeFavourite);
     };
 
