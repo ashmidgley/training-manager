@@ -60,7 +60,9 @@ namespace TrainingManager.Controllers
         [Authorize]
         public ActionResult All()
         {
-            var users = _unitOfWork.Users.GetUsers();
+            var users = _unitOfWork.Users.GetUsers()
+                .OrderByDescending(u => u.DateJoined);
+
             DateTime curr = DateTime.Now;
             var lineChartData = _unitOfWork.Views.GetPreviousWeekViews();
             var chartLabels = new string[7];
