@@ -3,14 +3,6 @@
     ViewBag.Title = Model.Heading;
 }
 
-@section Scripts{
-    <script>
-        $(document).ready(function () {
-            RatingsController.init();
-        });
-    </script>
-}
-
 <h1 class="text-center">@Model.Heading</h1>
 @if (Model.RatingsToDisplay.Count() > 0)
 {
@@ -49,4 +41,12 @@ else
 {
     <hr />
     <p class="alert alert-info text-center">No ratings to display.</p>
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            RatingsController.init();
+        });
+    </script>
 }

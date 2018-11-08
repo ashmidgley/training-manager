@@ -1,7 +1,6 @@
 ﻿@model TrainingManager.ViewModels.WorkoutFormViewModel
 @{
     ViewBag.Title = Model.Heading;
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2 style="margin-top: 30px;">@Model.Heading</h2>
@@ -29,7 +28,6 @@
         @Html.ValidationMessageFor(m => m.PlanName)
     </div>
     <button type="submit" class="btn btn-primary btn-lg">Save</button>
-
 }
 
 @section scripts

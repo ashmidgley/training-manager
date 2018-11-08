@@ -1,19 +1,6 @@
 ﻿@model TrainingManager.ViewModels.PlansFormViewModel
 @{
     ViewBag.Title = "Plan Summary";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-
-@section styles {
-    <link href="~/Content/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
-}
-
-@section Scripts {
-    <script src="~/Scripts/bootbox.min.js"></script>
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/js/app-plans.js"></script>
-    <script src="~/js/plansController.js"></script>
-    <script src="~/Scripts/star-rating.js" type="text/javascript"></script>
 }
 
 <h2 class="text-center">@Model.Name Summary</h2>
@@ -127,3 +114,7 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    @Scripts.Render("~/bundles/angular")
+}

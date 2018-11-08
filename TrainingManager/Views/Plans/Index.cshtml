@@ -3,45 +3,30 @@
     ViewBag.Title = Model.Heading;
 }
 
-@section styles {
-    <link href="~/Content/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
-}
+<h1 class="text-center">@Model.Heading</h1>
+<hr />
 
-@section scripts
+@if (Model.PlansToDisplay.Count() > 0)
 {
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js"></script>
-    <script src="~/Scripts/star-rating.js" type="text/javascript"></script>
-    <script>
-        $(document).ready(function () {
-            IndexController.init("#plans");
-        });
-    </script>
-}
-
-    <h1 class="text-center">@Model.Heading</h1>
-    <hr />
-
-    @if (Model.PlansToDisplay.Count() > 0)
+    using (Html.BeginForm("Search", "Plans"))
     {
-        using (Html.BeginForm("Search", "Plans"))
-        {
-            <div id="searchPlans" class="form-group text-center">
-                <div id="searchPlans" class="input-group">
-                    @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by User, Plan or Rating..." })
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-search"></i>
-                    </span>
-                </div>
+        <div id="searchPlans" class="form-group text-center">
+            <div id="searchPlans" class="input-group">
+                @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by User, Plan or Rating..." })
+                <span class="input-group-addon">
+                    <i class="glyphicon glyphicon-search"></i>
+                </span>
             </div>
-        }
+        </div>
+    }
 
-        foreach (var plan in Model.PlansToDisplay)
-        {
+    foreach (var plan in Model.PlansToDisplay)
+    {
         <div class="row plan-block">
             <div class="col-xs-2 plan-rating">
                 @if (plan.RatingCount != 1)
                 {
-                    <span class="label label-danger plan-rating-label" >@plan.RatingCount ratings</span>
+                    <span class="label label-danger plan-rating-label">@plan.RatingCount ratings</span>
                 }
                 @if (plan.RatingCount == 1)
                 {
@@ -82,9 +67,18 @@
                 }
             </div>
         </div>
-        }
     }
-    else
-    {
-        <p class="alert alert-info text-center">No user plans have been created.</p>
-    }
+}
+else
+{
+    <p class="alert alert-info text-center">No user plans have been created.</p>
+}
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            IndexController.init("#plans");
+        });
+    </script>
+}
