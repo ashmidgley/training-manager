@@ -3,15 +3,7 @@
     ViewBag.Title = Model.Workout.Name;
 }
 
-@section Scripts{
-    <script>
-        $(document).ready(function () {
-            WorkoutController.init();
-        });
-    </script>
-}
-
-<h1 class="text-center">@Model.Workout.Name Summary</h1>
+<h1 class="text-center">@Model.Workout.Name summary</h1>
 <hr />
 <a href="/Plans/Summary/@Model.PlanId" id="plan-summary-link">Back to plan summary</a>
 
@@ -26,25 +18,25 @@
             <th>Comment</th>
             <th>Action</th>
         </tr>
-    @foreach (var exercise in Model.Exercises)
-    {
-        <tr>
-            <td>@exercise.Name</td>
-            <td>@exercise.Duration</td>
-            <td>@exercise.Reps</td>
-            <td>@exercise.Sets</td>
-            <td>@exercise.Comment</td>
-            @if (Model.CanEdit)
-            {
-                <td><button style="border-radius:0px;" data-exercise-id="@exercise.Id" class="js-remove-exercise btn btn-danger">Remove</button></td>
-            }
-            else
-            {
-                <td><button class="btn btn-danger" style="border-radius:0px;" disabled>Remove</button></td>
-            }
-        </tr>
-    }
-</table>
+        @foreach (var exercise in Model.Exercises)
+        {
+            <tr>
+                <td>@exercise.Name</td>
+                <td>@exercise.Duration</td>
+                <td>@exercise.Reps</td>
+                <td>@exercise.Sets</td>
+                <td>@exercise.Comment</td>
+                @if (Model.CanEdit)
+                {
+                    <td><button style="border-radius:0px;" data-exercise-id="@exercise.Id" class="js-remove-exercise btn btn-danger">Remove</button></td>
+                }
+                else
+                {
+                    <td><button class="btn btn-danger" style="border-radius:0px;" disabled>Remove</button></td>
+                }
+            </tr>
+        }
+    </table>
     if (Model.CanEdit)
     {
         <div class="text-center">
@@ -61,4 +53,12 @@ else
             <a type="button" class="btn btn-success text-center" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
         </div>
     }
+}
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            WorkoutController.init();
+        });
+    </script>
 }

@@ -1,7 +1,6 @@
 ﻿@model TrainingManager.ViewModels.PlansFormViewModel
 @{
     ViewBag.Title = Model.Heading;
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2 style="margin-top: 30px;">@Model.Heading</h2>
@@ -22,6 +21,7 @@
     </div>
     <button type="submit" class="btn btn-primary btn-lg">Save</button>
 }
+
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
