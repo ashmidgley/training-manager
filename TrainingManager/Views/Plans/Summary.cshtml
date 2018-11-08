@@ -3,6 +3,12 @@
     ViewBag.Title = "Plan Summary";
 }
 
+@section Scripts{
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/js/app-plans.js"></script>
+    <script src="~/js/plansController.js"></script>
+}
+
 <h2 class="text-center">@Model.Name Summary</h2>
 <hr style="margin-bottom: 10px;" />
 <div ng-app="app-plans" ng-controller="plansController as vm" ng-init="init(@Model.PlanId, @Model.LengthInWeeks)" ng-cloak>
@@ -114,7 +120,3 @@
         </div>
     </div>
 </div>
-
-@section Scripts{
-    @Scripts.Render("~/bundles/angular")
-}
