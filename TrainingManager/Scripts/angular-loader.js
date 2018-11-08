@@ -1,15 +1,39 @@
 /**
- * @license AngularJS v1.6.4
- * (c) 2010-2017 Google, Inc. http://angularjs.org
+ * @license AngularJS v1.7.2
+ * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
 
 (function() {'use strict';
+    // NOTE:
+    // These functions are copied here from `src/Angular.js`, because they are needed inside the
+    // `angular-loader.js` closure and need to be available before the main `angular.js` script has
+    // been loaded.
     function isFunction(value) {return typeof value === 'function';}
     function isDefined(value) {return typeof value !== 'undefined';}
+    function isNumber(value) {return typeof value === 'number';}
     function isObject(value) {return value !== null && typeof value === 'object';}
+    function isScope(obj) {return obj && obj.$evalAsync && obj.$watch;}
+    function isUndefined(value) {return typeof value === 'undefined';}
+    function isWindow(obj) {return obj && obj.window === obj;}
+    function sliceArgs(args, startIndex) {return Array.prototype.slice.call(args, startIndex || 0);}
+    function toJsonReplacer(key, value) {
+      var val = value;
 
-/* global toDebugString: true */
+      if (typeof key === 'string' && key.charAt(0) === '$' && key.charAt(1) === '$') {
+        val = undefined;
+      } else if (isWindow(value)) {
+        val = '$WINDOW';
+      } else if (value &&  window.document === value) {
+        val = '$DOCUMENT';
+      } else if (isScope(value)) {
+        val = '$SCOPE';
+      }
+
+      return val;
+    }
+
+/* exported toDebugString */
 
 function serializeObject(obj, maxDepth) {
   var seen = [];
@@ -18,7 +42,9 @@ function serializeObject(obj, maxDepth) {
   // and a very deep object can cause a performance issue, so we copy the object
   // based on this specific depth and then stringify it.
   if (isValidObjectMaxDepth(maxDepth)) {
-    obj = copy(obj, null, maxDepth);
+    // This file is also included in `angular-loader`, so `copy()` might not always be available in
+    // the closure. Therefore, it is lazily retrieved as `angular.copy()` when needed.
+    obj = angular.copy(obj, null, maxDepth);
   }
   return JSON.stringify(obj, function(key, val) {
     val = toJsonReplacer(key, val);
@@ -43,11 +69,72 @@ function toDebugString(obj, maxDepth) {
   return obj;
 }
 
+/* exported
+  minErrConfig,
+  errorHandlingConfig,
+  isValidObjectMaxDepth
+*/
+
+var minErrConfig = {
+  objectMaxDepth: 5,
+  urlErrorParamsEnabled: true
+};
+
+/**
+ * @ngdoc function
+ * @name angular.errorHandlingConfig
+ * @module ng
+ * @kind function
+ *
+ * @description
+ * Configure several aspects of error handling in AngularJS if used as a setter or return the
+ * current configuration if used as a getter. The following options are supported:
+ *
+ * - **objectMaxDepth**: The maximum depth to which objects are traversed when stringified for error messages.
+ *
+ * Omitted or undefined options will leave the corresponding configuration values unchanged.
+ *
+ * @param {Object=} config - The configuration object. May only contain the options that need to be
+ *     updated. Supported keys:
+ *
+ * * `objectMaxDepth`  **{Number}** - The max depth for stringifying objects. Setting to a
+ *   non-positive or non-numeric value, removes the max depth limit.
+ *   Default: 5
+ *
+ * * `urlErrorParamsEnabled`  **{Boolean}** - Specifies wether the generated error url will
+ *   contain the parameters of the thrown error. Disabling the parameters can be useful if the
+ *   generated error url is very long.
+ *
+ *   Default: true. When used without argument, it returns the current value.
+ */
+function errorHandlingConfig(config) {
+  if (isObject(config)) {
+    if (isDefined(config.objectMaxDepth)) {
+      minErrConfig.objectMaxDepth = isValidObjectMaxDepth(config.objectMaxDepth) ? config.objectMaxDepth : NaN;
+    }
+    if (isDefined(config.urlErrorParamsEnabled) && isBoolean(config.urlErrorParamsEnabled)) {
+      minErrConfig.urlErrorParamsEnabled = config.urlErrorParamsEnabled;
+    }
+  } else {
+    return minErrConfig;
+  }
+}
+
+/**
+ * @private
+ * @param {Number} maxDepth
+ * @return {boolean}
+ */
+function isValidObjectMaxDepth(maxDepth) {
+  return isNumber(maxDepth) && maxDepth > 0;
+}
+
+
 /**
  * @description
  *
  * This object provides a utility for producing rich Error messages within
- * Angular. It can be called as follows:
+ * AngularJS. It can be called as follows:
  *
  * var exampleMinErr = minErr('example');
  * throw exampleMinErr('one', 'This {0} is {1}', foo, bar);
@@ -75,6 +162,11 @@ function toDebugString(obj, maxDepth) {
 
 function minErr(module, ErrorConstructor) {
   ErrorConstructor = ErrorConstructor || Error;
+
+  var url = 'https://errors.angularjs.org/1.7.2/';
+  var regex = url.replace('.', '\\.') + '[\\s\\S]*';
+  var errRegExp = new RegExp(regex, 'g');
+
   return function() {
     var code = arguments[0],
       template = arguments[1],
@@ -84,21 +176,27 @@ function minErr(module, ErrorConstructor) {
       }),
       paramPrefix, i;
 
+    // A minErr message has two parts: the message itself and the url that contains the
+    // encoded message.
+    // The message's parameters can contain other error messages which also include error urls.
+    // To prevent the messages from getting too long, we strip the error urls from the parameters.
+
     message += template.replace(/\{\d+\}/g, function(match) {
       var index = +match.slice(1, -1);
 
       if (index < templateArgs.length) {
-        return templateArgs[index];
+        return templateArgs[index].replace(errRegExp, '');
       }
 
       return match;
     });
 
-    message += '\nhttp://errors.angularjs.org/1.6.4/' +
-      (module ? module + '/' : '') + code;
+    message += '\n' + url + (module ? module + '/' : '') + code;
 
-    for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
-      message += paramPrefix + 'p' + i + '=' + encodeURIComponent(templateArgs[i]);
+    if (minErrConfig.urlErrorParamsEnabled) {
+      for (i = 0, paramPrefix = '?'; i < templateArgs.length; i++, paramPrefix = '&') {
+        message += paramPrefix + 'p' + i + '=' + encodeURIComponent(templateArgs[i]);
+      }
     }
 
     return new ErrorConstructor(message);
@@ -111,7 +209,7 @@ function minErr(module, ErrorConstructor) {
  * @module ng
  * @description
  *
- * Interface for configuring angular {@link angular.module modules}.
+ * Interface for configuring AngularJS {@link angular.module modules}.
  */
 
 function setupModuleLoader(window) {
@@ -138,9 +236,9 @@ function setupModuleLoader(window) {
      * @module ng
      * @description
      *
-     * The `angular.module` is a global place for creating, registering and retrieving Angular
+     * The `angular.module` is a global place for creating, registering and retrieving AngularJS
      * modules.
-     * All modules (angular core or 3rd party) that should be available to an application must be
+     * All modules (AngularJS core or 3rd party) that should be available to an application must be
      * registered using this mechanism.
      *
      * Passing one argument retrieves an existing {@link angular.Module},
@@ -390,13 +488,13 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#filter
            * @module ng
-           * @param {string} name Filter name - this must be a valid angular expression identifier
+           * @param {string} name Filter name - this must be a valid AngularJS expression identifier
            * @param {Function} filterFactory Factory function for creating new instance of filter.
            * @description
            * See {@link ng.$filterProvider#register $filterProvider.register()}.
            *
            * <div class="alert alert-warning">
-           * **Note:** Filter names must be valid angular {@link expression} identifiers, such as `uppercase` or `orderBy`.
+           * **Note:** Filter names must be valid AngularJS {@link expression} identifiers, such as `uppercase` or `orderBy`.
            * Names with special characters, such as hyphens and dots, are not allowed. If you wish to namespace
            * your filters, then you can use capitalization (`myappSubsectionFilterx`) or underscores
            * (`myapp_subsection_filterx`).
@@ -433,7 +531,8 @@ function setupModuleLoader(window) {
            * @ngdoc method
            * @name angular.Module#component
            * @module ng
-           * @param {string} name Name of the component in camel-case (i.e. myComp which will match as my-comp)
+           * @param {string|Object} name Name of the component in camelCase (i.e. `myComp` which will match `<my-comp>`),
+           *    or an object map of components where the keys are the names and the values are the component definition objects.
            * @param {Object} options Component definition object (a simplified
            *    {@link ng.$compile#directive-definition-object directive definition object})
            *
@@ -449,7 +548,13 @@ function setupModuleLoader(window) {
            * @param {Function} configFn Execute this function on module load. Useful for service
            *    configuration.
            * @description
-           * Use this method to register work which needs to be performed on module loading.
+           * Use this method to configure services by injecting their
+           * {@link angular.Module#provider `providers`}, e.g. for adding routes to the
+           * {@link ngRoute.$routeProvider $routeProvider}.
+           *
+           * Note that you can only inject {@link angular.Module#provider `providers`} and
+           * {@link angular.Module#constant `constants`} into this function.
+           *
            * For more about how to configure services, see
            * {@link providers#provider-recipe Provider Recipe}.
            */
