@@ -3,7 +3,7 @@
     var planId;
     var link;
 
-    var init = function (container) {
+    var init = function () {
         $('.js-remove-rating').click(clearRating);
     };
 

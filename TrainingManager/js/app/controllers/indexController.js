@@ -3,7 +3,7 @@
     var operation;
     var planId;
 
-    var init = function (container) {
+    var init = function () {
         $('.js-toggle-favourite').click(toggleFavourite);
         $('.js-star-rating').on('rating:change', createRating);
         $('.js-star-rating').on('rating:clear', clearRating);

@@ -3,7 +3,7 @@ var MineController = function (planService) {
     var link;
     var planId;
 
-    var init = function (container) {
+    var init = function () {
         $(".js-remove-plan").click(removePlan);
     };
 
