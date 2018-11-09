@@ -11,22 +11,22 @@
         foreach (var plan in Model.PlansToDisplay)
         {
             <div class="row plan-block">
-                <div class="col-xs-2 plan-rating">
+                <div class="col-2 plan-rating">
                     @if (plan.RatingCount != 1)
                     {
-                        <span class="label label-danger plan-rating-label">@plan.RatingCount ratings</span>
+                        <span class="badge badge-danger plan-rating-label">@plan.RatingCount ratings</span>
                     }
                     @if (plan.RatingCount == 1)
                     {
-                        <span class="label label-danger plan-rating-label">@plan.RatingCount rating</span>
+                        <span class="badge badge-danger plan-rating-label">@plan.RatingCount rating</span>
                     }
                     <div class="rating-value">@plan.Rating/5</div>
                 </div>
-                <div class="col-xs-8 text-center middle-content">
+                <div class="col-8 text-center middle-content">
                     <div class="plan-name">@plan.Name</div>
                     <div id="plan-created-date">Created: @plan.DateCreated.ToString("d")</div>
                 </div>
-                <div class="col-xs-2 actions">
+                <div class="col-2 actions">
                     <button class="tripleBtn btn btn-info" onclick="location.href='@Url.Action("Edit", "Plans", new { id = plan.Id })'">Edit</button>
                     <button class="tripleBtn btn btn-success" onclick="location.href='@Url.Action("Summary", "Plans", new { id = plan.Id })'">View</button>
                     <button data-plan-id="@plan.Id" class="tripleBtn btn btn-danger js-remove-plan">Remove</button>

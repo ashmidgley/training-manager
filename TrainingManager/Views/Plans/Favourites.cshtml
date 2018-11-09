@@ -11,30 +11,30 @@
     foreach (var plan in Model.PlansToDisplay)
     {
         <div class="row plan-block">
-            <div class="col-xs-2 plan-rating">
+            <div class="col-2 plan-rating">
                 @if (plan.RatingCount != 1)
                 {
-                    <span class="label label-danger plan-rating-label">@plan.RatingCount ratings</span>
+                    <span class="badge badge-danger plan-rating-label">@plan.RatingCount ratings</span>
                 }
                 @if (plan.RatingCount == 1)
                 {
-                    <span class="label label-danger plan-rating-label">@plan.RatingCount rating</span>
+                    <span class="badge badge-danger plan-rating-label">@plan.RatingCount rating</span>
                 }
                 <div class="rating-value">@plan.Rating/5</div>
             </div>
 
-            <div class="col-xs-8 text-center middle-content">
+            <div class="col-8 text-center middle-content">
                 <a href="@Url.Action("Index", "User", new { Id = plan.UserId })">@plan.User.Name</a>
                 <div class="plan-name" style="margin-top: 15px;">
                     @plan.Name
                     @if (plan.IsRemoved)
                     {
-                        <span class="label label-default">Removed</span>
+                        <span class="badge badge-info">Removed</span>
                     }
                 </div>
             </div>
 
-            <div class="col-xs-2 actions" style="padding: 0px">
+            <div class="col-2 actions" style="padding: 0px">
                 <button class="doubleBtn btn btn-success" onclick="location.href='@Url.Action("Summary", "Plans", new { id = plan.Id })'" disabled="@plan.IsRemoved">View</button>
                 <button class="doubleBtn btn btn-danger js-remove-favourite" data-plan-id="@plan.Id">Remove</button>
             </div>

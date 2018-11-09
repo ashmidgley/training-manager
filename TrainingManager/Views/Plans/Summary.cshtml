@@ -47,12 +47,12 @@
     <h3 class="text-center" style="margin-bottom:20px;">Week {{model.currWeek}}</h3>
 
     <div class="row">
-        <div class="col-xs-1 text-center" style="padding: 0">
+        <div class="col-1 text-center" style="padding: 0">
             <div class="plan-summary-arrow-block" style="border-right: none;">
-                <i ng-show="model.showWeekLeft" class="glyphicon glyphicon-chevron-left summary-shift-arrow" ng-click="shiftWeekLeft();"></i>
+                <i ng-show="model.showWeekLeft" class="fa fa-arrow-left summary-shift-arrow" ng-click="shiftWeekLeft();"></i>
             </div>
         </div>
-        <div class="col-xs-10" style="padding:0">
+        <div class="col-10" style="padding:0">
             <table class="table table-bordered" style="table-layout: fixed;">
                 <tr class="plan-table-row" id="non-mobile-headers">
                     <th class="text-center plan-table-col">{{  model.dayNames[0] }}</th>
@@ -113,9 +113,9 @@
                 </tr>
             </table>
         </div>
-        <div class="col-xs-1 text-center" style="padding: 0">
+        <div class="col-1 text-center" style="padding: 0">
             <div class="plan-summary-arrow-block" style="border-left: none;">
-                <i ng-show="model.showWeekRight" class="glyphicon glyphicon-chevron-right summary-shift-arrow" ng-click="shiftWeekRight();"></i>
+                <i ng-show="model.showWeekRight" class="fa fa-arrow-right summary-shift-arrow" ng-click="shiftWeekRight();"></i>
             </div>
         </div>
     </div>
