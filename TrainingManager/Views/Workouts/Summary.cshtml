@@ -50,7 +50,7 @@ else
     if (Model.CanEdit)
     {
         <div class="text-center">
-            <a type="button" class="btn btn-success text-center" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
+            <a class="btn btn-success text-center" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
         </div>
     }
 }

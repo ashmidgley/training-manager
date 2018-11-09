@@ -13,88 +13,89 @@
     @RenderSection("styles", required: false)
 </head>
 <body>
-    <div class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("TrainingManager", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("User Plans", "Index", "Plans")</li>
-                    <li>@Html.ActionLink("Users", "All", "User")</li>
-                </ul>
-                @if (Request.IsAuthenticated)
-                {
-                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                    {
-                        @Html.AntiForgeryToken()
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    @User.Identity.GetUserName() <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Create", "Plans")">Add Plan</a></li>
-                                    <li><a href="@Url.Action("Mine", "Plans")">My Plans</a></li>
-                                    <li><a href="@Url.Action("Index", "User")">My Details</a></li>
-                                    <li><a href="@Url.Action("Favourites", "Plans")">Favourites</a></li>
-                                    <li><a href="@Url.Action("Ratings", "Plans")">Ratings</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    }
-                }
-                else
-                {
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                    </ul>
-                }
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        @RenderBody()
-        <hr />
-        <footer>
-            @if (User.Identity.IsAuthenticated)
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="/" style="padding-left: 50px">TrainingManager</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tm-navbar" aria-controls="tm-navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="tm-navbar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/Plans">User Plans</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/User/All">Users</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" style="padding-right: 50px">
+            @if (Request.IsAuthenticated)
             {
-                <p class="text-center" style="font-size:12px;">@User.Identity.Name | &copy; @DateTime.Now.Year | Version 1.0 | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;" /></a></p>
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            @User.Identity.GetUserName()
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-dropdown">
+                            <a class="dropdown-item" href="@Url.Action("Create", "Plans")">Add Plan</a>
+                            <a class="dropdown-item" href="@Url.Action("Mine", "Plans")">My Plans</a>
+                            <a class="dropdown-item" href="@Url.Action("Index", "User")">My Details</a>
+                            <a class="dropdown-item" href="@Url.Action("Favourites", "Plans")">Favourites</a>
+                            <a class="dropdown-item" href="@Url.Action("Ratings", "Plans")">Ratings</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                        </div>
+                    </li>
+                }
             }
             else
             {
-                <p class="text-center" style="font-size:12px;">&copy; @DateTime.Now.Year | Version 1.0 | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;" /></a></p>
+                <li class="nav-item">
+                    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class="nav-link", id = "registerLink"})
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "loginLink" })
+                </li>
             }
-        </footer>
+        </ul>
     </div>
+</nav>
 
-    @Scripts.Render("~/bundles/jquery")
+<div class="container">
+    @RenderBody()
+    <hr />
+    <footer>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <p class="text-center" style="font-size:12px;">@User.Identity.Name | &copy; @DateTime.Now.Year | Version 1.0 | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;" /></a></p>
+        }
+        else
+        {
+            <p class="text-center" style="font-size:12px;">&copy; @DateTime.Now.Year | Version 1.0 | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;" /></a></p>
+        }
+    </footer>
+</div>
+    
+@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/app")
     @RenderSection("scripts", required: false)
-
-    <script>
-        $(document).ready(function () {
-            var url = window.location;
-            $('ul.nav li a').each(function () {
-                if (this.href == url) {
-                    $("ul.nav li").each(function () {
-                        if ($(this).hasClass("active")) {
-                            $(this).removeClass("active");
-                        }
-                    });
-                    $(this).parent().addClass('active');
-                }
-            });
+<script>
+    $(document).ready(function () {
+        var url = window.location;
+        $('ul.navbar-nav li a').each(function () {
+            if (this.href == url) {
+                $("ul.navbar-nav li").each(function () {
+                    if ($(this).hasClass("active")) {
+                        $(this).removeClass("active");
+                    }
+                });
+                $(this).parent().addClass('active');
+            }
         });
-    </script>
+    });
+</script>
 </body>
 </html>

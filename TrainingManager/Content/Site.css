@@ -1,6 +1,4 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
     font-size: 17px;
 }
 
@@ -289,10 +287,6 @@ h6,
         width: 100%;
         margin-top: 20px
     }
-
-.navbar-brand {
-    font-weight: bold;
-}
 
 #workout-display-table {
     margin-top: 20px;
