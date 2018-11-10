@@ -6,16 +6,16 @@
 <h2 class="text-center">@Model.Heading</h2>
 <hr />
 
-@if (Model.PlansToDisplay.Count() > 0)
+@if (Model.PlansToDisplay.Any())
 {
     using (Html.BeginForm("Search", "Plans"))
     {
-        <div id="searchPlans" class="form-group text-center">
-            <div id="searchPlans" class="input-group">
+        <div class="form-group" id="searchPlans">
+            <div class="input-group">
                 @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by User, Plan or Rating..." })
-                <span class="input-group-addon">
-                    <i class="fa fa-search"></i>
-                </span>
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                </div>
             </div>
         </div>
     }

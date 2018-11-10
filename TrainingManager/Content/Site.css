@@ -72,9 +72,9 @@ h3 {
     margin-top: 20px;
 }
 
-#searchPlans div {
+#searchPlans > .input-group {
   margin: auto;
-  width: 400px;
+  max-width: 400px;
 }
 
 #searchPlans div input { 
