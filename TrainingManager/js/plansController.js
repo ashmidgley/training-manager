@@ -37,7 +37,7 @@
             if (weeksLength > 1) {
                 $scope.model.showWeekRight = true;
             }
-            $('.js-star-rating').rating({ displayOnly: true });
+            $('.js-star-rating').rating({ displayOnly: true, theme: 'krajee-fa' });
             $scope.getWorkouts();
         };
         

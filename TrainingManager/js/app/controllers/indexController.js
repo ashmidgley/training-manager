@@ -4,6 +4,7 @@
     var planId;
 
     var init = function () {
+        $('.js-star-rating').rating({theme: 'krajee-fa'});
         $('.js-toggle-favourite').click(toggleFavourite);
         $('.js-star-rating').on('rating:change', createRating);
         $('.js-star-rating').on('rating:clear', clearRating);

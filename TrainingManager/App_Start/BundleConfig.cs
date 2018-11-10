@@ -9,6 +9,7 @@ namespace TrainingManager
         {
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/star-rating.min.js",
+                "~/Content/themes/krajee-fa/theme.js",
                 "~/Scripts/Chart.min.js",
                 "~/js/app/services/exerciseService.js",
                 "~/js/app/services/favouriteService.js",
@@ -45,6 +46,7 @@ namespace TrainingManager
                 "~/Content/bootstrap.min.css",
                 "~/Content/font-awesome.min.css",
                 "~/Content/star-rating.min.css",
+                "~/Content/themes/krajee-fa/theme.css",
                 "~/Content/site.css"
             ));
         }

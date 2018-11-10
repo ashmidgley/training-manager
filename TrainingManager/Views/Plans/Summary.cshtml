@@ -2,15 +2,9 @@
 @{
     ViewBag.Title = "Plan Summary";
 }
-
-@section Scripts{
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/js/app-plans.js"></script>
-    <script src="~/js/plansController.js"></script>
-}
-
 <h2 class="text-center">@Model.Name Summary</h2>
-<hr style="margin-bottom: 10px;" />
+<hr />
+
 <div ng-app="app-plans" ng-controller="plansController as vm" ng-init="init(@Model.PlanId, @Model.LengthInWeeks)" ng-cloak>
     <div class="row">
         <div class="col-12 text-center">
@@ -22,8 +16,8 @@
                 <strong>Oh snap!</strong> {{ vm.errorMessage }}
             </div>
 
-            <input class="js-star-rating rating-loading" value="@Model.Rating" data-size="xs"/>
-            @if (Model.RatingCount > 0 && Model.RatingCount != 1)
+            <input class="js-star-rating rating-loading" value="@Model.Rating" data-size="md" data-show-caption="false" />
+            @if (Model.RatingCount != 1)
             {
                 <p class="text-muted" style="font-size: 12px;">Based on @Model.RatingCount user ratings</p>
             }
@@ -122,3 +116,9 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/js/app-plans.js"></script>
+    <script src="~/js/plansController.js"></script>
+}

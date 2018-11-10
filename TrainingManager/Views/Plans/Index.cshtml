@@ -40,11 +40,13 @@
                 <div class="plan-name">@plan.Name</div>
                 @if (Model.ShowActions && plan.UserId != Model.UserId)
                 {
-                    <input data-plan-id="@plan.Id" class="js-star-rating rating rating-loading" value="@(Model.Ratings.Contains(plan.Id) ? (Model.Ratings.SingleOrDefault(r => r.Key == plan.Id)).FirstOrDefault().Value.ToString() : "0")" data-min="0" data-max="5" data-step="1" data-size="xxs" data-show-caption="false" />
+                    <input class="js-star-rating rating-loading" data-plan-id="@plan.Id" data-step="1" data-size="xxs" data-show-caption="false"
+                           value="@(Model.Ratings.Contains(plan.Id) ? (Model.Ratings.SingleOrDefault(r => r.Key == plan.Id)).FirstOrDefault().Value.ToString() : "0")"/>
+                    <br/>
                 }
                 else
                 {
-                    <input class="rating rating-loading" data-min="0" data-max="5" data-size="xxs" data-show-caption="false" disabled />
+                    <input class="js-star-rating rating-loading" data-size="xxs" data-show-caption="false" disabled />
                 }
             </div>
 
