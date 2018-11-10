@@ -444,6 +444,7 @@ select {
         padding: 0;
         margin: auto;
         margin-top: 15px;
+        max-width: 95%;
     }
 
     #plan-summary-link {

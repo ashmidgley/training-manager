@@ -9,19 +9,19 @@
 {
     @Html.AntiForgeryToken()
     <h4 class="text-center">Create a new account.</h4>
-    <div class="row" id="register-input-row">
+    <div id="register-input-row">
         @Html.ValidationSummary("", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(m => m.Name, new { @class = "control-label" })
             <div>
-                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control"})
                 @Html.ValidationMessageFor(m => m.Name)
             </div>
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { @class = "control-label" })
             <div>
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter email" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
         </div>
@@ -33,7 +33,7 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+            @Html.LabelFor(m => m.Password, new { @class = "control-label"})
             <div>
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Password)
@@ -48,14 +48,14 @@
         </div>
     </div>
 
-    <div class="row" id="training-types-container">
+    <div id="training-types-container">
         @foreach (var type in Model.TrainingTypes)
         {
             <div class="card text-center training-type-card">
-                <img class="card-img-top" src="~/img/@type.FileName" height="120" alt="@type.Name">
+                <img class="card-img-top" src="~/img/@type.FileName" alt="@type.Name">
                 <div class="card-body">
-                    @Html.LabelFor(m => m.TrainingTypeId, type.Name, new { @style = "margin-top: 15px;" })
-                    <br />@Html.RadioButtonFor(m => m.TrainingTypeId, type.Id, new { @style = "margin-bottom: 25px;" })
+                    @Html.LabelFor(m => m.TrainingTypeId, type.Name)
+                    <br />@Html.RadioButtonFor(m => m.TrainingTypeId, type.Id)
                 </div>
             </div>
         }
