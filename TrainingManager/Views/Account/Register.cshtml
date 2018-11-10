@@ -21,7 +21,7 @@
         <div class="form-group">
             @Html.LabelFor(m => m.Email, new { @class = "control-label" })
             <div>
-                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Enter email" })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
         </div>
@@ -67,7 +67,7 @@
     <hr />
     <div class="form-group text-center">
         <div>
-            <input type="submit" class="btn btn-lg btn-success" value="Register" />
+            <input type="submit" class="btn btn-success" value="Register" />
         </div>
     </div>
 }

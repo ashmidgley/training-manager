@@ -12,35 +12,37 @@
 <h2 class="text-center">@Model.Name Summary</h2>
 <hr style="margin-bottom: 10px;" />
 <div ng-app="app-plans" ng-controller="plansController as vm" ng-init="init(@Model.PlanId, @Model.LengthInWeeks)" ng-cloak>
-    <div class="row text-center">
-        <div class="alert alert-success" role="alert" ng-hide="!vm.generalMessage" ng-cloak>
-            <strong>Success!</strong> {{ vm.generalMessage }} &nbsp;
-        </div>
+    <div class="row">
+        <div class="col-12 text-center">
+            <div class="alert alert-success" role="alert" ng-hide="!vm.generalMessage" ng-cloak>
+                <strong>Success!</strong> {{ vm.generalMessage }} &nbsp;
+            </div>
 
-        <div class="alert alert-danger" role="alert" ng-hide="!vm.errorMessage" ng-cloak>
-            <strong>Oh snap!</strong> {{ vm.errorMessage }}
-        </div>
+            <div class="alert alert-danger" role="alert" ng-hide="!vm.errorMessage" ng-cloak>
+                <strong>Oh snap!</strong> {{ vm.errorMessage }}
+            </div>
 
-        <input class="js-star-rating rating-loading" value="@Model.Rating" data-size="xs" />
-        @if (Model.RatingCount > 0 && Model.RatingCount != 1)
-        {
-            <p class="text-muted" style="font-size: 12px;">Based on @Model.RatingCount user ratings</p>
-        }
-        @if (Model.RatingCount == 1)
-        {
-            <p class="text-muted" style="font-size: 12px;">Based on @Model.RatingCount user rating</p>
-        }
-        <p>Created on: @Model.CreatedOn</p>
-        @if (Model.Favourites == 1)
-        {
-            <p>Favourited by @Model.Favourites user</p>
-        }
-        else
-        {
-            <p>Favourited by @Model.Favourites users</p>
-        }
-        <p>Views: @Model.Views</p>
-        <a href="/Plans" id="user-plans-link">Back to user plans</a>
+            <input class="js-star-rating rating-loading" value="@Model.Rating" data-size="xs"/>
+            @if (Model.RatingCount > 0 && Model.RatingCount != 1)
+            {
+                <p class="text-muted" style="font-size: 12px;">Based on @Model.RatingCount user ratings</p>
+            }
+            @if (Model.RatingCount == 1)
+            {
+                <p class="text-muted" style="font-size: 12px;">Based on @Model.RatingCount user rating</p>
+            }
+            <p>Created on: @Model.CreatedOn</p>
+            @if (Model.Favourites == 1)
+            {
+                <p>Favourited by @Model.Favourites user</p>
+            }
+            else
+            {
+                <p>Favourited by @Model.Favourites users</p>
+            }
+            <p>Views: @Model.Views</p>
+            <a href="/Plans" id="user-plans-link">Back to user plans</a>
+        </div>
     </div>
     <hr />
 
