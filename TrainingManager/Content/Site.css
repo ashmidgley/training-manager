@@ -376,7 +376,7 @@ select {
 
 .card-header {
     background-color: white;
-    margin: 1px;
+    margin: 2px;
 }
 
 /*Clip text element */
@@ -577,7 +577,7 @@ select {
     }
 
     .clip-text {
-        font-size: 2em;
+        font-size: 1.8em;
     }
 
     #home-title {
