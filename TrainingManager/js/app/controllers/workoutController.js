@@ -52,4 +52,4 @@
         init: init
     };
 
-}(ExerciseService)
+}(ExerciseService);

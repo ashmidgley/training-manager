@@ -7,7 +7,7 @@
 <hr />
 <a href="/Plans/Summary/@Model.PlanId" id="plan-summary-link">Back to plan summary</a>
 
-@if (Model.Exercises.Count() > 0)
+@if (Model.Exercises.Any())
 {
     <table class="table table-striped" id="workout-display-table">
         <tr>
@@ -28,11 +28,15 @@
                 <td>@exercise.Comment</td>
                 @if (Model.CanEdit)
                 {
-                    <td><button style="border-radius:0px;" data-exercise-id="@exercise.Id" class="js-remove-exercise btn btn-danger">Remove</button></td>
+                    <td>
+                        <button class="btn btn-danger js-remove-exercise" data-exercise-id="@exercise.Id">Remove</button>
+                    </td>
                 }
                 else
                 {
-                    <td><button class="btn btn-danger" style="border-radius:0px;" disabled>Remove</button></td>
+                    <td>
+                        <button class="btn btn-danger" disabled>Remove</button>
+                    </td>
                 }
             </tr>
         }
@@ -40,7 +44,7 @@
     if (Model.CanEdit)
     {
         <div class="text-center">
-            <a type="button" class="btn btn-success" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
+            <a class="btn btn-success" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
         </div>
     }
 }
