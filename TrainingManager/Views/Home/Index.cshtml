@@ -2,69 +2,59 @@
     ViewBag.Title = "Home";
 }
 
-@*<div class="text-center" style="padding-top: 215px; padding-bottom: 215px;">
-    <div class="clip-text clip-text_fourteen clip-text--cover">
+<div class="text-center" id="home-title"> 
+    <div class="clip-text clip-text_fourteen clip-text--cover" style="margin-left: auto; margin-right: auto;">
         TrainingManager
     </div>
-</div>*@
-<div class="text-center fit-screen">
-    <img src="~/img/home.png" alt="Man on calf raise machine" id="homeImage"/>
-    <div style="margin-top: 20px;">
-        A free online tool to help you organize and share training programs
-        <div style="margin-top: 15px;">
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a class="btn btn-success" href="/Plans/Create">Add Plan</a>
-            }
-            else
-            {
-                <a class="btn btn-success" href="/Account/Register">Get started</a>
-            }
-            <a class="btn btn-info" href="/Plans">Existing plans</a>
-        </div>
-    </div>
+    <p style="margin-top: 15px;">A free online tool to create and share training plans.</p>
 </div>
-<hr />
-<h1 class="text-center">How does it work?</h1>
-<hr />
-<div class="row">
-    <div class="col-md-6 parent">
-        <div class="child">
-            Once you have set up an account via the <a href="/Account/Register">register</a> page,
-            you can access the user actions by clicking on your email address in the top right corner of the navbar.
+<div class="card-deck">
+    <div class="card">
+        <div class="card-header" style="padding: 0">
+            <img class="card-img-top" src="~/img/unspecified.png" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Get started</h5>
+            <p class="card-text">Register an account to start creating, rating and favouriting plans.</p>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-success btn-sm" href="/Account/Register">Register</a>
         </div>
     </div>
-    <div class="col-md-6 text-center not-mobile">
-        <img src="~/img/user-actions-desktop.png" class="tile-img" />
-    </div>
-    <div class="col-md-6 text-center mobile">
-        <img src="~/img/user-actions-mobile.png" class="tile-img" />
-    </div>
-</div>
-<hr />
-<div class="row">
-    <div class="col-md-6 parent">
-        <div class="child">
-            Check out existing plans created by users in the <a href="/Plans">plans feed</a>.
-            The feed sorts plans based on highest rating by the largest number of users.
+    <div class="card">
+        <div class="card-header" style="padding: 0">
+            <img class="card-img-top" src="~/img/lifter.png" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Add plan</h5>
+            <p class="card-text">Create your first plan.</p>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-info btn-sm" href="/Plans">Add Plan</a>
         </div>
     </div>
-    <div class="col-md-6 text-center not-mobile">
-        <img src="~/img/user-plans-desktop.png" class="tile-img" />
-    </div>
-    <div class="col-md-6 text-center mobile">
-        <img src="~/img/user-plans-mobile.png" class="tile-img" />
-    </div>
-</div>
-<hr />
-<div class="row">
-    <div class="col-md-6 parent">
-        <div class="child">
-            TrainingManager was created as a bit of fun while I was learning how to build web apps using the .NET framework.
-            Feel free to fire through any issues or suggestions to <a href="#">trainingmanagernz@gmail.com</a>.
+    <div class="card">
+        <div class="card-header" style="padding: 0">
+            <img class="card-img-top" src="~/img/cardio.png" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">User plans</h5>
+            <p class="card-text">Check out the current user plans feed and rate or favourite the ones you like.</p>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-warning btn-sm" href="/Plans/Favourites">User Plans</a>
         </div>
     </div>
-    <div class="col-md-6 text-center">
-        <img src="~/img/unspecified.png" class="tile-img" />
+    <div class="card">
+        <div class="card-header" style="padding: 0">
+            <img class="card-img-top" src="~/img/balance-flexibility.png" alt="Card image cap">
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">My details</h5>
+            <p class="card-text">See how many users have favourited, rated and viewed your plans in 'My Details'.</p>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-danger btn-sm" href="/User/Index">My Details</a>
+        </div>
     </div>
 </div>

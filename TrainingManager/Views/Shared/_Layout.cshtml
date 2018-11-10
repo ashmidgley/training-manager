@@ -13,55 +13,56 @@
     @RenderSection("styles", required: false)
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-    <a class="navbar-brand" href="/">TrainingManager</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tm-navbar" aria-controls="tm-navbar" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        @*<a class="navbar-brand" href="/">TrainingManager</a>*@
+        <a class="navbar-brand" href="/"><img src="~/img/Dumbell-Logo.png"/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tm-navbar" aria-controls="tm-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="tm-navbar">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/Plans">User Plans</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/User/All">Users</a>
-            </li>
-        </ul>
-        <ul class="navbar-nav ml-auto" style="padding-right: 50px">
-            @if (Request.IsAuthenticated)
-            {
-                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+        <div class="collapse navbar-collapse" id="tm-navbar">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/Plans">User Plans</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/User/All">Users</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" style="padding-right: 5rem;">
+                @if (Request.IsAuthenticated)
                 {
-                    @Html.AntiForgeryToken()
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            @User.Identity.GetUserName()
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-dropdown">
-                            <a class="dropdown-item" href="@Url.Action("Create", "Plans")">Add Plan</a>
-                            <a class="dropdown-item" href="@Url.Action("Mine", "Plans")">My Plans</a>
-                            <a class="dropdown-item" href="@Url.Action("Index", "User")">My Details</a>
-                            <a class="dropdown-item" href="@Url.Action("Favourites", "Plans")">Favourites</a>
-                            <a class="dropdown-item" href="@Url.Action("Ratings", "Plans")">Ratings</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-                        </div>
+                    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="user-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                @User.Identity.GetUserName()
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user-dropdown">
+                                <a class="dropdown-item" href="@Url.Action("Create", "Plans")">Add Plan</a>
+                                <a class="dropdown-item" href="@Url.Action("Mine", "Plans")">My Plans</a>
+                                <a class="dropdown-item" href="@Url.Action("Index", "User")">My Details</a>
+                                <a class="dropdown-item" href="@Url.Action("Favourites", "Plans")">Favourites</a>
+                                <a class="dropdown-item" href="@Url.Action("Ratings", "Plans")">Ratings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                            </div>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="nav-item">
+                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "registerLink" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "loginLink" })
                     </li>
                 }
-            }
-            else
-            {
-                <li class="nav-item">
-                    @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { @class="nav-link", id = "registerLink"})
-                </li>
-                <li class="nav-item">
-                    @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { @class = "nav-link", id = "loginLink" })
-                </li>
-            }
-        </ul>
-    </div>
-</nav>
+            </ul>
+        </div>
+    </nav>
 
 <div class="container">
     @RenderBody()

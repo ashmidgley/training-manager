@@ -48,14 +48,18 @@
         </div>
     </div>
 
-    <div id="training-types-container">
+    <div class="card-deck">
         @foreach (var type in Model.TrainingTypes)
         {
             <div class="card text-center training-type-card">
-                <img class="card-img-top" src="~/img/@type.FileName" alt="@type.Name">
+                <div class="card-header">
+                    <img class="card-img-top" src="~/img/@type.FileName" alt="@type.Name">
+                </div>
                 <div class="card-body">
                     @Html.LabelFor(m => m.TrainingTypeId, type.Name)
-                    <br />@Html.RadioButtonFor(m => m.TrainingTypeId, type.Id)
+                </div>
+                <div class="card-footer">
+                    @Html.RadioButtonFor(m => m.TrainingTypeId, type.Id)
                 </div>
             </div>
         }
@@ -63,7 +67,6 @@
             @Html.ValidationMessageFor(m => m.TrainingTypeId)
         </div>
     </div>
-
     <hr />
     <div class="form-group text-center">
         <div>
