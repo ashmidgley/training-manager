@@ -3,9 +3,9 @@
     ViewBag.Title = Model.Header;
 }
 
-<div class="row user-block" style="margin-top: 20px;">
-    <div class="card">
-        <h3 class="text-center" style="margin-bottom: 20px;">Details</h3>
+<div class="row user-block">
+    <div class="card user-card">
+        <h3 class="text-center">Details</h3>
         <table class="table" id="user-table">
             <tr>
                 <td class="left-col">Name:</td>
@@ -35,19 +35,19 @@
     </div>
 </div>
 <div class="row user-block">
-    <div class="card">
-        <h3 class="text-center">Type</h3>
+    <div class="card user-card">
+        <h3 class="text-center">Training type</h3>
         <hr />
         <div style="margin: 20px;">
-            <h4 class="text-center"><i>@Model.User.TrainingTypeName</i></h4>
+            <h5 class="text-center"><i>@Model.User.TrainingTypeName</i></h5>
         </div>
         <div class="text-center" style="margin-bottom:20px;">
-            <img src="~/img/@Model.TrainingTypeFileName" id="user-image" />
+            <img src="~/img/@Model.TrainingTypeFileName" id="user-image" alt="@Model.User.TrainingTypeName"/>
         </div>
     </div>
 </div>
 <div class="row user-block">
-    <div class="card">
+    <div class="card user-card">
         <h3 class="text-center">Favourites</h3>
         <hr />
         @if (Model.BarChartData.Length == 0)
@@ -61,9 +61,9 @@
     </div>
 </div>
 <div class="row user-block">
-    <div class="card">
+    <div class="card user-card">
         <h3 class="text-center">Views</h3>
-        <hr />
+        <hr style="margin-bottom: 30px;" />
         @if (Model.PieChartData.Length == 0)
         {
             <p class="alert alert-info text-center no-metrics">No views metrics to display.</p>
