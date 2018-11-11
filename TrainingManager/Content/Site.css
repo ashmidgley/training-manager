@@ -437,9 +437,6 @@ select {
 
 /* Mobile */
 @media only screen and (max-device-width: 600px) {
-    #searchPlans div {
-        width: 300px;
-    }
 
     .user-block {
         width: 100%;
