@@ -175,6 +175,7 @@ h3 {
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 28px;
+        border-radius: 0;
     }
 
 .plan-block {
@@ -209,6 +210,10 @@ h3 {
     .user-card > hr {
         margin: 0;
     }
+
+#user-table {
+    margin-bottom: 0;
+}
 
 #user-table .left-col {
     padding-left: 40px;
