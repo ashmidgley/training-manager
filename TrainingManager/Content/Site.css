@@ -50,6 +50,12 @@ h3 {
     margin-top: 10px;
 }
 
+/* Bootbox overrides */
+
+.bootbox .modal-header {
+    flex-direction: row-reverse;
+}
+
 /* Page-level styles */
 
 .doubleBtn {
