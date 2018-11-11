@@ -10,7 +10,7 @@
 {
         foreach (var plan in Model.PlansToDisplay)
         {
-            <div class="row plan-block">
+            <div class="row plan-block" id="mine-@plan.Id">
                 <div class="col-2 plan-rating">
                     @if (plan.RatingCount != 1)
                     {
