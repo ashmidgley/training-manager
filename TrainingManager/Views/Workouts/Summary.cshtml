@@ -3,44 +3,50 @@
     ViewBag.Title = Model.Workout.Name;
 }
 
-<h1 class="text-center">@Model.Workout.Name summary</h1>
+<h2 class="text-center">@Model.Workout.Name summary</h2>
 <hr />
 <a href="/Plans/Summary/@Model.PlanId" id="plan-summary-link">Back to plan summary</a>
 
-@if (Model.Exercises.Count() > 0)
+@if (Model.Exercises.Any())
 {
-    <table class="table table-striped" id="workout-display-table">
-        <tr>
-            <th>Name</th>
-            <th>Duration</th>
-            <th>Reps</th>
-            <th>Sets</th>
-            <th>Comment</th>
-            <th>Action</th>
-        </tr>
-        @foreach (var exercise in Model.Exercises)
-        {
+    <div class="table-responsive">
+        <table class="table table-striped" id="workout-display-table">
             <tr>
-                <td>@exercise.Name</td>
-                <td>@exercise.Duration</td>
-                <td>@exercise.Reps</td>
-                <td>@exercise.Sets</td>
-                <td>@exercise.Comment</td>
-                @if (Model.CanEdit)
-                {
-                    <td><button style="border-radius:0px;" data-exercise-id="@exercise.Id" class="js-remove-exercise btn btn-danger">Remove</button></td>
-                }
-                else
-                {
-                    <td><button class="btn btn-danger" style="border-radius:0px;" disabled>Remove</button></td>
-                }
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Reps</th>
+                <th>Sets</th>
+                <th>Comment</th>
+                <th>Action</th>
             </tr>
-        }
-    </table>
+            @foreach (var exercise in Model.Exercises)
+            {
+                <tr>
+                    <td>@exercise.Name</td>
+                    <td>@exercise.Duration</td>
+                    <td>@exercise.Reps</td>
+                    <td>@exercise.Sets</td>
+                    <td>@exercise.Comment</td>
+                    @if (Model.CanEdit)
+                    {
+                        <td>
+                            <button class="btn btn-danger btn-sm js-remove-exercise" data-exercise-id="@exercise.Id">Remove</button>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <button class="btn btn-danger btn-sm" disabled>Remove</button>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
     if (Model.CanEdit)
     {
         <div class="text-center">
-            <a type="button" class="btn btn-success" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
+            <a class="btn btn-success" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
         </div>
     }
 }
@@ -50,7 +56,7 @@ else
     if (Model.CanEdit)
     {
         <div class="text-center">
-            <a type="button" class="btn btn-success text-center" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
+            <a class="btn btn-success text-center" href="@Url.Action("Create", "Exercises")?workoutId=@Model.Workout.Id&planId=@Model.PlanId">Add Exercise</a>
         </div>
     }
 }
