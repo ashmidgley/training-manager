@@ -22,9 +22,7 @@
             workouts: [],
             workoutsDict: {},
             showLeft: false,
-            showRight: true,
-            dayNames: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
-            dayNamesMobile: ['M', 'T', 'W', 'T', 'F', 'S', 'S']
+            showRight: true
             //showImageContent: false,
             //imageCanEdit: null,
             //imageHasSrc: null,

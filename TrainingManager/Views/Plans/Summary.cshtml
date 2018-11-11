@@ -49,24 +49,15 @@
             </div>
         </div>
         <div class="col-10 table-responsive" style="padding:0">
-            <table class="table table-bordered" style="table-layout: fixed;">
-                <tr class="plan-table-row" id="non-mobile-headers">
-                    <th class="text-center plan-table-col">{{  model.dayNames[0] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNames[1] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNames[2] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNames[3] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNames[4] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNames[5] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNames[6] }}</th>
-                </tr>
-                <tr class="plan-table-row" id="mobile-headers">
-                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[0] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[1] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[2] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[3] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[4] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[5] }}</th>
-                    <th class="text-center plan-table-col">{{ model.dayNamesMobile[6] }}</th>
+            <table class="table table-bordered" id="plan-summary-table">
+                <tr class="plan-table-row">
+                    <th class="text-center plan-table-col">Monday</th>
+                    <th class="text-center plan-table-col">Tuesday</th>
+                    <th class="text-center plan-table-col">Wednesday</th>
+                    <th class="text-center plan-table-col">Thursday</th>
+                    <th class="text-center plan-table-col">Friday</th>
+                    <th class="text-center plan-table-col">Saturday</th>
+                    <th class="text-center plan-table-col">Sunday</th>
                 </tr>
                 <tr id="plan-summary-workouts-row">
                     <td ng-repeat="i in model.days">
@@ -103,7 +94,7 @@
                                     {{ model.workoutsDict[((model.currWeek-1)*7)+i].Name.split(' ')[0] }}...
                                 </a>
                             </div>
-                            <div ng-show="!model.workoutsDict[((model.currWeek-1)*7)+i]" style="height:169px;"></div>
+                            <div ng-show="!model.workoutsDict[((model.currWeek-1)*7)+i]" id="empty-workout-col"></div>
                         }
                     </td>
                 </tr>

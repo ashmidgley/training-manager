@@ -248,13 +248,13 @@ h3 {
 }
 
 #plan-summary-button-no-actions {
-    border-radius: 0px;
+    border-radius: 0;
     font-size: 12px;
     width: 100%;
     background-color: #f2f2f2;
     color: black;
-    padding-top: 76px;
-    padding-bottom: 76px;
+    padding-top: 74.5px;
+    padding-bottom: 74.5px;
 }
 
 .plan-summary-arrow-block {
@@ -262,6 +262,10 @@ h3 {
     margin: 0;
     border: solid 1px #dddddd;
     height: 220px;
+}
+
+#plan-summary-table {
+    table-layout: fixed;
 }
 
 #plan-summary-workouts-row > td {
@@ -385,6 +389,10 @@ select {
     margin: 2px;
 }
 
+#empty-workout-col {
+     height: 169px;
+}
+
 /*Clip text element */
 .clip-text {
     font-size: 6em;
@@ -456,34 +464,7 @@ select {
         max-width: 350px;
     }
 
-    #plan-summary-workouts-row > td {
-        text-align: left;
-    }
-
-        #plan-summary-workouts-row > td > div > a {
-            font-size: 8px;
-            padding-left: 5px;
-        }
-
-    #plan-summary-workouts-row .btn-danger {
-        padding-left: 3px;
-    }
-
-    .summary-shift-arrow {
-        font-size: 1em;
-        padding-top: 101px;
-        padding-bottom: 101px;
-    }
-
-    #plan-summary-button-actions {
-        padding-top: 51.5px;
-        padding-bottom: 51.5px;
-    }
-
-    #plan-summary-button-no-actions {
-        padding-top: 78.5px;
-        padding-bottom: 78.5px;
-    }
+    
 
     #line-chart-container {
         display: none;
@@ -574,4 +555,18 @@ select {
         .table-responsive #user-table .left-col {
             padding-left: 40px;
         }
+
+    #plan-summary-table {
+        table-layout: auto;
+    }
+
+    .plan-summary-arrow-block {
+        height: 212.5px;
+    }
+
+    .summary-shift-arrow {
+        font-size: 1em;
+        padding-top: 97px;
+        padding-bottom: 97px;
+    }
 }
