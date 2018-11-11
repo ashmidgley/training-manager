@@ -18,21 +18,23 @@ else
     <canvas id="myLineChart" height="150"></canvas>
 </div>
 
-<table class="table table-striped" id="all-users-table">
-    <tr>
-        <th>User</th>
-        <th class="text-center">Type</th>
-        <th class="text-center">Date Joined</th>
-    </tr>
-    @foreach (var user in Model.Users)
-    {
+<div class="table-responsive">
+    <table class="table table-striped" id="all-users-table">
         <tr>
-            <td><a href="@Url.Action("Index", "User", new { id = user.Id })">@user.Name</a></td>
-            <td class="text-center">@user.TrainingTypeName</td>
-            <td class="text-center">@user.DateJoined.ToShortDateString()</td>
+            <th>User</th>
+            <th class="text-center">Type</th>
+            <th class="text-center">Date Joined</th>
         </tr>
-    }
-</table>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td><a href="@Url.Action("Index", "User", new { id = user.Id })">@user.Name</a></td>
+                <td class="text-center">@user.TrainingTypeName</td>
+                <td class="text-center">@user.DateJoined.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+</div>
 
 @section Scripts{
     <script>

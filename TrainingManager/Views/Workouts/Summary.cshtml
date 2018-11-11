@@ -9,38 +9,40 @@
 
 @if (Model.Exercises.Any())
 {
-    <table class="table table-striped" id="workout-display-table">
-        <tr>
-            <th>Name</th>
-            <th>Duration</th>
-            <th>Reps</th>
-            <th>Sets</th>
-            <th>Comment</th>
-            <th>Action</th>
-        </tr>
-        @foreach (var exercise in Model.Exercises)
-        {
+    <div class="table-responsive">
+        <table class="table table-striped" id="workout-display-table">
             <tr>
-                <td>@exercise.Name</td>
-                <td>@exercise.Duration</td>
-                <td>@exercise.Reps</td>
-                <td>@exercise.Sets</td>
-                <td>@exercise.Comment</td>
-                @if (Model.CanEdit)
-                {
-                    <td>
-                        <button class="btn btn-danger btn-sm js-remove-exercise" data-exercise-id="@exercise.Id">Remove</button>
-                    </td>
-                }
-                else
-                {
-                    <td>
-                        <button class="btn btn-danger btn-sm" disabled>Remove</button>
-                    </td>
-                }
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Reps</th>
+                <th>Sets</th>
+                <th>Comment</th>
+                <th>Action</th>
             </tr>
-        }
-    </table>
+            @foreach (var exercise in Model.Exercises)
+            {
+                <tr>
+                    <td>@exercise.Name</td>
+                    <td>@exercise.Duration</td>
+                    <td>@exercise.Reps</td>
+                    <td>@exercise.Sets</td>
+                    <td>@exercise.Comment</td>
+                    @if (Model.CanEdit)
+                    {
+                        <td>
+                            <button class="btn btn-danger btn-sm js-remove-exercise" data-exercise-id="@exercise.Id">Remove</button>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <button class="btn btn-danger btn-sm" disabled>Remove</button>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
     if (Model.CanEdit)
     {
         <div class="text-center">

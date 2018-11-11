@@ -48,7 +48,7 @@
                 <i ng-show="model.showWeekLeft" class="fa fa-arrow-left summary-shift-arrow" ng-click="shiftWeekLeft();"></i>
             </div>
         </div>
-        <div class="col-10" style="padding:0">
+        <div class="col-10 table-responsive" style="padding:0">
             <table class="table table-bordered" style="table-layout: fixed;">
                 <tr class="plan-table-row" id="non-mobile-headers">
                     <th class="text-center plan-table-col">{{  model.dayNames[0] }}</th>
@@ -68,7 +68,7 @@
                     <th class="text-center plan-table-col">{{ model.dayNamesMobile[5] }}</th>
                     <th class="text-center plan-table-col">{{ model.dayNamesMobile[6] }}</th>
                 </tr>
-                <tr id="plan-summary-workouts-display">
+                <tr id="plan-summary-workouts-row">
                     <td ng-repeat="i in model.days">
                         @if (Model.CanEdit)
                         {
