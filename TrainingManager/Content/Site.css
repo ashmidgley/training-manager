@@ -500,7 +500,9 @@ select {
 
     .plan-block .middle-content .plan-name {
         font-size: 12px;
-        margin: 12px 0;
+        margin: 0;
+        height: 35px;
+        margin-top: 5px;
     }
 
     .actions > button {
