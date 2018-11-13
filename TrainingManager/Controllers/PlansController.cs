@@ -131,7 +131,7 @@ namespace TrainingManager.Controllers
             var plan = _unitOfWork.Plans.GetUserPlan(viewModel.Id, userId);
 
             plan.Name = viewModel.Name;
-
+            plan.LengthInWeeks = viewModel.LengthInWeeks;
             _unitOfWork.Complete();
 
             return RedirectToAction("Mine", "Plans");
