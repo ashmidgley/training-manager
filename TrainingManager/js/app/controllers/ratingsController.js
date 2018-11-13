@@ -2,8 +2,10 @@
     var operation;
     var planId;
     var link;
+    var userId;
 
-    var init = function () {
+    var init = function (_userId) {
+        userId = _userId;
         $('.js-remove-rating').click(clearRating);
     };
 
@@ -40,8 +42,16 @@
     var done = function () {
         link.parents("tr").find("td").fadeOut(500, function () {
             $(this).parent().remove();
+            console.log(operation + " for plan ID " + planId + " was successful!");
+            if ($("tr").length === 1) {
+                location.reload();
+                return;
+            }
         });
-        console.log(operation + " for plan ID " + planId + " was successful!");
+
+        var ratingCount = ratingService.getUserRatingCount(userId);
+        $("#my-ratings-count").hide();
+        $("#my-ratings-count").text("You have rated " + ratingCount + " user plans.").fadeIn(1500);
     };
 
     var fail = function () {

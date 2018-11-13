@@ -35,17 +35,32 @@
             type: 'get',
             dataType: 'html',
             async: false,
-            success: function (data) {
+            success: function(data) {
                 result = data;
             }
         });
         return result;
-    }
+    };
+
+    var getUserRatingCount = function (userId) {
+        var result = null;
+        $.ajax({
+            url: "/api/ratings/user-count/" + userId,
+            type: 'get',
+            dataType: 'html',
+            async: false,
+            success: function(data) {
+                result = data;
+            }
+        });
+        return result;
+    };
 
     return {
         createRating: createRating,
         deleteRating: deleteRating,
         getRating: getRating,
-        getRatingCount: getRatingCount
+        getRatingCount: getRatingCount,
+        getUserRatingCount: getUserRatingCount
     };
-}()
+}();

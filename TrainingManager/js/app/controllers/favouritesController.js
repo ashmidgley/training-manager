@@ -38,8 +38,10 @@ var FavouritesController = function (favouriteService) {
     };
 
     var done = function () {
-        $("#favourite-"+planId).fadeOut(500, function () {
+        $("#favourite-" + planId).fadeOut(500, function () {
             $(this).remove();
+            if ($(".plan-block").length === 0)
+                location.reload();
         });
         console.log("Removing plan " + planId + " was successful");
     }

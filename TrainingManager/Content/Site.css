@@ -398,6 +398,10 @@ select {
      height: 169px;
 }
 
+#my-ratings-count {
+    padding-bottom: 20px;
+}
+
 /*Clip text element */
 .clip-text {
     font-size: 6em;

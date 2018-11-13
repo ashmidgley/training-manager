@@ -3,6 +3,7 @@ using TrainingManager.Models;
 using Microsoft.AspNet.Identity;
 using System.Web.Http;
 using System;
+using System.Linq;
 
 namespace TrainingManager.Controllers.Api
 {
@@ -64,6 +65,14 @@ namespace TrainingManager.Controllers.Api
         public IHttpActionResult GetRatingCount(int planId)
         {
             int ratingCount = _unitOfWork.Ratings.GetRatingCount(planId);
+            return Ok(ratingCount);
+        }
+
+        [Route("api/ratings/user-count/{userId}")]
+        [HttpGet]
+        public IHttpActionResult GetUserRatingCount(string userId)
+        {
+            int ratingCount = _unitOfWork.Ratings.GetUserRatings(userId).Count();
             return Ok(ratingCount);
         }
 
