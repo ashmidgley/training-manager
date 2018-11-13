@@ -45,7 +45,7 @@
     };
 
     var fail = function () {
-        alert(operation + " failed!");
+        console(operation + " failed!");
     };
 
     return {

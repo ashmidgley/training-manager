@@ -52,6 +52,22 @@ namespace TrainingManager.Controllers.Api
         }
 
         [Route("api/ratings/{planId}")]
+        [HttpGet]
+        public IHttpActionResult GetRating(int planId)
+        {
+            int rating = Convert.ToInt32(_unitOfWork.Ratings.GetRatingAverage(planId));
+            return Ok(rating);
+        }
+
+        [Route("api/ratings/count/{planId}")]
+        [HttpGet]
+        public IHttpActionResult GetRatingCount(int planId)
+        {
+            int ratingCount = _unitOfWork.Ratings.GetRatingCount(planId);
+            return Ok(ratingCount);
+        }
+
+        [Route("api/ratings/{planId}")]
         [HttpDelete]
         public IHttpActionResult DeleteRating(int planId)
         {

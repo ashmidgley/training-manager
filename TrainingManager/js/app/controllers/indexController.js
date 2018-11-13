@@ -28,7 +28,7 @@
         var input = $(event.target);
         planId = input.attr("data-plan-id");
         operation = "Posting rating";
-        ratingService.createRating(planId, value, done, fail);
+        ratingService.createRating(planId, value, changeRatingDone, fail);
     };
 
     //Remove rating (DELETE)
@@ -36,7 +36,7 @@
         var input = $(event.target);
         planId = input.attr("data-plan-id");
         operation = "Removing rating";
-        ratingService.deleteRating(planId, done, fail);
+        ratingService.deleteRating(planId, changeRatingDone, fail);
     };
 
     var faveDone = function () {
@@ -45,12 +45,21 @@
         console.log(operation + " for plan ID " + planId + " was successful!");
     };
 
+    var changeRatingDone = function () {
+        var rating = ratingService.getRating(planId);
+        $("#rating-value-" + planId).text(rating + "/5");
+
+        var ratingCount = ratingService.getRatingCount(planId);
+        var newText = ratingCount !== 1 ? ratingCount + " ratings" : ratingCount + " rating";
+        $("#rating-count-" + planId).text(newText);
+    };
+
     var done = function () {
         console.log(operation + " for plan ID " + planId + " was successful!");
     };
 
     var fail = function () {
-        alert(operation + " for planId " + planId + " failed!");
+        console.log(operation + " for planId " + planId + " failed!");
     };
 
     return {

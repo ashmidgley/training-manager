@@ -45,7 +45,7 @@
     };
 
     var fail = function () {
-        alert(operation + " for planId " + planId + " failed!");
+        console(operation + " for planId " + planId + " failed!");
     };
 
     return {

@@ -42,7 +42,7 @@ var MineController = function (planService) {
     }
 
     var fail = function () {
-        alert("Removing plan " + planId + " failed!");
+        console.log("Removing plan " + planId + " failed!");
     }
 
     return {

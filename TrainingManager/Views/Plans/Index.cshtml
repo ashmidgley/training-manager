@@ -26,13 +26,13 @@
             <div class="col-2 plan-rating">
                 @if (plan.RatingCount != 1)
                 {
-                    <span class="badge badge-danger plan-rating-label">@plan.RatingCount ratings</span>
+                    <span class="badge badge-danger plan-rating-label" id="rating-count-@plan.Id">@plan.RatingCount ratings</span>
                 }
                 @if (plan.RatingCount == 1)
                 {
-                    <span class="badge badge-danger plan-rating-label">@plan.RatingCount rating</span>
+                    <span class="badge badge-danger plan-rating-label" id="rating-count-@plan.Id">@plan.RatingCount rating</span>
                 }
-                <div class="rating-value">@plan.Rating/5</div>
+                <div class="rating-value" id="rating-value-@plan.Id">@plan.Rating/5</div>
             </div>
 
             <div class="col-8 text-center middle-content">
