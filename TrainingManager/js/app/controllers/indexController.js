@@ -40,18 +40,22 @@
     };
 
     var faveDone = function () {
-        var text = (button.text === "Favourite") ? "Favourite?" : "Favourite";
-        button.toggleClass("btn-info").toggleClass("btn-inverse").text(text);
+        var text = (button.text() === "Favourite") ? "Favourite?" : "Favourite";
+        button.hide();
+        button.toggleClass("btn-info").toggleClass("btn-inverse").text(text).fadeIn(1000);
         console.log(operation + " for plan ID " + planId + " was successful!");
     };
 
     var changeRatingDone = function () {
+        //update rating value
         var rating = ratingService.getRating(planId);
-        $("#rating-value-" + planId).text(rating + "/5");
-
+        $("#rating-value-" + planId).hide();
+        $("#rating-value-" + planId).text(rating + "/5").fadeIn(1000);
+        //update rating count
         var ratingCount = ratingService.getRatingCount(planId);
         var newText = ratingCount !== 1 ? ratingCount + " ratings" : ratingCount + " rating";
-        $("#rating-count-" + planId).text(newText);
+        $("#rating-count-" + planId).hide();
+        $("#rating-count-" + planId).text(newText).fadeIn(1000);
     };
 
     var done = function () {
