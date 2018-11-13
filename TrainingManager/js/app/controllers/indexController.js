@@ -4,6 +4,9 @@
     var planId;
 
     var init = function () {
+        $(".plan-block").each(function (index) {
+            $(this).delay(200 * index).fadeIn();
+        });
         $('.js-star-rating').rating({theme: 'krajee-fa'});
         $('.js-toggle-favourite').click(toggleFavourite);
         $('.js-star-rating').on('rating:change', createRating);

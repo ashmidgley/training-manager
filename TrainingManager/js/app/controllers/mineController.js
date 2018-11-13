@@ -4,6 +4,9 @@ var MineController = function (planService) {
     var planId;
 
     var init = function () {
+        $(".plan-block").each(function (index) {
+            $(this).delay(200 * index).fadeIn();
+        });
         $(".js-remove-plan").click(removePlan);
     };
 

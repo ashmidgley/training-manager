@@ -4,6 +4,9 @@ var FavouritesController = function (favouriteService) {
     var link;
 
     var init = function () {
+        $(".plan-block").each(function (index) {
+            $(this).delay(200 * index).fadeIn();
+        });
         $(".js-remove-favourite").click(removeFavourite);
     };
 

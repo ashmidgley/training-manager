@@ -6,11 +6,11 @@
 <h2 class="text-center">@Model.Heading</h2>
 <hr />
 
-@if (Model.PlansToDisplay.Count() > 0)
+@if (Model.PlansToDisplay.Any())
 {
         foreach (var plan in Model.PlansToDisplay)
         {
-            <div class="row plan-block" id="mine-@plan.Id">
+            <div class="row plan-block" id="mine-@plan.Id" style="display: none;">
                 <div class="col-2 plan-rating">
                     @if (plan.RatingCount != 1)
                     {
