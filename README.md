@@ -1,6 +1,6 @@
 ﻿# TrainingManager
 
-TrainingManager was created as a bit of fun while I was learning how to build web app's using the .NET framework.
+TrainingManager was created as a bit of fun while I was learning how to build web app's using the .NET framework/procrastinating from more important stuff.
 
 Check it out at http://trainingmanageruat.azurewebsites.net/.
 
@@ -12,3 +12,5 @@ Find details at:
 Github: https://github.com/kartik-v/bootstrap-star-rating
 Documentation: http://plugins.krajee.com/star-rating
 ```
+
+The home page CSS was knicked from https://codepen.io/anon/pen/ayBeQZ. Big ups to CAPTAIN ANONYMOUS!
