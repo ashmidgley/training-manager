@@ -1,4 +1,1 @@
-* linguist-vendored
-*.cs linguist-vendored=false
-*.cshtml linguist-vendored=false
-*.css linguist-vendored=false
+Scripts/* linguist-vendored
