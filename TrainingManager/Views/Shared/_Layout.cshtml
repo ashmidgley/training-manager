@@ -14,7 +14,6 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-        @*<a class="navbar-brand" href="/">TrainingManager</a>*@
         <a class="navbar-brand" href="/"><img src="~/img/Dumbell-Logo.png"/></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#tm-navbar" aria-controls="tm-navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -70,11 +69,11 @@
     <footer>
         @if (User.Identity.IsAuthenticated)
         {
-            <p class="text-center" style="font-size:12px;">@User.Identity.Name | &copy; @DateTime.Now.Year | Version 1.0 | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;" /></a></p>
+            <p class="text-center" style="font-size:12px;">@User.Identity.Name | &copy; @DateTime.Now.Year | Version 1.0 | <a href="/Home/Contact"><i class="fa fa-envelope"></i></a> | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;" /></a></p>
         }
         else
         {
-            <p class="text-center" style="font-size:12px;">&copy; @DateTime.Now.Year | Version 1.0 | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;" /></a></p>
+            <p class="text-center" style="font-size:12px;">&copy; @DateTime.Now.Year | Version 1.0 | <a href="/Home/Contact"><i class="fa fa-envelope"></i></a> | <a href="https://github.com/ash-midgley/training-manager"><img src="~/img/github-32px.png" width="14" hight="14" style="margin-left: 2px; padding-bottom: 1px;" /></a></p>
         }
     </footer>
 </div>

@@ -5,14 +5,12 @@ namespace GigHub.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
-
-        public HomeController(IUnitOfWork unitOfWork)
+        public ActionResult Index()
         {
-            _unitOfWork = unitOfWork;
+            return View();
         }
 
-        public ActionResult Index()
+        public ActionResult Contact()
         {
             return View();
         }
