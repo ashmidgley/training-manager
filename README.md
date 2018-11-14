@@ -1,6 +1,6 @@
 ﻿# TrainingManager
 
-TrainingManager is the official web app for the Globo Gym Purple Cobras. It was created as a bit of fun while I was learning how to build web app's using the .NET framework/procrastinating from more important stuff.
+TrainingManager was created as a bit of fun while I was learning how to build web app's using the .NET framework/procrastinating from more important stuff.
 
 Check it out at http://trainingmanageruat.azurewebsites.net/.
 
