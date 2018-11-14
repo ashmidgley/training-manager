@@ -13,4 +13,4 @@ Github: https://github.com/kartik-v/bootstrap-star-rating
 Documentation: http://plugins.krajee.com/star-rating
 ```
 
-The home page CSS was knicked from https://codepen.io/anon/pen/ayBeQZ. Big ups to CAPTAIN ANONYMOUS!
+The home page CSS was borrowed from https://codepen.io/anon/pen/ayBeQZ. Big ups to CAPTAIN ANONYMOUS!
