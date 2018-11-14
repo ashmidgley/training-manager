@@ -1,6 +1,4 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
     font-size: 17px;
 }
 
@@ -44,6 +42,20 @@ h6,
     border-radius: 9px;
 }
 
+h2 {
+    margin-top: 15px;
+}
+
+h3 {
+    margin-top: 10px;
+}
+
+/* Bootbox overrides */
+
+.bootbox .modal-header {
+    flex-direction: row-reverse;
+}
+
 /* Page-level styles */
 
 .doubleBtn {
@@ -66,9 +78,9 @@ h6,
     margin-top: 20px;
 }
 
-#searchPlans div {
+#searchPlans > .input-group {
   margin: auto;
-  width: 400px;
+  max-width: 400px;
 }
 
 #searchPlans div input { 
@@ -88,8 +100,8 @@ h6,
 
 .summary-shift-arrow {
     font-size: 2em;
-    padding-top: 88px;
-    padding-bottom: 88px;
+    padding-top: 92px;
+    padding-bottom: 92px;
     width: 100%;
 }
 
@@ -163,6 +175,7 @@ h6,
         margin-left: auto;
         margin-right: auto;
         margin-bottom: 28px;
+        border-radius: 0;
     }
 
 .plan-block {
@@ -187,10 +200,23 @@ h6,
     width: 50%;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
+}
+
+.user-card {
+    width: 100%;
+}
+
+    .user-card > hr {
+        margin: 0;
+    }
+
+#user-table {
+    margin-bottom: 0;
 }
 
 #user-table .left-col {
-    padding-left: 50px;
+    padding-left: 40px;
 }
 
 #user-image {
@@ -222,54 +248,58 @@ h6,
     width: 100%;
     background-color: #f2f2f2;
     color: black;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    padding-top: 48.5px;
+    padding-bottom: 48.5px;
 }
 
 #plan-summary-button-no-actions {
-    border-radius: 0px;
+    border-radius: 0;
     font-size: 12px;
     width: 100%;
     background-color: #f2f2f2;
     color: black;
-    padding-top: 76px;
-    padding-bottom: 76px;
+    padding-top: 74.5px;
+    padding-bottom: 74.5px;
 }
 
 .plan-summary-arrow-block {
     background-color: white;
-    margin: 0px;
+    margin: 0;
     border: solid 1px #dddddd;
-    height: 211.5px;
+    height: 220px;
 }
 
-#plan-summary-workouts-display > td {
-    padding: 0px;
+#plan-summary-table {
+    table-layout: fixed;
+}
+
+#plan-summary-workouts-row > td {
+    padding: 0;
     border: solid 1px #dddddd;
 }
 
-#plan-summary-workouts-display #createBtn {
-    margin-top: 60px;
-    margin-bottom: 60px;
+#plan-summary-workouts-row #createBtn {
+    margin-top: 58px;
+    margin-bottom: 58px;
     font-size: 26px;
     color: #5cb85c;
-    border-radius: 0px;
+    border-radius: 0;
     width: 100%;
 }
 
-#plan-summary-workouts-display #removeBtn {
+#plan-summary-workouts-row #removeBtn {
     width: 100%;
     float: left;
     height: 26px;
-    border-radius: 0px;
+    border-radius: 0;
     font-size: 10px;
 }
 
-#plan-summary-workouts-display #editBtn {
+#plan-summary-workouts-row #editBtn {
     width: 100%;
     float: left;
     height: 26px;
-    border-radius: 0px;
+    border-radius: 0;
     font-size: 10px;
 }
 
@@ -289,10 +319,6 @@ h6,
         width: 100%;
         margin-top: 20px
     }
-
-.navbar-brand {
-    font-weight: bold;
-}
 
 #workout-display-table {
     margin-top: 20px;
@@ -345,12 +371,99 @@ select {
 }
 
 
-/* Mobile */
+#line-chart-container {
+    padding: 30px;
+    margin-bottom: 20px;
+}
 
+.navbar-brand {
+    padding-left: 5rem;
+    margin-right: 3rem;
+}
+
+.card-deck label{
+    margin: 0;
+}   
+
+#home-title {
+    margin-bottom: 35px;
+}
+
+.card-header {
+    background-color: white;
+    margin: 2px;
+}
+
+#empty-workout-col {
+     height: 169px;
+}
+
+#my-ratings-count {
+    padding-bottom: 20px;
+}
+
+#exercise-count {
+    margin-bottom: 5px;
+}
+
+/*Clip text element */
+.clip-text {
+    font-size: 6em;
+    font-weight: bold;
+    line-height: 1;
+    position: relative;
+    display: inline-block;
+    display: inline-block;
+    margin: .25em;
+    padding: .5em .75em;
+    text-align: center;
+    /* Color fallback*/
+    color: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.clip-text:before,
+.clip-text:after {
+    position: absolute;
+    content: '';
+}
+
+/* Background  */
+.clip-text:before {
+    z-index: -2;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: inherit;
+}
+
+/* Text Background (black zone)  */
+.clip-text:after {
+    position: absolute;
+    z-index: -1;
+    top: .125em;
+    right: .125em;
+    bottom: .125em;
+    left: .125em;
+    background-color: #000;
+}
+
+.clip-text--cover,
+.clip-text--cover:before {
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.clip-text_fourteen {
+    background-image: url(../img/home-colors.png);
+}
+
+/* Mobile */
 @media only screen and (max-device-width: 600px) {
-    #searchPlans div {
-        width: 300px;
-    }
 
     .user-block {
         width: 100%;
@@ -360,62 +473,11 @@ select {
         max-height: 170px;
     }
 
-    #user-table {
-        font-size: 12px;
-    }
-
-        #user-table .left-col {
-            padding-left: 40px;
-        }
-
     #myBarChart {
         max-width: 350px;
     }
 
-    #plan-summary-workouts-display > td {
-        text-align: left;
-    }
-
-        #plan-summary-workouts-display > td > div > a {
-            font-size: 8px;
-            padding-left: 5px;
-        }
-
-    #plan-summary-workouts-display .btn-danger {
-        padding-left: 3px;
-    }
-
-    .summary-shift-arrow {
-        font-size: 1em;
-        padding-top: 95.5px;
-        padding-bottom: 95.5px;
-    }
-
-    #plan-summary-button-actions {
-        padding-top: 52.5px;
-        padding-bottom: 52.5px;
-    }
-
-    #plan-summary-button-no-actions {
-        padding-top: 78.5px;
-        padding-bottom: 78.5px;
-    }
-
-    #rating-display-table {
-        font-size: 12px;
-    }
-
-        #rating-display-table button {
-            font-size: 10px;
-        }
-
-    #workout-display-table {
-        font-size: 12px;
-    }
-
-        #workout-display-table button {
-            font-size: 8px;
-        }
+    
 
     #line-chart-container {
         display: none;
@@ -425,6 +487,7 @@ select {
         padding: 0;
         margin: auto;
         margin-top: 15px;
+        max-width: 95%;
     }
 
     #plan-summary-link {
@@ -441,7 +504,9 @@ select {
 
     .plan-block .middle-content .plan-name {
         font-size: 12px;
-        margin: 12px 0;
+        margin: 0;
+        height: 35px;
+        margin-top: 5px;
     }
 
     .actions > button {
@@ -465,10 +530,6 @@ select {
         max-height: 100%;
     }
 
-    #all-users-table {
-        font-size: 12px;
-    }
-
     #register-input-row .form-group  {
         margin-left: 5px;
         margin-right: 5px;
@@ -482,63 +543,45 @@ select {
         display: table-row;
     }
 
-}
-
-/* UNUSED */
-
-/* Clip text element */
-/*.clip-text {
-    font-size: 6em;
-    font-weight: bold;
-    line-height: 1;
-    position: relative;
-    display: inline-block;
-    display: inline-block;
-    margin: .25em;
-    padding: .5em .75em;
-    text-align: center;
-
-    /* Color fallback */ /*
-    color: #fff;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-    .clip-text:before,
-    .clip-text:after {
-        position: absolute;
-        content: '';
+    .navbar-brand {
+        padding-left: 0;
     }
 
-    /* Background */ /*
-    .clip-text:before {
-        z-index: -2;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background-image: inherit;
+    .clip-text {
+        font-size: 1.8em;
     }
 
-    /* Text Background (black zone) */ /*
-    .clip-text:after {
-        position: absolute;
-        z-index: -1;
-        top: .125em;
-        right: .125em;
-        bottom: .125em;
-        left: .125em;
-        background-color: #000;
+    #home-title {
+        height: 100vh;
+        padding-top: 30vh;
     }
 
-.clip-text--cover,
-.clip-text--cover:before {
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    background-size: cover;
-    background-position: 50% 50%;
+    .table-responsive {
+        max-width: 100%;
+        margin-bottom: 20px;
+        font-size: 12px;
+    }
+
+        .table-responsive button {
+            font-size: 10px;
+        }
+
+
+        .table-responsive #user-table .left-col {
+            padding-left: 40px;
+        }
+
+    #plan-summary-table {
+        table-layout: auto;
+    }
+
+    .plan-summary-arrow-block {
+        height: 212.5px;
+    }
+
+    .summary-shift-arrow {
+        font-size: 1em;
+        padding-top: 97px;
+        padding-bottom: 97px;
+    }
 }
-
-.clip-text_fourteen {
-    background-image: url(https://4kwallpapers.co/wp-content/uploads/2015/09/abstract-colorful-vectors-design-4k-wallpapers.png);
-}*/

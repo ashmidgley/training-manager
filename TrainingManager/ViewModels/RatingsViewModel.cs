@@ -8,5 +8,6 @@ namespace TrainingManager.ViewModels
         public IEnumerable<Rating> RatingsToDisplay { get; set; }
         public bool ShowActions { get; set; }
         public string Heading { get; set; }
+        public string UserId { get; set; }
     }
 }

@@ -66,6 +66,7 @@ namespace TrainingManager.Models
     {
         [Required]
         [EmailAddress]
+        [StringLength(60)]
         [Display(Name = "Email")]
         public string Email { get; set; }
 

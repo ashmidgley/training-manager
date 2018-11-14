@@ -3,39 +3,41 @@
     ViewBag.Title = Model.Heading;
 }
 
-<h1 class="text-center">@Model.Heading</h1>
-@if (Model.RatingsToDisplay.Count() > 0)
+<h2 class="text-center">@Model.Heading</h2>
+@if (Model.RatingsToDisplay.Any())
 {
-    <p class="text-center" style="padding-bottom: 20px;">You have rated @Model.RatingsToDisplay.Count() user plans.</p>
-    <table class="table table-striped" id="rating-display-table">
-        <tr>
-            <th>Plan Name</th>
-            <th class="text-center">Rating</th>
-            <th class="text-center">Action</th>
-        </tr>
-        @foreach (var rating in Model.RatingsToDisplay)
-        {
+    <p class="text-center" id="my-ratings-count">You have rated @Model.RatingsToDisplay.Count() user plans.</p>
+    <div class="table-responsive">
+        <table class="table table-striped" id="rating-display-table">
             <tr>
-                <td>
-                    @if (rating.Plan.IsRemoved)
-                    {
-                        @rating.Plan.Name<span class="label label-default" style="margin-left: 10px;">Removed</span>
-                    }
-                    else
-                    {
-                        <a href="@Url.Action("Summary", "Plans", new { id = rating.Plan.Id })">
-                            @rating.Plan.Name
-                        </a>
-                    }
-
-                </td>
-                <td class="text-center">@rating.Value/5</td>
-                <td class="text-center">
-                    <button style="border-radius:0px;" data-plan-id="@rating.PlanId" class="js-remove-rating btn btn-danger">Remove</button>
-                </td>
+                <th>Plan Name</th>
+                <th class="text-center">Rating</th>
+                <th class="text-center">Action</th>
             </tr>
-        }
-    </table>
+            @foreach (var rating in Model.RatingsToDisplay)
+            {
+                <tr>
+                    <td>
+                        @if (rating.Plan.IsRemoved)
+                        {
+                            @rating.Plan.Name<span class="badge badge-info" style="margin-left: 10px;">Removed</span>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("Summary", "Plans", new { id = rating.Plan.Id })">
+                                @rating.Plan.Name
+                            </a>
+                        }
+
+                    </td>
+                    <td class="text-center">@rating.Value/5</td>
+                    <td class="text-center">
+                        <button class="btn btn-danger btn-sm js-remove-rating" data-plan-id="@rating.PlanId">Remove</button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 }
 else
 {
@@ -46,7 +48,7 @@ else
 @section Scripts{
     <script>
         $(document).ready(function () {
-            RatingsController.init();
+            RatingsController.init('@Html.Raw(Model.UserId)');
         });
     </script>
 }

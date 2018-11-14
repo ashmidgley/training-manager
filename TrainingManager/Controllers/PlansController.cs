@@ -131,7 +131,7 @@ namespace TrainingManager.Controllers
             var plan = _unitOfWork.Plans.GetUserPlan(viewModel.Id, userId);
 
             plan.Name = viewModel.Name;
-
+            plan.LengthInWeeks = viewModel.LengthInWeeks;
             _unitOfWork.Complete();
 
             return RedirectToAction("Mine", "Plans");
@@ -194,7 +194,8 @@ namespace TrainingManager.Controllers
             {
                 RatingsToDisplay = ratings,
                 ShowActions = true,
-                Heading = "My Ratings"
+                Heading = "My Ratings",
+                UserId = User.Identity.GetUserId()
             };
 
             return View("Ratings", viewModel);
@@ -212,13 +213,6 @@ namespace TrainingManager.Controllers
 
             var plan = _unitOfWork.Plans.GetPlan(id.Value);
 
-            IEnumerable<Workout> workouts = _unitOfWork.Workouts.GetWorkouts(id.Value);
-
-            foreach (Workout w in workouts)
-            {
-                w.Exercises = _unitOfWork.Exercises.GetExercises(w.Id);
-            }
-
             var viewModel = new PlansFormViewModel
             {
                 Name = plan.Name,
@@ -229,7 +223,6 @@ namespace TrainingManager.Controllers
                 RatingCount = _unitOfWork.Ratings.GetRatingCount(id.Value),
                 Favourites = _unitOfWork.Favourites.GetNumberOfFavourites(id.Value),
                 Views = plan.Views,
-                Workouts = workouts,
                 CanEdit = (User.Identity.GetUserId() == plan.UserId)
             };
 

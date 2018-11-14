@@ -3,52 +3,54 @@
     ViewBag.Title = Model.Heading;
 }
 
-<h1 class="text-center">@Model.Heading</h1>
+<h2 class="text-center">@Model.Heading</h2>
 <hr />
 
-@if (Model.PlansToDisplay.Count() > 0)
+@if (Model.PlansToDisplay.Any())
 {
     using (Html.BeginForm("Search", "Plans"))
     {
-        <div id="searchPlans" class="form-group text-center">
-            <div id="searchPlans" class="input-group">
+        <div class="form-group" id="searchPlans">
+            <div class="input-group">
                 @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by User, Plan or Rating..." })
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-search"></i>
-                </span>
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fa fa-search"></i></span>
+                </div>
             </div>
         </div>
     }
 
     foreach (var plan in Model.PlansToDisplay)
     {
-        <div class="row plan-block">
-            <div class="col-xs-2 plan-rating">
+        <div class="row plan-block" style="display: none;">
+            <div class="col-2 plan-rating">
                 @if (plan.RatingCount != 1)
                 {
-                    <span class="label label-danger plan-rating-label">@plan.RatingCount ratings</span>
+                    <span class="badge badge-danger plan-rating-label" id="rating-count-@plan.Id">@plan.RatingCount ratings</span>
                 }
                 @if (plan.RatingCount == 1)
                 {
-                    <span class="label label-danger plan-rating-label">@plan.RatingCount rating</span>
+                    <span class="badge badge-danger plan-rating-label" id="rating-count-@plan.Id">@plan.RatingCount rating</span>
                 }
-                <div class="rating-value">@plan.Rating/5</div>
+                <div class="rating-value" id="rating-value-@plan.Id">@plan.Rating/5</div>
             </div>
 
-            <div class="col-xs-8 text-center middle-content">
+            <div class="col-8 text-center middle-content">
                 <a href="@Url.Action("Index", "User", new { Id = plan.UserId })">@plan.User.Name</a>
                 <div class="plan-name">@plan.Name</div>
                 @if (Model.ShowActions && plan.UserId != Model.UserId)
                 {
-                    <input data-plan-id="@plan.Id" class="js-star-rating rating rating-loading" value="@(Model.Ratings.Contains(plan.Id) ? (Model.Ratings.Where(r => r.Key == plan.Id).SingleOrDefault()).FirstOrDefault().Value.ToString() : "0")" data-min="0" data-max="5" data-step="1" data-size="xxs" data-show-caption="false" />
+                    <input class="js-star-rating rating-loading" data-plan-id="@plan.Id" data-step="1" data-size="xxs" data-show-caption="false"
+                           value="@(Model.Ratings.Contains(plan.Id) ? (Model.Ratings.SingleOrDefault(r => r.Key == plan.Id)).FirstOrDefault().Value.ToString() : "0")"/>
+                    <br/>
                 }
                 else
                 {
-                    <input class="rating rating-loading" data-min="0" data-max="5" data-size="xxs" data-show-caption="false" disabled />
+                    <input class="js-star-rating rating-loading" data-size="xxs" data-show-caption="false" disabled />
                 }
             </div>
 
-            <div class="col-xs-2 actions">
+            <div class="col-2 actions">
                 @if (Model.ShowActions)
                 {
                     <button class="doubleBtn btn btn-sm btn-success" onclick="location.href='@Url.Action("Summary", "Plans", new { id = plan.Id })'">View</button>

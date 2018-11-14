@@ -1,9 +1,11 @@
-﻿var WorkoutController = function (exerciseService) {
+﻿var WorkoutController = function (exerciseService, workoutService) {
     var operation;
     var exerciseId;
     var link;
+    var workoutId;
 
-    var init = function (container) {
+    var init = function (_workoutId) {
+        workoutId = _workoutId;
         $('.js-remove-exercise').click(removeExercise);
     };
 
@@ -40,16 +42,23 @@
     var done = function () {
         link.parents("tr").find("td").fadeOut(1000, function () {
             $(this).parent().remove();
+            console.log(operation + " was successful!");
+            if ($("tr").length === 1)
+                location.reload();
         });
-        console.log(operation + " was successful!");
+
+        var exercisesCount = workoutService.getExerciseCount(workoutId);
+        var newText = exercisesCount == 1 ? exercisesCount + " exercise to complete" : exercisesCount + " exercises to complete";
+        $("#exercise-count").hide();
+        $("#exercise-count").text(newText).fadeIn(1500);
     };
 
     var fail = function () {
-        alert(operation + " failed!");
+        console(operation + " failed!");
     };
 
     return {
         init: init
     };
 
-}(ExerciseService)
+}(ExerciseService, WorkoutService);

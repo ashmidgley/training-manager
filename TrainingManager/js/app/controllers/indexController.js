@@ -4,6 +4,10 @@
     var planId;
 
     var init = function () {
+        $(".plan-block").each(function (index) {
+            $(this).delay(200 * index).fadeIn();
+        });
+        $('.js-star-rating').rating({theme: 'krajee-fa'});
         $('.js-toggle-favourite').click(toggleFavourite);
         $('.js-star-rating').on('rating:change', createRating);
         $('.js-star-rating').on('rating:clear', clearRating);
@@ -27,7 +31,7 @@
         var input = $(event.target);
         planId = input.attr("data-plan-id");
         operation = "Posting rating";
-        ratingService.createRating(planId, value, done, fail);
+        ratingService.createRating(planId, value, changeRatingDone, fail);
     };
 
     //Remove rating (DELETE)
@@ -35,13 +39,26 @@
         var input = $(event.target);
         planId = input.attr("data-plan-id");
         operation = "Removing rating";
-        ratingService.deleteRating(planId, done, fail);
+        ratingService.deleteRating(planId, changeRatingDone, fail);
     };
 
     var faveDone = function () {
-        var text = (button.text === "Favourite") ? "Favourite?" : "Favourite";
-        button.toggleClass("btn-info").toggleClass("btn-inverse").text(text);
+        var text = (button.text() === "Favourite") ? "Favourite?" : "Favourite";
+        button.hide();
+        button.toggleClass("btn-info").toggleClass("btn-inverse").text(text).fadeIn(1000);
         console.log(operation + " for plan ID " + planId + " was successful!");
+    };
+
+    var changeRatingDone = function () {
+        //update rating value
+        var rating = ratingService.getRating(planId);
+        $("#rating-value-" + planId).hide();
+        $("#rating-value-" + planId).text(rating + "/5").fadeIn(1000);
+        //update rating count
+        var ratingCount = ratingService.getRatingCount(planId);
+        var newText = ratingCount !== 1 ? ratingCount + " ratings" : ratingCount + " rating";
+        $("#rating-count-" + planId).hide();
+        $("#rating-count-" + planId).text(newText).fadeIn(1000);
     };
 
     var done = function () {
@@ -49,7 +66,7 @@
     };
 
     var fail = function () {
-        alert(operation + " for planId " + planId + " failed!");
+        console.log(operation + " for planId " + planId + " failed!");
     };
 
     return {

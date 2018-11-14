@@ -3,8 +3,8 @@
     ViewBag.Title = Model.Header;
 }
 
-<h1 class="text-center">@Model.Header</h1>
-@if (Model.Users.Count() > 1 || Model.Users.Count() == 0)
+<h2 class="text-center">@Model.Header</h2>
+@if (Model.Users.Count() > 1 || !Model.Users.Any())
 {
     <p class="text-center" style="margin-bottom: 20px;">There are @Model.Users.Count() people using TrainingManager.</p>
 }
@@ -14,25 +14,27 @@ else
 }
 <hr />
 
-<div class="panel panel-default col-md-6 col-md-offset-3" id="line-chart-container">
-    <canvas id="myLineChart" height="150" style="margin-bottom: 20px;"></canvas>
+<div class="col-md-6 offset-3 card" id="line-chart-container">
+    <canvas id="myLineChart" height="150"></canvas>
 </div>
 
-<table class="table table-striped" id="all-users-table">
-    <tr>
-        <th>User</th>
-        <th class="text-center">Type</th>
-        <th class="text-center">Date Joined</th>
-    </tr>
-    @foreach (var user in Model.Users)
-    {
+<div class="table-responsive">
+    <table class="table table-striped" id="all-users-table">
         <tr>
-            <td><a href="@Url.Action("Index", "User", new { id = user.Id })">@user.Name</a></td>
-            <td class="text-center">@user.TrainingTypeName</td>
-            <td class="text-center">@user.DateJoined.ToShortDateString()</td>
+            <th>User</th>
+            <th class="text-center">Type</th>
+            <th class="text-center">Date Joined</th>
         </tr>
-    }
-</table>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td><a href="@Url.Action("Index", "User", new { id = user.Id })">@user.Name</a></td>
+                <td class="text-center">@user.TrainingTypeName</td>
+                <td class="text-center">@user.DateJoined.ToShortDateString()</td>
+            </tr>
+        }
+    </table>
+</div>
 
 @section Scripts{
     <script>

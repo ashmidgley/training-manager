@@ -4,6 +4,9 @@ var FavouritesController = function (favouriteService) {
     var link;
 
     var init = function () {
+        $(".plan-block").each(function (index) {
+            $(this).delay(200 * index).fadeIn();
+        });
         $(".js-remove-favourite").click(removeFavourite);
     };
 
@@ -35,14 +38,16 @@ var FavouritesController = function (favouriteService) {
     };
 
     var done = function () {
-        $(".plan-block").fadeOut(500, function () {
+        $("#favourite-" + planId).fadeOut(500, function () {
             $(this).remove();
+            if ($(".plan-block").length === 0)
+                location.reload();
         });
         console.log("Removing plan " + planId + " was successful");
     }
 
     var fail = function () {
-        alert("Removing plan " + planId + " failed!");
+        console.log("Removing plan " + planId + " failed!");
     }
 
     return {

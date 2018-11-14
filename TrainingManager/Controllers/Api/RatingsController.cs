@@ -3,6 +3,7 @@ using TrainingManager.Models;
 using Microsoft.AspNet.Identity;
 using System.Web.Http;
 using System;
+using System.Linq;
 
 namespace TrainingManager.Controllers.Api
 {
@@ -49,6 +50,30 @@ namespace TrainingManager.Controllers.Api
             _unitOfWork.Complete();
 
             return Ok();
+        }
+
+        [Route("api/ratings/{planId}")]
+        [HttpGet]
+        public IHttpActionResult GetRating(int planId)
+        {
+            int rating = Convert.ToInt32(_unitOfWork.Ratings.GetRatingAverage(planId));
+            return Ok(rating);
+        }
+
+        [Route("api/ratings/count/{planId}")]
+        [HttpGet]
+        public IHttpActionResult GetRatingCount(int planId)
+        {
+            int ratingCount = _unitOfWork.Ratings.GetRatingCount(planId);
+            return Ok(ratingCount);
+        }
+
+        [Route("api/ratings/user-count/{userId}")]
+        [HttpGet]
+        public IHttpActionResult GetUserRatingCount(string userId)
+        {
+            int ratingCount = _unitOfWork.Ratings.GetUserRatings(userId).Count();
+            return Ok(ratingCount);
         }
 
         [Route("api/ratings/{planId}")]

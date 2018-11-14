@@ -4,10 +4,13 @@ var MineController = function (planService) {
     var planId;
 
     var init = function () {
+        $(".plan-block").each(function (index) {
+            $(this).delay(200 * index).fadeIn();
+        });
         $(".js-remove-plan").click(removePlan);
     };
 
-    var removePlan = function (e) {
+    var removePlan = function(e) {
         link = $(e.target);
         planId = link.attr("data-plan-id");
 
@@ -18,7 +21,7 @@ var MineController = function (planService) {
                 no: {
                     label: "No",
                     className: "btn-default",
-                    callback: function () {
+                    callback: function() {
                         console.log("Cancelled removal of plan " + planId);
                         bootbox.hideAll();
                     }
@@ -26,26 +29,30 @@ var MineController = function (planService) {
                 yes: {
                     label: "Yes",
                     className: "btn-danger",
-                    callback: function () {
+                    callback: function() {
                         planService.deletePlan(planId, done, fail);
                     }
                 }
             }
         });
-    }
+    };
 
     var done = function () {
-        $(".plan-block").fadeOut(500, function () {
-            $(this).remove();
-        });
+        $("#mine-" + planId).fadeOut(500,
+            function () {
+                $(this).remove();
+                if ($(".plan-block").length === 0)
+                    location.reload();
+            });
         console.log("Removing plan " + planId + " was successful");
-    }
+        
+    };
 
-    var fail = function () {
-        alert("Removing plan " + planId + " failed!");
-    }
+    var fail = function() {
+        console.log("Removing plan " + planId + " failed!");
+    };
 
     return {
         init: init
     };
-}(PlanService)
+}(PlanService);

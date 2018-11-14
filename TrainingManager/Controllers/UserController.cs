@@ -16,9 +16,13 @@ namespace TrainingManager.Controllers
 
         public ActionResult Index(string id = null)
         {
-            if (id == null)
+            switch (id)
             {
-                id = User.Identity.GetUserId();
+                case null when User.Identity.GetUserId() == null:
+                    return RedirectToAction("Login", "Account");
+                case null when User.Identity.GetUserId() != null:
+                    id = User.Identity.GetUserId();
+                    break;
             }
 
             var user = _unitOfWork.Users.GetUser(id);

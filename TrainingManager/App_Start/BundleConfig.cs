@@ -9,6 +9,7 @@ namespace TrainingManager
         {
             bundles.Add(new ScriptBundle("~/bundles/app").Include(
                 "~/Scripts/star-rating.min.js",
+                "~/Content/themes/krajee-fa/theme.js",
                 "~/Scripts/Chart.min.js",
                 "~/js/app/services/exerciseService.js",
                 "~/js/app/services/favouriteService.js",
@@ -35,14 +36,17 @@ namespace TrainingManager
             ));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                "~/Scripts/bootstrap.js",
+                "~/Scripts/umd/popper.min.js",
+                "~/Scripts/bootstrap.min.js",
                 "~/Scripts/respond.js",
                 "~/Scripts/bootbox.min.js"
             ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/bootstrap.css",
+                "~/Content/bootstrap.min.css",
+                "~/Content/font-awesome.min.css",
                 "~/Content/star-rating.min.css",
+                "~/Content/themes/krajee-fa/theme.css",
                 "~/Content/site.css"
             ));
         }
