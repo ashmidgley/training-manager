@@ -2,6 +2,7 @@
 using TrainingManager.Models;
 using Microsoft.AspNet.Identity;
 using System.Collections.Generic;
+using System.Linq;
 using System.Web.Http;
 
 namespace TrainingManager.Controllers.Api
@@ -32,6 +33,14 @@ namespace TrainingManager.Controllers.Api
             };
 
             return Ok(workoutDto);
+        }
+        
+        [HttpGet]
+        [Route("api/workouts/exercise-count/{workoutId}")]
+        public IHttpActionResult GetExerciseCount(int workoutId)
+        {
+            int count = _unitOfWork.Exercises.GetExercises(workoutId).Count();
+            return Ok(count);
         }
 
         [Authorize]
