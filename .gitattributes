@@ -1,2 +1,4 @@
-* text=auto
-*.cs     diff=csharp
+* linguist-vendored
+*.cs linguist-vendored=false
+*.cshtml linguist-vendored=false
+*.css linguist-vendored=false
