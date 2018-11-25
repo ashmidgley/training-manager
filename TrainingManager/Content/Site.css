@@ -462,6 +462,18 @@ select {
     background-image: url(../img/home-colors.png);
 }
 
+@media only screen and (max-width: 990px) {
+    .clip-text {
+        font-size: 4em;
+    }
+}
+
+@media only screen and (max-width: 766px) {
+    .clip-text {
+        font-size: 3em;
+    }
+}
+
 /* Mobile */
 @media only screen and (max-device-width: 600px) {
 
@@ -476,8 +488,6 @@ select {
     #myBarChart {
         max-width: 350px;
     }
-
-    
 
     #line-chart-container {
         display: none;
