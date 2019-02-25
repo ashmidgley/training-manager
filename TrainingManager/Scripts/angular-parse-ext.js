@@ -1,5 +1,5 @@
 /**
- * @license AngularJS v1.7.2
+ * @license AngularJS v1.7.5
  * (c) 2010-2018 Google, Inc. http://angularjs.org
  * License: MIT
  */
@@ -1263,7 +1263,7 @@ angular.module('ngParseExt', [])
   .config(['$parseProvider', function($parseProvider) {
     $parseProvider.setIdentifierFns(isValidIdentifierStart, isValidIdentifierContinue);
   }])
-  .info({ angularVersion: '1.7.2' });
+  .info({ angularVersion: '1.7.5' });
 
 
 })(window, window.angular);
